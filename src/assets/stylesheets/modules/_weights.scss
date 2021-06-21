@@ -1,0 +1,76 @@
+.weight-title {
+    background: #254E70;
+    padding: 20px;
+    color: #fff;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.weight-title > strong {
+    margin: 0 20px 0 5px;
+}
+ul.details_tab_data {
+    &.avenir_300{
+        li {
+            .datails_label{
+                font-weight: 300;
+                font-family: 'Avenir Next LT Pro 300';
+            }
+        }
+    }
+    &.avenir_400{
+        li {
+            .datails_label{
+                font-weight: 400;
+                font-family: "Avenir Next LT Pro Normal";
+            }
+        }
+    }
+    &.avenir_500{
+        li {
+            .datails_label{
+                font-weight: 500;
+                font-family: "Avenir Next LT Pro Med";
+            }
+        }
+    }
+    &.avenir_600{
+        li {
+            .datails_label{
+                font-weight: 600;
+                font-family: "Avenir Next LT Pro Semi";
+            }
+        }
+    }
+    &.avenir_700{
+        li {
+            .datails_label{
+                font-weight: 700;
+                font-family: "Avenir Next LT Pro Bold";
+            }
+        }
+    }
+    &.avenir_900{
+        li {
+            .datails_label{
+                font-weight: 700;
+                font-family: "Avenir Next LT Pro Bolder";
+            }
+        }
+    }
+    &.avenir_c_700{
+        li {
+            .datails_label{
+                font-weight: 100;
+                font-family: 'Avenir Next LT Pro Thin Cond';
+            }
+        }
+    }
+}
+
+
+
+.title-name-code h6,
+.view_entry .view_entry_viewer .view_entry_viewer_inner h4{
+   font-weight: 600; font-family: $avenir-d;
+}

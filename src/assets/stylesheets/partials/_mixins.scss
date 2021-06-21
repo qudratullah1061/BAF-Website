@@ -1,0 +1,4 @@
+@mixin scroll($height) {
+    @extend %scroll_style;
+    max-height: $height;
+}
