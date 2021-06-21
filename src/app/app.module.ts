@@ -3,28 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/shared/header/header.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { HomepageComponent } from './components/homepage/homepage.component';
-import { SliderComponent } from './components/homepage/slider/slider.component';
-import { FeaturedComponent } from './components/homepage/featured/featured.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { HomepageModule } from './modules/homepage/homepage.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomepageComponent,
-    SliderComponent,
-    FeaturedComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CarouselModule.forRoot()
+    HomepageModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
