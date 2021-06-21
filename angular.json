@@ -28,9 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
               "src/assets/fonts/avenir/stylesheet.css",
               "src/assets/fonts/signifier/stylesheet.css",
               "src/assets/stylesheets/styles.scss"
