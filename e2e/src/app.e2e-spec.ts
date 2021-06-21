@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('BAF-Website-v50 app is running!');
+    expect(page.getTitleText()).toEqual('BAF-Website app is running!');
   });
 
   afterEach(async () => {
