@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: "http://testapi"
+  apiUrl: "https://localhost/BAF_Website_v4/"
 };

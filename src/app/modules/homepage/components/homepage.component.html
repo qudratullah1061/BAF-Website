@@ -1,3 +1,4 @@
-<baf-slider></baf-slider>
-<p>homepage works!</p>
+<div *ngIf="homepageData">
+  <baf-slider [sliderImages]="homepageData.sliderImages"></baf-slider>
+</div>
 <baf-featured></baf-featured>

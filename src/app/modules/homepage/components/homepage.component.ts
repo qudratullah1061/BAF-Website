@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IHomepage } from '../models/IHomepage';
+import { HomepageService } from '../services/homepage.service';
 
 @Component({
   selector: 'baf-homepage',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  homepageData: IHomepage;
+
+
+  constructor(private homepageService: HomepageService) { }
 
   ngOnInit(): void {
+    this.homepageService.getHomepageData().subscribe({
+      next: data => {
+        this.homepageData = data.description as IHomepage; console.log(this.homepageData);
+      }
+    });
+
   }
 
 }
