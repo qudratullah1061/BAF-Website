@@ -1,6 +1,6 @@
 <div class="banner">
   <div class="banner-slideshow">
-    <carousel>
+    <carousel [showIndicators]="false" [interval]="6500">
       <slide class="single-slide" *ngFor="let image of sliderImages" [ngStyle]="{'background-image': 'url(' + image.sliderImage + ')'}">
         <img [src]="image.sliderImage" alt="first slide">
       </slide>

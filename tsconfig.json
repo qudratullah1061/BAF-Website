@@ -19,8 +19,8 @@
       "dom"
     ],
     "paths": {
-      "@homepage/*":["src/app/modules/homepage/*"],
-      "@shared/*":["src/app/modules/shared/*"]
+      "@homepage/*":["./src/app/modules/homepage/*"],
+      "@shared/*":["./src/app/modules/shared/*"]
     }
   },
   "angularCompilerOptions": {
