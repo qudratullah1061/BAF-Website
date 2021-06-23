@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { IHomepage } from '../models/IHomepage';
 import { Observable } from 'rxjs';
 import { IAPIBase } from '../../shared/models/IApi-base';
 
