@@ -1,1 +1,30 @@
-<p>featured works!</p>
+<div class="home-featured">
+  <div class="container">
+      <p class="black-light mt-20 title-text"><strong>FEATURED</strong></p>
+
+      <div class="row row-medium-gutter">
+          <div *ngFor="let featuredItem of homePageFeaturedItems" class="col-sm-4">
+              <figure class="featured-item">
+
+                  <div class="fig-media" style="background-image: url('{{featuredItem.landscapeImage}}')">
+                      <div class="title-over">
+                          <span>{{featuredItem.recordType}}</span>
+                      </div>
+                      <a ng-if="featuredItem.recordType == 'Story'" href="{{featuredItem.id}}">
+                          <img ng-src="assets/images/home-placeholder.png" alt="No Image!">
+                      </a>
+                      <a ng-if="featuredItem.recordType == 'Collection'" href="collection/{{featuredItem.id}}">
+                          <img ng-src="assets/images/home-placeholder.png" alt="No Image!">
+                      </a>
+                  </div>
+                  <figcaption>
+                      <h4 ng-if="featuredItem.recordType == 'Story'"><a href='story/{{featuredItem.id}}'>{{featuredItem.title}}</a></h4>
+                      <h4 ng-if="featuredItem.recordType == 'Collection'"><a href='collection/{{featuredItem.id}}'>{{featuredItem.title}}</a></h4>
+                      <p ng-bind-html="featuredItem.description | trustAsHtml">
+                      </p>
+                  </figcaption>
+              </figure>
+          </div>
+      </div>
+  </div>
+</div>

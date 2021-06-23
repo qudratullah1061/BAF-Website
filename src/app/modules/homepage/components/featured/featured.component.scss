@@ -1,0 +1,101 @@
+@import "../../../../../assets/stylesheets/partials/variables";
+.home-featured{
+  overflow:hidden;
+  .container{
+      max-width: 1920px;
+  }
+  figure.featured-item {
+      position: relative;
+      &.horizontal-img{
+          .fig-media { background-size: cover;}
+      }
+      &.vertical-img{
+          .fig-media { background-size: contain;}
+      }
+      .title-over {
+          position: absolute;
+          top: 22px;
+          left: 20px;
+          z-index:9;
+          span{
+              background: rgba(255, 255, 255, 0.6);
+          }
+      }
+      .fig-media {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-color: #f7f7f7;
+          transition: all 0.3s ease;
+
+          /*min-height:470px;*/
+
+          img {
+              opacity: 0;
+              visibility: hidden;
+          }
+      }
+      figcaption {
+          padding: 10px;
+
+          margin-top:10px;
+          font-size: 16px;
+          h4 {
+              font-weight: 400;
+              font-size:21px;
+              color: #18191a;
+              a {
+                  color: inherit;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                  height: 30px;
+              }
+          }
+          > p {
+              display: inline-block;
+              /*width: 62%;*/
+              max-width: 100%;
+              color: #626466;
+
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              max-height: 70px;
+              overflow: hidden;
+              > a {
+                  color:inherit;
+              }
+              @media(max-width:1024px){
+                  width:100%;
+              }
+          }
+      }
+      &:hover{
+          .fig-media {
+              transform: scale(1.01);
+              transition: all 0.3s ease;
+              -webkit-box-shadow: 8px 8px 5px 0px #d6d6d6;
+              -moz-box-shadow: 8px 8px 5px 0px #d6d6d6;
+              box-shadow: 8px 8px 5px 0px #d6d6d6;
+              > a{
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+
+              }
+          }
+          figcaption {
+              color:#18191a;
+              h4{color:$darkBlue;}
+              > p {color:#18191a;
+                   a{
+                       color:$darkBlue;
+                   }
+              }
+          }
+      }
+  }
+}

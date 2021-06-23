@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IHomepageFeaturedItems } from '../../models/IHomepage-featured-items';
 
 @Component({
   selector: 'baf-featured',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./featured.component.scss']
 })
 export class FeaturedComponent implements OnInit {
+
+@Input() homePageFeaturedItems: IHomepageFeaturedItems[]
 
   constructor() { }
 
