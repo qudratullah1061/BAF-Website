@@ -20,6 +20,7 @@
     ],
     "paths": {
       "@homepage/*":["./src/app/modules/homepage/*"],
+      "@collections/*":["./src/app/modules/collections/*"],
       "@shared/*":["./src/app/modules/shared/*"]
     }
   },
