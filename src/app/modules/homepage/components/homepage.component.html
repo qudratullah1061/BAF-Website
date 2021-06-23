@@ -2,4 +2,31 @@
   <baf-slider [sliderImages]="homepageData.sliderImages"></baf-slider>
   <baf-featured [homePageFeaturedItems]="homepageData.homePageFeaturedItems"></baf-featured>
 </div>
+<!-- Loading box start-->
+<div *ngIf="!homepageData">
 
+  <!--Loading box start-->
+  <div class="loading-box banner-loading-box"></div>
+  <!--Loading box ends-->
+
+  <div class="home-featured">
+    <div class="container">
+      <p class="black-light mt-20 title-text"><strong>FEATURED</strong></p>
+
+      <!--Loading box start -->
+      <!--<div class="loading-box loading-featured-title" ng-show="loading"></div>-->
+
+      <div class="card-loading-outer loading-box home-cards">
+        <div class="card-loading" *ngFor="let i of [0,1,2,3,4,5]">
+          <div class="card-img"></div>
+          <div class="card-title"></div>
+          <div class="card-description"></div>
+          <div class="card-description" style="width:95%"></div>
+          <div class="card-description"></div>
+        </div>
+      </div>
+      <!--Loading box end-->
+    </div>
+  </div>
+</div>
+<!-- Loading box ends-->

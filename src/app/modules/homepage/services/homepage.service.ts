@@ -6,7 +6,6 @@ import { IAPIBase } from '../../shared/models/IApi-base';
 
 @Injectable()
 export class HomepageService {
-
   getHomepageDataUrl = environment.apiUrl + "misc/homePageData";
 
   constructor(private http: HttpClient) {

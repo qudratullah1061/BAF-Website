@@ -8,7 +8,7 @@ import { HomepageService } from '@homepage/services/homepage.service';
   styleUrls: ['./homepage.component.sass']
 })
 export class HomepageComponent implements OnInit {
-
+  loading: boolean = true;
   homepageData: IHomepage;
 
 
@@ -17,7 +17,10 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.homepageService.getHomepageData().subscribe({
       next: data => {
+        // setTimeout(() => {
+        this.loading = false;
         this.homepageData = data.description as IHomepage; console.log(this.homepageData);
+        // }, 3000);
       }
     });
 

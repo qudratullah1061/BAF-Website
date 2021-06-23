@@ -8,7 +8,6 @@ import { ISliderImages } from '@homepage/models/ISlider-images';
 export class SliderComponent implements OnInit {
 
   @Input() sliderImages:ISliderImages[];
-
   constructor() { }
 
   ngOnInit(): void {

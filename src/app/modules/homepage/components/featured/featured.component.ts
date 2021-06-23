@@ -8,7 +8,7 @@ import { IHomepageFeaturedItems } from '@homepage/models/IHomepage-featured-item
 })
 export class FeaturedComponent implements OnInit {
 
-@Input() homePageFeaturedItems: IHomepageFeaturedItems[]
+  @Input() homePageFeaturedItems: IHomepageFeaturedItems[];
 
   constructor() { }
 
