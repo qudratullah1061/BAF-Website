@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ISliderImages } from '../../models/ISlider-images';
 @Component({
   selector: 'baf-slider',
   templateUrl: './slider.component.html',
@@ -7,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class SliderComponent implements OnInit {
 
-  baseUrl = environment.apiUrl;
+  @Input() sliderImages:ISliderImages[];
 
   constructor() { }
 
