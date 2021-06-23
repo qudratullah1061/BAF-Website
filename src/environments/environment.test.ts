@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: "https://localhost/BAF_Website_v4/"
+  apiUrl: "https://baf-website4-test.itcomrade.us/"
 };
