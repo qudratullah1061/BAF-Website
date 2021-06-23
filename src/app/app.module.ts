@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomepageModule } from '@homepage/homepage.module';
-import { SharedModule } from '@shared/shared.module';
+import { CollectionModule } from '@collections/collection.module';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
-import { CollectionModule } from '@collections/collection.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { CollectionModule } from '@collections/collection.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HomepageModule,
-    CollectionModule,
     SharedModule,
+    CollectionModule,
+    HomepageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
