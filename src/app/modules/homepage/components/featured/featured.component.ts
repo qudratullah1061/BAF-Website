@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IHomepageFeaturedItems } from '../../models/IHomepage-featured-items';
+import { IHomepageFeaturedItems } from '@homepage/models/IHomepage-featured-items';
 
 @Component({
   selector: 'baf-featured',

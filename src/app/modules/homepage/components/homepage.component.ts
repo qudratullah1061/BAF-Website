@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IHomepage } from '../models/IHomepage';
-import { HomepageService } from '../services/homepage.service';
+import { IHomepage } from '@homepage/models/IHomepage';
+import { HomepageService } from '@homepage/services/homepage.service';
 
 @Component({
   selector: 'baf-homepage',
