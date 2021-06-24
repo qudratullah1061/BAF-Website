@@ -3,7 +3,7 @@ import { IHomepageFeaturedItems } from "./IHomepage-featured-items";
 import { IHomepageNewsAndEvents } from "./IHomepage-news-and-events";
 import { ISliderImages } from "./ISlider-images";
 
-export interface IHomepage extends IAPIBase {
+export interface IHomepage {
   totalItems: number;
   totalPeople: number;
   totalCollections: number;
