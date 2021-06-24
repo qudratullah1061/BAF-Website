@@ -9,18 +9,18 @@ import { CollectionpageService } from '@collections/services/collectionpage.serv
 })
 export class CollectionsComponent implements OnInit {
 
-  collectionData: ICollectionHomepage;
+  collectionsData: ICollectionHomepage;
   collapsableSection: boolean = false;
 
-  constructor(private collectionPage: CollectionpageService) {
+  constructor(private collectionPagesService: CollectionpageService) {
   }
 
 
   ngOnInit(): void {
-    this.collectionPage.getCollectionPageData().subscribe({
+    this.collectionPagesService.getCollectionPageData().subscribe({
       next: data => {
-        this.collectionData = data.description as ICollectionHomepage;
-        console.log(this.collectionData);
+        this.collectionsData = data.description as ICollectionHomepage;
+        console.log(this.collectionsData);
       }
     });
 

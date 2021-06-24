@@ -6,14 +6,14 @@ import { IAPIBase } from '../../shared/models/IApi-base';
 
 @Injectable()
 export class HomepageService {
-  getHomepageDataUrl = environment.apiUrl + "misc/homePageData";
 
   constructor(private http: HttpClient) {
 
   }
 
   getHomepageData(): Observable<IAPIBase> {
-    return this.http.get<IAPIBase>(this.getHomepageDataUrl);
+    var getHomepageDataUrl = environment.apiUrl + "misc/homePageData";
+    return this.http.get<IAPIBase>(getHomepageDataUrl);
   }
 
 

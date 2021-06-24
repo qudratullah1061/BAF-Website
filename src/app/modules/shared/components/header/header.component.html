@@ -3,22 +3,22 @@
       <div class="top-navbar">
           <ul>
               <li>
-                  <a target="_blank" href="https://mailchi.mp/blavatnikarchive/new-collections-2524350">View newsletter</a>
+                  <a target="_blank" [routerLink]="'https://mailchi.mp/blavatnikarchive/new-collections-2524350'">View newsletter</a>
               </li>
-              <li><a target="_blank" href="https://blavatnikarchive.us6.list-manage.com/subscribe?u=625334a65734387fe75fec224&id=f4e2532a9c" >Join mailing list</a></li>
+              <li><a target="_blank" [routerLink]="'https://blavatnikarchive.us6.list-manage.com/subscribe?u=625334a65734387fe75fec224&id=f4e2532a9c'" >Join mailing list</a></li>
           </ul>
           <ul>
 
                   <li *ngIf="showLangBtn">
-                      <a [routerLink]="" class="russian enable">Russian</a>
+                      <a class="russian enable">Russian</a>
                   </li>
 
 
                   <li>
-                      <a href="register">Create account</a>
+                      <a [routerLink]="'register'">Create account</a>
                   </li>
                   <li class="dropdown loginDropdown">
-                      <a class="dropdown-toggle" href="javascript:;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span> Log in</span>
                       </a>
 
@@ -38,7 +38,7 @@
                                           <label class="form-check-label" for="chk-remeber-me"></label>
                                           <label class="form-check-label" for="chk-remeber-me">Remember me</label>
                                       </div>
-                                      <p class="message pull-right"><a href="forgotpassword">Forgot Password?</a></p>
+                                      <p class="message pull-right"><a [routerLink]="'forgotpassword'">Forgot Password?</a></p>
                                   </div>
                               </div>
                               <div class="login-bar">
@@ -48,21 +48,21 @@
                                   </button>
                               </div>
                               <div class="login-create">
-                                  <p class="message pull-left"><a href="javascript:;" style="cursor: default;" class="bf">Don’t have an account?</a></p>
-                                  <a class="pull-right" href="register">Create account</a>
+                                  <p class="message pull-left"><a style="cursor: default;" class="bf">Don’t have an account?</a></p>
+                                  <a class="pull-right" [routerLink]="'register'">Create account</a>
                               </div>
                           </form>
                       </div>
                   </li>
 
                   <li class="dropdown accountDropdown">
-                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <span> Account</span> <i class="fas fa-user-circle"></i>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                          <a href="" class="nav-link"><span>Saved</span><span>folders</span></a>
-                          <a href="" class="nav-link">My Profile</a>
-                          <a href="javascript:;" class="nav-link">Log out</a>
+                          <a class="nav-link"><span>Saved</span><span>folders</span></a>
+                          <a class="nav-link">My Profile</a>
+                          <a class="nav-link">Log out</a>
                       </div>
                   </li>
 
@@ -70,11 +70,11 @@
       </div>
 
       <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="">
+          <a class="navbar-brand">
               <img class="default-logo" src="assets/images/logo.png" alt="">
               <img class="white-logo" src="assets/images/logo-white.png" alt="">
           </a>
-          <!--<a class="nav-link open-search-panel show-xs" href="#"><i class="far fa-search"></i></a>-->
+          <!--<a class="nav-link open-search-panel show-xs" [routerLink]="#"><i class="far fa-search"></i></a>-->
           <div class="header-phrases hide-sm">
               <form class=''>
                   <div class="input-group">
@@ -88,7 +88,7 @@
               </form>
           </div>
 
-          <a href='' class="navbar-toggler search-link-sm" >
+          <a class="navbar-toggler search-link-sm" >
               <!--<span class="navbar-toggler-icon"></span>-->
               <i class="far fa-search"></i>
           </a>
@@ -99,41 +99,41 @@
           <div class="collapse navbar-collapse justify-content-end" id="navbarsExample04">
               <ul class="navbar-nav main-navbar navbar-expand-lg">
 
-                      <li class="nav-item" routerLinkActive="active"><a class="nav-link" routerLink="collections" href="collections">Collections</a></li>
+                      <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="'collections'">Collections</a></li>
 
 
-                      <li class="nav-item"><a class="nav-link" href="stories">Stories</a></li>
+                      <li class="nav-item" [routerLinkActive]="'active'"><a class="nav-link" [routerLink]="'stories'">Stories</a></li>
 
-                  <li class="nav-item hide-lg header-items-link"><a class="nav-link" href="search/items?clear=clearall">Items</a></li>
-                  <li class="nav-item hide-lg header-veterans-link"><a class="nav-link" href="search/people?clear=clearall">Veterans</a></li>
+                  <li class="nav-item hide-lg header-items-link"><a class="nav-link" [routerLink]="'search/items?clear=clearall'">Items</a></li>
+                  <li class="nav-item hide-lg header-veterans-link"><a class="nav-link" [routerLink]="'search/people?clear=clearall'">Veterans</a></li>
                   <li class="nav-item show-lg">
-                      <a class="nav-link" href="search/items?clear=clearall">Items</a>
+                      <a class="nav-link" [routerLink]="'search/items?clear=clearall'">Items</a>
                   </li>
                   <li class="nav-item show-lg">
-                      <a class="nav-link" href="search/people?clear=clearall">Veterans</a>
+                      <a class="nav-link" [routerLink]="'search/people?clear=clearall'">Veterans</a>
                   </li>
                   <!--Here-->
 
 
                   <!--news & about dropdown for large screen-->
                   <li class="nav-item dropdown default-menu browseDropdown announceDropdown hide-lg">
-                      <a class="nav-link dropdown-toggle" href="javascript:;" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fal fa-bars"></i></a>
+                      <a class="nav-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fal fa-bars"></i></a>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                           <ul>
-                              <li><a class="nav-link" href="about">About</a></li>
-                              <li><a class="nav-link" href="contact">Contact</a></li>
+                              <li><a class="nav-link" [routerLink]="'about'">About</a></li>
+                              <li><a class="nav-link" [routerLink]="'contact'">Contact</a></li>
                           </ul>
                       </div>
                   </li>
                   <!--news & about dropdown for mobile screen-->
                   <li class="nav-item show-lg">
-                      <a class="nav-link" href="news">News</a>
+                      <a class="nav-link" [routerLink]="'news'">News</a>
                   </li>
                   <li class="nav-item show-lg">
-                      <a class="nav-link" href="about">About</a>
+                      <a class="nav-link" [routerLink]="'about'">About</a>
                   </li>
                   <li class="nav-item show-lg">
-                      <a class="nav-link" href="contact">Contact</a>
+                      <a class="nav-link" [routerLink]="'contact'">Contact</a>
                   </li>
               </ul>
           </div>
