@@ -1,10 +1,10 @@
-<section class="collections pt-35 pb-45" *ngIf="collectionData">
+<section class="collections pt-35 pb-45" *ngIf="collectionsData">
   <div class="container">
     <div class="collaseable-area">
-      <h1 *ngIf="collectionData.HomepageDescription[0].pageTitle"
+      <h1 *ngIf="collectionsData.HomepageDescription[0].pageTitle"
         class="uppercase black-light collapsable-header-border-icon font-2em" role="button" aria-expanded="false"
         aria-controls="collapseExample">
-        {{collectionData.HomepageDescription[0].pageTitle}}
+        {{collectionsData.HomepageDescription[0].pageTitle}}
       </h1>
     </div>
 
@@ -17,10 +17,10 @@
     <div class="collapsable-section full-width d-flex justify-content-self"
       [ngClass]="{'full-width': !collapsableSection, 'half-width':collapsableSection}">
       <div class="overview-cell" *ngIf="collapsableSection">
-        <div class="pb-20" *ngIf="collectionData.HomepageDescription[0].body1" id="collapseExample">
+        <div class="pb-20" *ngIf="collectionsData.HomepageDescription[0].body1" id="collapseExample">
           <div class="row">
             <div class="col-sm-12">
-              <div class="black-light mb-0 font-1-25em" [innerHtml]="collectionData.HomepageDescription[0].body1"></div>
+              <div class="black-light mb-0 font-1-25em" [innerHtml]="collectionsData.HomepageDescription[0].body1"></div>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
 
         <!--collection item start-->
         <div class="row gutter-30">
-          <div class="single-cell" *ngFor="let collection of collectionData.HomepageCollections">
+          <div class="single-cell" *ngFor="let collection of collectionsData.HomepageCollections">
             <div class="collection-item d-flex flex-column">
               <figure class="d-flex justify-content-center align-items-center"
                 [ngStyle]="{'background-image': 'url(' + collection.landscapeImage + ')'}">
@@ -66,7 +66,7 @@
 
 <!-- Loading start -->
 
-<section class="collections pt-35 pb-45" *ngIf="!collectionData">
+<section class="collections pt-35 pb-45" *ngIf="!collectionsData">
   <div class="container">
     <!--Loading box start-->
     <div class="loading-box collaseable-area">

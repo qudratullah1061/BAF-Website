@@ -9,12 +9,14 @@ import { CollectionModule } from '@collections/collection.module';
 import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 import { SharedModule } from '@shared/shared.module';
+import { StoriesComponent } from './modules/stories/components/stories/stories.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     AppComponent,
-    FooterComponent
+    FooterComponent,
+    StoriesComponent
   ],
   imports: [
     BrowserModule,
