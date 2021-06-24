@@ -1,20 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { IAPIBase } from '@shared/models/IApi-base';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CollectionpageService{
+export class CollectionpageService {
 
   constructor(private http: HttpClient) { }
 
-  collectionPageApi = "https://baf-website4-test.itcomrade.us/getcollectiondata"
 
- 
-
-  getCollectionPageData() {
-    return this.http.post(this.collectionPageApi, {DataType: 'homepage'})
+  getCollectionPageData(): Observable<IAPIBase> {
+    var getCollectionHomepageDataUrl = environment.apiUrl + "getcollectiondata";
+    var formData: any = new FormData();
+    formData.append("DataType", "homepage");
+    return this.http.post<IAPIBase>(getCollectionHomepageDataUrl, formData);
   }
 
 }

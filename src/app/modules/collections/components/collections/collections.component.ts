@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ICollectionHomepage } from '@collections/models/ICollection-homepage';
 import { CollectionpageService } from '@collections/services/collectionpage.service';
 
 @Component({
@@ -8,18 +9,19 @@ import { CollectionpageService } from '@collections/services/collectionpage.serv
 })
 export class CollectionsComponent implements OnInit {
 
-  collectionData;
+  collectionData: ICollectionHomepage;
 
-  constructor(private collectionPage:CollectionpageService) { }
+  constructor(private collectionPage: CollectionpageService) { }
 
   ngOnInit(): void {
 
     this.collectionPage.getCollectionPageData().subscribe({
-      next:data => {this.collectionData = data;
-        console.log(this.collectionData)
-      
+      next: data => {
+        this.collectionData = data.description as ICollectionHomepage;
+        console.log(this.collectionData);
+
       }
-    })
+    });
 
   }
 
