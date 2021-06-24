@@ -10,19 +10,24 @@ import { CollectionpageService } from '@collections/services/collectionpage.serv
 export class CollectionsComponent implements OnInit {
 
   collectionData: ICollectionHomepage;
+  collapsableSection: boolean = false;
 
-  constructor(private collectionPage: CollectionpageService) { }
+  constructor(private collectionPage: CollectionpageService) {
+  }
+
 
   ngOnInit(): void {
-
     this.collectionPage.getCollectionPageData().subscribe({
       next: data => {
         this.collectionData = data.description as ICollectionHomepage;
         console.log(this.collectionData);
-
       }
     });
 
+  }
+
+  expandCollapseDetail(): void {
+    this.collapsableSection = !this.collapsableSection;
   }
 
 

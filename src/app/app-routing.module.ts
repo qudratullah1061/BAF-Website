@@ -5,10 +5,10 @@ import { HomepageComponent } from '@homepage/components/homepage.component';
 
 
 const routes: Routes = [
-  {'path': '', component:HomepageComponent},
-  {'path': 'collections', component:CollectionsComponent}
-  
- 
+  { 'path': '', component: HomepageComponent },
+  { 'path': 'collections', component: CollectionsComponent },
+  { 'path': '**', redirectTo: '', pathMatch: 'full' }
+
 ];
 
 @NgModule({
