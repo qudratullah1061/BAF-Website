@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Icontact } from '../../models/icontact';
-import { ContactService } from '../../services/contact.service';
+import { IContact } from '@contact/models/iContact';
+import { ContactService } from '@contact/services/contact.service';
 
 @Component({
   selector: 'baf-contact',
@@ -9,16 +9,15 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactComponent implements OnInit {
 
-  contactPageData: Icontact[] = [];
-  public items: any = [1,2,3,4,5]
+  contactPageData: IContact[];
 
   constructor(private contactPagesService: ContactService) { }
 
   ngOnInit(): void {
     this.contactPagesService.getContactPageData().subscribe({
       next: data => {
-        
-        this.contactPageData = data.description as Icontact[];
+
+        this.contactPageData = data.description as IContact[];
         console.log(this.contactPageData);
       }
 

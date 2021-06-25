@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IAbout } from '../../models/IAbout';
-import { AboutService } from '../../services/about.service';
+import { IAbout } from '@about/models/IAbout';
+import { AboutService } from '@about/services/about.service';
 
 @Component({
   selector: 'baf-about',
@@ -8,9 +8,9 @@ import { AboutService } from '../../services/about.service';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  
+
   aboutData:IAbout[];
-  
+
   constructor(private aboutPageService:AboutService) { }
 
   ngOnInit(): void {
