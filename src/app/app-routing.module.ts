@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { CollectionsComponent } from '@collections/components/collections/collections.component';
 import { HomepageComponent } from '@homepage/components/homepage.component';
 import { StoriesComponent } from './modules/stories/components/stories/stories.component';
+import { AboutComponent } from './modules/about/components/about/about.component';
+import { ContactComponent } from './modules/contact/components/contact/contact.component';
 
 
 const routes: Routes = [
   { 'path': '', component: HomepageComponent },
   { 'path': 'collections', component: CollectionsComponent },
   { 'path': 'stories', component: StoriesComponent },
+  { 'path': 'about', component: AboutComponent },
+  { 'path': 'contact', component: ContactComponent },
   { 'path': '**', redirectTo: '', pathMatch: 'full' }
 
 ];

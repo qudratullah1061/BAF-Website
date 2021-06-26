@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IStories } from '../../models/IStories';
-import { StoryService } from '../../services/story.service';
+import { IStories } from '@stories/models/IStories';
+import { StoryService } from '@stories/services/story.service';
 
 @Component({
   selector: 'baf-stories',

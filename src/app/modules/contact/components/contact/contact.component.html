@@ -1,0 +1,28 @@
+<section class="about-page">
+  <div class="container pt-45">
+    <div class="title-name-code d-block pb-20 mb-20">
+      <h6 class="pull-left font-2-5em">CONTACT</h6>
+      <div class="clearfix"></div>
+    </div>
+    <div class="featuredItem">
+      <!--first item-->
+      <div class="featuredStory mb-50" *ngFor="let contact of contactPageData">
+        <div class="split-100 d-flex">
+          <div class="width-40">
+            <div class="stroyDescription pr-40">
+              <div [innerHTML]="contact.narrative" class="black-light font-1-25em"></div>
+            </div>
+          </div>
+          <div class="width-60 make-50">
+            <div class="stroyMedia mt-5">
+              <figure class="mb-10" [ngStyle]="{'background-image': 'url(' + contact.landscapeImage + ')'}">
+                <img [src]="contact.landscapeImage" alt="No Image">
+              </figure>
+              <p class="b3">{{contact.itemTitle}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
