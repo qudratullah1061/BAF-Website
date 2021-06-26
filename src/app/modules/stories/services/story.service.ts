@@ -4,9 +4,7 @@ import { IAPIBase } from '@shared/models/IApi-base';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StoryService {
 
 

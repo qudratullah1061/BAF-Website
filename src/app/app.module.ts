@@ -11,6 +11,7 @@ import { SharedModule } from '@shared/shared.module';
 import { StoriesModule } from '@stories/stories.module';
 import { AboutModule } from '@about/about.module';
 import { ContactModule } from '@contact/contact.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ContactModule } from '@contact/contact.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     SharedModule,
     CollectionModule,
     HomepageModule,

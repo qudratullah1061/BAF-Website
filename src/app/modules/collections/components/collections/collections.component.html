@@ -36,15 +36,15 @@
             <div class="collection-item d-flex flex-column">
               <figure class="d-flex justify-content-center align-items-center"
                 [ngStyle]="{'background-image': 'url(' + collection.landscapeImage + ')'}">
-                <a *ngIf="!collection.code" [href]="'collection/'+collection.id"><img
+                <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"><img
                     src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
-                <a *ngIf="collection.code" [href]="'collection/'+collection.code"><img
+                <a *ngIf="collection.code" [routerLink]="'collection/'+collection.code"><img
                     src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
               </figure>
               <div class="collection-texture">
-                <a *ngIf="!collection.code" [href]="'collection/'+collection.id"
+                <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"
                   title="{{collection.name}}">{{collection.name}}</a>
-                <a *ngIf="collection.code" [href]="'collection/'+collection.code"
+                <a *ngIf="collection.code" [routerLink]="'collection/'+collection.code"
                   title="{{collection.name}}">{{collection.name}}</a>
                 <p *ngIf="!collection.code"><a class="gray40" [innerHtml]="collection.description"
                     [href]="'collection/'+collection.id"></a></p>
