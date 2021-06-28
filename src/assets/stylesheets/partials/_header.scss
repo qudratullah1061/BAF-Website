@@ -61,7 +61,7 @@
                 position: relative;
                 display: inline;
                 > a {
-                    font-family: $avenir-r;
+                    // font-family: $avenir-r;
                     font-size: 1.4rem;
                     color: #bfbfbf;
                     display: inline-block;
@@ -134,7 +134,8 @@
                 &.dropdown{
                     &.loginDropdown{
                         &>a {
-                            font-family:"Avenir Next LT Pro"; padding-right: 0;
+                            // font-family:"Avenir Next LT Pro";
+                            padding-right: 0;
                         }
                         .dropdown-menu.login-menu {
                             left: -20px !important;
@@ -279,9 +280,10 @@
                         }
                     }
                     &.accountDropdown {
-                        font-family:$avenir-r;
+                        // font-family:$avenir-r;
                         &>a {
-                            font-family:"Avenir Next LT Pro"; padding-right: 0; color:$darkBlue;
+                            // font-family:"Avenir Next LT Pro";
+                            padding-right: 0; color:$darkBlue;
                             @media(max-width:991px){
                                 margin-right: 1px;
                                 padding-left: 7px;

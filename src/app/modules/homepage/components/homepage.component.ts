@@ -5,7 +5,7 @@ import { HomepageService } from '@homepage/services/homepage.service';
 @Component({
   selector: 'baf-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.sass']
+  styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
   loading: boolean = true;

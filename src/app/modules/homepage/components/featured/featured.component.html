@@ -8,18 +8,18 @@
             <div class="title-over">
               <span>{{featuredItem.recordType}}</span>
             </div>
-            <a ng-if="featuredItem.recordType == 'Story'" href="{{featuredItem.id}}">
+            <a *ngIf="featuredItem.recordType == 'Story'" [routerLink]="'story/'+featuredItem.id">
               <img src="assets/images/home-placeholder.png" alt="No Image!">
             </a>
-            <a ng-if="featuredItem.recordType == 'Collection'" href="collection/{{featuredItem.id}}">
+            <a *ngIf="featuredItem.recordType == 'Collection'" [routerLink]="'collection/'+featuredItem.id">
               <img src="assets/images/home-placeholder.png" alt="No Image!">
             </a>
           </div>
           <figcaption>
             <h4 *ngIf="featuredItem.recordType == 'Story'"><a
-                href='story/{{featuredItem.id}}'>{{featuredItem.title}}</a></h4>
+                [routerLink]="'story/'+featuredItem.id">{{featuredItem.title}}</a></h4>
             <h4 *ngIf="featuredItem.recordType == 'Collection'"><a
-                href='collection/{{featuredItem.id}}'>{{featuredItem.title}}</a></h4>
+              [routerLink]="'collection/'+featuredItem.id">{{featuredItem.title}}</a></h4>
             <p [innerHtml]="featuredItem.description">
             </p>
           </figcaption>

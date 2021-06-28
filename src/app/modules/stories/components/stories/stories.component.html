@@ -8,7 +8,29 @@
           aria-expanded="false" aria-controls="collapseExample">
           STORIES
         </h1>
-        <pagination [totalItems]="storiesData.length" (pageChanged)="pageChanged($event)"></pagination>
+        <nav class="custom-pagination">
+          <pagination
+          [customPreviousTemplate]="prevTemplate"
+          [customNextTemplate]="nextTemplate"
+           [totalItems]="storiesData.length" (pageChanged)="pageChanged($event)"></pagination>
+           <ng-template #nextTemplate let-disabled="disabled" let-currentPage="currentPage">
+            <ng-container *ngIf="!disabled">
+              <i class="fal fa-angle-right"></i>
+            </ng-container>
+            <ng-container *ngIf="disabled">
+              <i class="fal fa-angle-right disabled"></i>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #prevTemplate let-disabled="disabled" let-currentPage="currentPage">
+            <ng-container *ngIf="!disabled">
+              <i class="fal fa-angle-left"></i>
+            </ng-container>
+            <ng-container *ngIf="disabled">
+              <i class="fal fa-angle-left disabled"></i>
+            </ng-container>
+          </ng-template>
+        </nav>
       </div>
       <div class="collapsable-section stories-section full-width d-flex justify-content-self">
         <div class="grid-cells" *ngIf="filteredStoriesData.length > 0">
