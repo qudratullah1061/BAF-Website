@@ -7,7 +7,7 @@
 
         <div class="colleciton-counter pull-right">
           <p class="b3">{{collectionDetailData.totalItems| number}} Total</p>
-          <p class="blue"><a class="hover-item" [routerLink]="'collection'+collectionDetailData.id">
+          <p class="blue"><a class="hover-item" [routerLink]="'search?id='+collectionDetailData.id">
               {{collectionDetailData.onlineItems| number}} Online <i class="fal fa-arrow-circle-right hover-hide"></i><i
                 class="fas fa-arrow-circle-right hover-show"></i> </a></p>
         </div>
@@ -38,7 +38,7 @@
             <div class="col-lg-4 col-sm-6 mb-30" *ngFor="let focal of collectionDetailData.focalItems">
               <div class="collection-cat relative">
                 <figure class="d-flex justify-content-center align-items-center"
-                [ngStyle]="{'background-image': 'url(' + focal.landscapeImage + ')'}">
+                  [ngStyle]="{'background-image': 'url(' + focal.landscapeImage + ')'}">
                   <a [routerLink]="'item/'+focal.itemId">
                     <img [src]='focal.landscapeImage' alt="No Image">
                   </a>
@@ -60,14 +60,12 @@
     </div>
   </section>
   <section class="featuredItem" *ngIf="collectionDetailData.featuredItems">
-    <div class="container border-top-1 pt-45 pb-45"
-    *ngFor="let featuredItem of collectionDetailData.featuredItems">
+    <div class="container border-top-1 pt-45 pb-45" *ngFor="let featuredItem of collectionDetailData.featuredItems">
       <div class="title-name-code pb-20 pull-left">
         <p class="bf">FEATURED</p>
-        {{featuredItem |json}}
-        <!-- <h6>{{featuredItem.title}}</h6> -->
+        <h6>{{featuredItem.title}}</h6>
         <div class="colleciton-counter mt-5 pull-right">
-          <p class="blue"><a class="hover-item" href=""> Item
+          <p class="blue"><a class="hover-item" [routerLink]="'item/'+featuredItem.itemId"> Item
               record <i class="fal fa-arrow-circle-right hover-hide"></i> <i
                 class="fas fa-arrow-circle-right hover-show"></i></a></p>
         </div>
@@ -80,14 +78,13 @@
           <div class="width-40">
             <div class="stroyDescription">
               <!--<h4>DESCRIPTION</h4>-->
-              <p [innerHTML]="collectionDetailData.description.trim"></p>
+              <p [innerHTML]="featuredItem.description"></p>
             </div>
           </div>
           <div class="width-60">
             <div class="stroyMedia mt-5">
-              <figure
-              [ngStyle]="{'background-image': 'url(' + collectionDetailData.landscapeImage + ')'}">
-                <img [src]="collectionDetailData.landscapeImage" alt="">
+              <figure [ngStyle]="{'background-image': 'url(' + featuredItem.landscapeImage + ')'}">
+                <img [src]="featuredItem.landscapeImage" alt="No Image">
               </figure>
             </div>
           </div>
@@ -151,27 +148,28 @@
             <li></li>
           </ul>
         </div>
-        <!-- <div class="d-flex"> -->
-        <!--LOADING START-->
-        <div class="loading-box loading-collection-body half-width">
-          <h4></h4>
-          <div class="description">
-            <p *ngFor="let key of 9 | numberIterator"></p>
-            <br />
-            <p *ngFor="let key of 12 | numberIterator"></p>
-            <br />
-            <p *ngFor="let key of 4 | numberIterator"></p>
+        <div class="d-flex">
+          <!--LOADING START-->
+          <div class="loading-box loading-collection-body half-width">
+            <h4></h4>
+            <div class="description">
+              <p *ngFor="let key of 9 | numberIterator"></p>
+              <br />
+              <p *ngFor="let key of 12 | numberIterator"></p>
+              <br />
+              <p *ngFor="let key of 4 | numberIterator"></p>
 
+            </div>
           </div>
-        </div>
-        <!--LOADING ENDS-->
-        <!--Loading box start-->
-        <div class="loading-box loading-collection-listing half-width">
-          <h4></h4>
-          <div class="listing">
-            <ul>
-              <li class="vid-img-cards"></li>
-            </ul>
+          <!--LOADING ENDS-->
+          <!--Loading box start-->
+          <div class="loading-box loading-collection-listing half-width">
+            <h4></h4>
+            <div class="listing">
+              <ul>
+                <li class="vid-img-cards"></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

@@ -11,18 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 export class CollectionDetailComponent implements OnInit {
 
   collectionDetailData: ICollectionDetail;
-  code:string;
-  constructor(private collectionPagesService: CollectionpageService, private route:ActivatedRoute) { }
+  code: string;
+  constructor(private collectionPagesService: CollectionpageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.code = this.route.snapshot.paramMap.get("code");
     this.collectionPagesService.getCollectionDetailPageData(this.code).subscribe({
       next: data => {
         this.collectionDetailData = data.description[0] as ICollectionDetail
-
-        console.log(" Collection Detail Data Here", this.collectionDetailData);
       }
-
     })
   }
 
