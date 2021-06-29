@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CollectionDetailComponent implements OnInit {
 
   collectionDetailData: ICollectionDetail;
-  code: string;
+  code: any;
   constructor(private collectionPagesService: CollectionpageService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
