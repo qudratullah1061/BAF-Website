@@ -1,4 +1,4 @@
-export interface ICollectionDetailsFocalItems {
+export interface ICollectionDetailFocalItems {
 
     id: number,
     itemId: number,

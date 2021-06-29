@@ -37,20 +37,20 @@
             <div class="collection-item d-flex flex-column">
               <figure class="d-flex justify-content-center align-items-center"
                 [ngStyle]="{'background-image': 'url(' + collection.landscapeImage + ')'}">
-                <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"><img
+                <a *ngIf="!collection.code" [routerLink]="'/collection/'+collection.id"><img
                     src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
-                <a *ngIf="collection.code" [routerLink]="'collection/'+collection.code"><img
+                <a *ngIf="collection.code" [routerLink]="'/collection/'+collection.code"><img
                     src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
               </figure>
               <div class="collection-texture">
-                <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"
+                <a *ngIf="!collection.code" [routerLink]="'/collection/'+collection.id"
                   title="{{collection.name}}">{{collection.name}}</a>
-                <a *ngIf="collection.code" [routerLink]="'collection/'+collection.code"
+                <a *ngIf="collection.code" [routerLink]="'/collection/'+collection.code"
                   title="{{collection.name}}">{{collection.name}}</a>
                 <p *ngIf="!collection.code"><a class="gray40" [innerHtml]="collection.description"
-                    [href]="'collection/'+collection.id"></a></p>
+                    [href]="'/collection/'+collection.id"></a></p>
                 <p *ngIf="collection.code"><a class="gray40" [innerHtml]="collection.description "
-                    [href]="'collection/'+ collection.code"></a></p>
+                    [href]="'/collection/'+ collection.code"></a></p>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@
 
     <!--lOADING START-->
     <div class="card-loading-outer loading-box mt-0" style="width:100%; padding-left: 0;">
-      <div class="card-loading" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11]">
+      <div class="card-loading" *ngFor="let key of 12 | numberIterator">
         <div class="card-img" style="height:275px;"></div>
         <div class="card-title mb-15 mt-15"></div>
         <div class="card-description"></div>
@@ -92,6 +92,4 @@
     <!--lOADING EANDS-->
   </div>
 </section>
-
-
 <!-- Loading ends -->

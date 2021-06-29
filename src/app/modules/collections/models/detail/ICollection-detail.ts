@@ -1,6 +1,7 @@
-import { ICollectionDetailsFocalItems } from "./icollection-details-focal-items";
+import { ICollectionDetailFocalItems } from "@collections/models/detail/ICollection-detail-focal-items";
+import { ICollectionDetailFeaturedItems } from "./icollection-detail-featured-items";
 
-export interface ICollectionDetailPage {
+export interface ICollectionDetail {
 
     pageTitle: string,
     body1: String,
@@ -21,6 +22,6 @@ export interface ICollectionDetailPage {
     squareImage: string,
     landscapeImage: string,
     portraitImage: string,
-    featuredItems: [],
-    focalItems: ICollectionDetailsFocalItems
+    featuredItems?: ICollectionDetailFeaturedItems[],
+    focalItems?: ICollectionDetailFocalItems[]
 }

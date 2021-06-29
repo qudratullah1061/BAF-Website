@@ -5,19 +5,14 @@ import { HomepageComponent } from '@homepage/components/homepage.component';
 import { StoriesComponent } from './modules/stories/components/stories/stories.component';
 import { AboutComponent } from './modules/about/components/about/about.component';
 import { ContactComponent } from './modules/contact/components/contact/contact.component';
-import { CollectionDetailsComponent } from '@collections/components/details/collection-details.component';
+import { CollectionDetailComponent } from '@collections/components/detail/collection-detail.component';
 
 
 const routes: Routes = [
   { 'path': '', component: HomepageComponent },
-  {'path': 'collections', component: CollectionsComponent},
-
-  { path: 'details', component: CollectionDetailsComponent },
- 
-  
-
+  { 'path': 'collections', component: CollectionsComponent},
+  { 'path': 'collection/:code', component: CollectionDetailComponent },
   { 'path': 'stories', component: StoriesComponent },
-
   { 'path': 'about', component: AboutComponent },
   { 'path': 'contact', component: ContactComponent },
   { 'path': '**', redirectTo: '', pathMatch: 'full' }

@@ -20,5 +20,5 @@ squareImage:string,
 landscapeImage:string,
 portraitImage:string,
 featuredItems:string ,
-focalItems:number
+focalItems:[]
 }

@@ -17,7 +17,7 @@
       <!--<div class="loading-box loading-featured-title" ng-show="loading"></div>-->
 
       <div class="card-loading-outer loading-box home-cards">
-        <div class="card-loading" *ngFor="let i of [0,1,2,3,4,5]">
+        <div class="card-loading" *ngFor="let key of 6 | numberIterator">
           <div class="card-img"></div>
           <div class="card-title"></div>
           <div class="card-description"></div>

@@ -82,7 +82,7 @@
       </div>
       <!--lOADING START-->
       <div class="card-loading-outer loading-box mt-0" ng-show="loading" style="width:100%; padding-left: 0;">
-        <div class="card-loading" *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11]">
+        <div class="card-loading" *ngFor="let key of 12 | numberIterator">
           <div class="card-img" style="height:275px;"></div>
           <div class="card-title mb-15 mt-15"></div>
           <div class="card-description"></div>

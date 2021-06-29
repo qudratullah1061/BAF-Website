@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CollectionDetailsComponent } from './collection-details.component';
+import { CollectionDetailsComponent } from './collection-detail.component';
 
-describe('CollectionDetailsComponent', () => {
+describe('CollectionDetailComponent', () => {
   let component: CollectionDetailsComponent;
   let fixture: ComponentFixture<CollectionDetailsComponent>;
 

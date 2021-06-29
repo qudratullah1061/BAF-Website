@@ -1,0 +1,181 @@
+<div *ngIf="collectionDetailData">
+  <section class="collections pt-45 pb-30">
+    <div class="container">
+      <div class="title-name-code d-block pb-20">
+        <!--<p class="bf">COLLECTION</p>-->
+        <h6 class="pull-left font-2-5em">{{collectionDetailData.name}}</h6>
+
+        <div class="colleciton-counter pull-right">
+          <p class="b3">{{collectionDetailData.totalItems| number}} Total</p>
+          <p class="blue"><a class="hover-item" [routerLink]="'collection'+collectionDetailData.id">
+              {{collectionDetailData.onlineItems| number}} Online <i class="fal fa-arrow-circle-right hover-hide"></i><i
+                class="fas fa-arrow-circle-right hover-show"></i> </a></p>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="collection-detail-grid-deivsion split-100 d-flex">
+        <div class="width-40">
+          <div class="collection-aside">
+            <div class="collection-body">
+              <h4 *ngIf="collectionDetailData.description">DESCRIPTION</h4>
+              <p [innerHTML]="collectionDetailData.description"></p>
+
+              <h4 *ngIf="collectionDetailData.dateRange">DATES</h4>
+              <p>{{collectionDetailData.dateRange}}</p>
+
+              <h4 *ngIf="collectionDetailData.websiteProvenance">PROVENANCE</h4>
+              <p [innerHTML]="collectionDetailData.websiteProvenance"></p>
+
+              <h4 *ngIf="collectionDetailData.creatorProfile">CREATORS</h4>
+              <p>{{collectionDetailData.creatorProfile}}</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="width-60 collection-listing" *ngIf="collectionDetailData.focalItems">
+          <h4>HIGHLIGHTS</h4>
+          <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-30" *ngFor="let focal of collectionDetailData.focalItems">
+              <div class="collection-cat relative">
+                <figure class="d-flex justify-content-center align-items-center"
+                [ngStyle]="{'background-image': 'url(' + focal.landscapeImage + ')'}">
+                  <a [routerLink]="'item/'+focal.itemId">
+                    <img [src]='focal.landscapeImage' alt="No Image">
+                  </a>
+                  <div class="overlay">
+                    <div class="overlay-content">
+                      <p>
+                        {{focal.title}}
+                        <br />
+                      </p>
+                      <a [routerLink]="'item/'+focal.itemId"> <i class="fal fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="featuredItem" *ngIf="collectionDetailData.featuredItems">
+    <div class="container border-top-1 pt-45 pb-45"
+    *ngFor="let featuredItem of collectionDetailData.featuredItems">
+      <div class="title-name-code pb-20 pull-left">
+        <p class="bf">FEATURED</p>
+        {{featuredItem |json}}
+        <!-- <h6>{{featuredItem.title}}</h6> -->
+        <div class="colleciton-counter mt-5 pull-right">
+          <p class="blue"><a class="hover-item" href=""> Item
+              record <i class="fal fa-arrow-circle-right hover-hide"></i> <i
+                class="fas fa-arrow-circle-right hover-show"></i></a></p>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+      <!--</div>-->
+      <div class="featuredStory">
+        <div class="split-100 d-flex">
+          <div class="width-40">
+            <div class="stroyDescription">
+              <!--<h4>DESCRIPTION</h4>-->
+              <p [innerHTML]="collectionDetailData.description.trim"></p>
+            </div>
+          </div>
+          <div class="width-60">
+            <div class="stroyMedia mt-5">
+              <figure
+              [ngStyle]="{'background-image': 'url(' + collectionDetailData.landscapeImage + ')'}">
+                <img [src]="collectionDetailData.landscapeImage" alt="">
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div *ngIf="!collectionDetailData">
+  <section class="collections pt-45 pb-30">
+    <div class="container">
+      <!--LOADING TITLE-->
+      <div class=" loading-box collection-title mb-43">
+        <h6></h6>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <!--LOADING TITLE ENDS-->
+      <div class="collection-detail-grid-deivsion split-100 d-flex">
+        <div class="width-40">
+          <div class="collection-aside">
+            <!--LOADING START-->
+            <div class="loading-box loading-collection-body">
+              <h4></h4>
+              <div class="description">
+                <p *ngFor="let key of 20 | numberIterator"></p>
+              </div>
+            </div>
+            <!--LOADING ENDS-->
+          </div>
+        </div>
+        <!--LOADING COLLECTION LISTING START-->
+        <div class="loading-box loading-collection-listing  width-60">
+          <h4></h4>
+          <div class="listing">
+            <ul>
+
+              <li *ngFor="let key of 6 | numberIterator"></li>
+            </ul>
+          </div>
+        </div>
+        <!--LOADING COLLECTION LISTING ENDS-->
+      </div>
+    </div>
+  </section>
+  <section class="featuredItem">
+    <!--loading box start-->
+    <div class="loading-box featured-item-loading  border-top-1 pt-45 pb-45" *ngFor="let key of 3 | numberIterator">
+      <div class="container">
+        <!--LOADING TITLE-->
+        <div class="loading-box collection-title featured-item-title">
+          <div class="left-box">
+            <p></p>
+            <h6></h6>
+            <h6></h6>
+          </div>
+          <ul>
+            <li></li>
+          </ul>
+        </div>
+        <!-- <div class="d-flex"> -->
+        <!--LOADING START-->
+        <div class="loading-box loading-collection-body half-width">
+          <h4></h4>
+          <div class="description">
+            <p *ngFor="let key of 9 | numberIterator"></p>
+            <br />
+            <p *ngFor="let key of 12 | numberIterator"></p>
+            <br />
+            <p *ngFor="let key of 4 | numberIterator"></p>
+
+          </div>
+        </div>
+        <!--LOADING ENDS-->
+        <!--Loading box start-->
+        <div class="loading-box loading-collection-listing half-width">
+          <h4></h4>
+          <div class="listing">
+            <ul>
+              <li class="vid-img-cards"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--loading box ends-->
+  </section>
+</div>
