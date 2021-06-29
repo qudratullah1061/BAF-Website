@@ -13,11 +13,28 @@ export class CollectionpageService {
 
 
   getCollectionPageData(): Observable<IAPIBase> {
+
     var getCollectionHomepageDataUrl = environment.apiUrl + "getcollectiondata";
     var formData: any = new FormData();
     formData.append("DataType", "homepage");
+    
     return this.http.post<IAPIBase>(getCollectionHomepageDataUrl, formData);
   }
+
+
+  
+
+  getCollectionDetailPageData(): Observable<IAPIBase> {
+    
+    var getCollectionDetailApiData = environment.apiUrl + "getcollectiondata";
+    var formData: any = new FormData();
+    formData.append("DataType", "Detail");
+    formData.append("code", "veteran-testimonies");
+    
+    return this.http.post<IAPIBase>(getCollectionDetailApiData, formData);
+  }
+
+
 
 }
 

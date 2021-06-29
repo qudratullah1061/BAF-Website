@@ -1,0 +1,178 @@
+<section class="collections pt-45 pb-30">
+    <div class="container">
+        <!--LOADING TITLE-->
+        <!-- <div class=" loading-box collection-title mb-43" ng-show="loading">
+            <h6></h6>
+            <ul>
+                <li></li>
+                <li></li>
+            </ul>
+        </div> -->
+        <!--LOADING TITLE ENDS-->
+
+        <div class="title-name-code d-block pb-20" *ngIf="collectionDetailData">
+            <!--<p class="bf">COLLECTION</p>-->
+            <h6 class="pull-left font-2-5em">{{collectionDetailData.name}}</h6>
+
+            <div class="colleciton-counter pull-right">
+                <p class="b3">{{CollectionDetail.totalItems| number}} Total</p>
+                <p class="blue"><a class="hover-item" href="collectionDetailData.id">
+                        {{collectionDetailData.onlineItems| number}} Online <i
+                            class="fal fa-arrow-circle-right hover-hide"></i><i
+                            class="fas fa-arrow-circle-right hover-show"></i> </a></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="collection-detail-grid-deivsion split-100 d-flex">
+            <div class="width-40">
+                <div class="collection-aside">
+                    <!--LOADING START-->
+                    <!-- <div class="loading-box loading-collection-body" ng-show="loading">
+                        <h4></h4>
+                        <div class="description">
+                            <p ng-repeat="n in []| range:20"></p>
+                        </div>
+                    </div> -->
+                    <!--LOADING ENDS-->
+
+
+                    <div class="collection-body" *ngIf="collectionDetailData">
+                        <h4 *ngIf="collectionDetailData.description">DESCRIPTION</h4>
+                        <p [innerHTML]="collectionDetailData.description | trustAsHtml"></p>
+
+                        <h4 *nIf="collectionDetailData.dateRange">DATES</h4>
+                        <p>{{CollectionDetail.dateRange}}</p>
+
+                        <h4 *nIf="collectionDetailData.websiteProvenance">PROVENANCE</h4>
+                        <p [innerHTML]="collectionDetailData.websiteProvenance | trustAsHtml"></p>
+
+                        <h4 *nIf="collectionDetailData.creatorProfile">CREATORS</h4>
+                        <p>{{collectionDetailData.creatorProfile}}</p>
+
+                    </div>
+                </div>
+            </div>
+            <!--LOADING COLLECTION LISTING START-->
+            <!-- <div class="loading-box loading-collection-listing  width-60" *ngIf="loading">
+                <h4></h4>
+                <div class="listing">
+                    <ul>
+                       
+                        <li *ngFor="let n in []| range:6"></li>
+                    </ul>
+                </div>
+            </div> -->
+            <!--LOADING COLLECTION LISTING ENDS-->
+            <div class="width-60 collection-listing" *ngIf="collectionDetailData.focalItems.length > 0">
+                <h4>HIGHLIGHTS</h4>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-30" *ngFor="let focal of collectionDetailData.focalItems">
+                        <div class="collection-cat relative">
+                            <!--<a href="<?php // echo base_url('item/');               ?>{{focal.itemId}}"> </a>-->
+                            <figure class="d-flex justify-content-center align-items-center"
+                                style="background-image: url('{{focal.landscapeImage}}')">
+                                <a href="item/focal.itemId">
+                                    <img [src]='{{focal.landscapeImage}}' alt="No Image">
+                                </a>
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <p>
+                                            {{focal.title}}
+                                            <br />
+                                            {{focal.startDate}}<span
+                                                *ngIf="focal.startDate && focal.endDate">-</span>{{focal.endDate}}
+                                        </p>
+                                        <a href="item/focal.itemId"> <i class="fal fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<section class="featuredItem">
+    <div class="container  border-top-1 pt-45 pb-45" *ngIf="collectionDetailData.featuredItems.length > 0"
+        *ngFor="let featured of collectionDetailData.featuredItems| limitTo:4">
+        <!--<div class="row">-->
+        <div class="title-name-code pb-20 pull-left">
+            <p class="bf">FEATURED</p>
+            <h6>{{featured.title}}</h6>
+            <!--<span class="ng-binding ng-scope">{{featured.itemCode}}</span>-->
+            <div class="colleciton-counter mt-5 pull-right">
+                <!-- <p class="blue"><a class="hover-item" href="<?php echo base_url('item/'); ?>{{featured.itemId}}"> Item -->
+                <p class="blue"><a class="hover-item" href=""> Item
+                        record <i class="fal fa-arrow-circle-right hover-hide"></i> <i
+                            class="fas fa-arrow-circle-right hover-show"></i></a></p>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <!--</div>-->
+        <div class="featuredStory">
+            <div class="split-100 d-flex">
+                <div class="width-40">
+                    <div class="stroyDescription">
+                        <!--<h4>DESCRIPTION</h4>-->
+                        <p [innerHTML]="collectionDetailData.description.trim() | trustAsHtml"></p>
+                        <!--<p><a href="#" class="arrow-button bf hover-blue"> <i class="fas fa-arrow-alt-right"></i>  VIEW ITEM</a> </p>-->
+                    </div>
+                </div>
+                <div class="width-60">
+                    <div class="stroyMedia mt-5">
+                        <figure style="background-image: url('{{collectionDetailData.landscapeImage}}')">
+                            <img [src]="{{collectionDetailData.landscapeImage}}" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--loading box start-->
+    <!-- <div ng-show="loading" class="loading-box featured-item-loading  border-top-1 pt-45 pb-45" -->
+    <!-- ng-repeat="n in []| range:3"> -->
+    <!-- <div class="container"> -->
+    <!--LOADING TITLE-->
+    <!-- <div class="loading-box collection-title featured-item-title">
+                <div class="left-box">
+                    <p></p>
+                    <h6></h6>
+                    <h6></h6>
+                </div>
+                <ul>
+                    <li></li>
+                </ul>
+            </div> -->
+    <!-- <div class="d-flex"> -->
+    <!--LOADING START-->
+    <!-- <div class="loading-box loading-collection-body half-width"> -->
+    <!--<h4></h4>-->
+    <!-- <div class="description">
+                        <p ng-repeat="n in []| range:9"></p>
+                        <br />
+                        <p ng-repeat="n in []| range:12"></p>
+                        <br />
+                        <p ng-repeat="n in []| range:4"></p>
+
+                    </div> -->
+    <!-- </div> -->
+    <!--LOADING ENDS-->
+    <!--Loading box start-->
+    <!-- <div class="loading-box loading-collection-listing half-width"> -->
+    <!--<h4></h4>-->
+    <!-- <div class="listing"> -->
+    <!-- <ul> -->
+    <!-- <li class="vid-img-cards"></li> -->
+    <!-- </ul> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!--Loading box ends-->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!--loading box ends-->
+</section>
