@@ -20,16 +20,14 @@
         <div class="pb-20" *ngIf="collectionsData.HomepageDescription[0].body1" id="collapseExample">
           <div class="row">
             <div class="col-sm-12">
-              <div class="black-light mb-0 font-1-25em" [innerHtml]="collectionsData.HomepageDescription[0].body1"></div>
+              <div class="black-light mb-0 font-1-25em" [innerHtml]="collectionsData.HomepageDescription[0].body1">
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-
       <div class="grid-cells overflow-h">
-        <!--<div class=" mt-10 ">-->
-
         <!--collection item start-->
         <div class="row gutter-30">
           <div class="single-cell" *ngFor="let collection of collectionsData.HomepageCollections">
@@ -37,9 +35,11 @@
               <figure class="d-flex justify-content-center align-items-center"
                 [ngStyle]="{'background-image': 'url(' + collection.landscapeImage + ')'}">
                 <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"><img
-                    src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
+                    src="assets/images/collection-image-placeholder.png" alt="No Image">
+                </a>
                 <a *ngIf="collection.code" [routerLink]="'collection/'+collection.code"><img
-                    src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
+                    src="assets/images/collection-image-placeholder.png" alt="No Image">
+                  </a>
               </figure>
               <div class="collection-texture">
                 <a *ngIf="!collection.code" [routerLink]="'collection/'+collection.id"
@@ -55,8 +55,6 @@
           </div>
         </div>
         <!--collection item end-->
-        <!--</div>-->
-
       </div>
     </div>
   </div>
