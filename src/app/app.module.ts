@@ -23,12 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule,
     CollectionModule,
     HomepageModule,
     StoriesModule,
     AboutModule,
-    ContactModule
+    ContactModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

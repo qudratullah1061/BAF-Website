@@ -13,11 +13,32 @@ export class CollectionpageService {
 
 
   getCollectionPageData(): Observable<IAPIBase> {
+
     var getCollectionHomepageDataUrl = environment.apiUrl + "getcollectiondata";
     var formData: any = new FormData();
     formData.append("DataType", "homepage");
+
     return this.http.post<IAPIBase>(getCollectionHomepageDataUrl, formData);
   }
+
+
+
+
+  getCollectionDetailPageData(code: any): Observable<IAPIBase> {
+
+    var getCollectionDetailApiData = environment.apiUrl + "getcollectiondata";
+    var formData: any = new FormData();
+    formData.append("DataType", "Detail");
+    if (isNaN(code)) {
+      formData.append("Code", code);
+    } else {
+      formData.append("Id", code);
+    }
+
+    return this.http.post<IAPIBase>(getCollectionDetailApiData, formData);
+  }
+
+
 
 }
 
