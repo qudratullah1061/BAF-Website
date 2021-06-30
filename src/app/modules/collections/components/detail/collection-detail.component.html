@@ -94,7 +94,7 @@
   </section>
 </div>
 
-<div *ngIf="!collectionDetailData">
+<div *ngIf="!collectionDetailData && !is404">
   <section class="collections pt-45 pb-30">
     <div class="container">
       <!--LOADING TITLE-->
@@ -177,3 +177,5 @@
     <!--loading box ends-->
   </section>
 </div>
+
+<baf-page-not-found *ngIf="!collectionDetailData && is404"></baf-page-not-found>

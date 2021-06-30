@@ -16,6 +16,7 @@ const routes: Routes = [
   { 'path': 'stories', component: StoriesComponent },
   { 'path': 'about', component: AboutComponent },
   { 'path': 'contact', component: ContactComponent },
+  { 'path': '404', component: PageNotFoundComponent },
   { 'path': '**', component: PageNotFoundComponent }
 ];
 
