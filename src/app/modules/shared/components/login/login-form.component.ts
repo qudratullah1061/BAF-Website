@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ILoggedInUserInfo } from '@shared/models/ilogged-in-user-info';
 import { LoginFormService } from '@shared/services/login-form.service';
 
@@ -9,8 +9,7 @@ import { LoginFormService } from '@shared/services/login-form.service';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  loginFormData;
-  isValid:any;
+  loginFormData:any;
 
   loginForm: FormGroup;
 
@@ -19,12 +18,10 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginForm = this.fb.group({
-
-      email: ['', Validators.required, Validators.email],
-      pass: ['', Validators.required,Validators.minLength(4)],
+      email: [[''], [Validators.required, Validators.email]],
+      pass: ['', [Validators.required,Validators.minLength(4)]],
       isRemember: [false]
-
-    })
+    });
 
 
     this.loginFormService.getLoginFormApiData().subscribe({

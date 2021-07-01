@@ -6,7 +6,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { LoginFormComponent } from './components/login/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     NumberIteratorPipe,
@@ -16,16 +15,13 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
   ],
   exports: [
     NumberIteratorPipe,
     RouterModule,
     PageNotFoundComponent,
-    LoginFormComponent,
-    ReactiveFormsModule
-    
+    LoginFormComponent
   ]
 })
 export class SharedModule { }
