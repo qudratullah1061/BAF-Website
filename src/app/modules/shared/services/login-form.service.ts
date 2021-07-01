@@ -15,16 +15,18 @@ export class LoginFormService {
 
   getLoginFormGroup(): FormGroup {
     return this.fb.group({
-      email: [[''], [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4)]],
+      email: [[''], [Validators.required, Validators.maxLength(100)]],
+      password: [[''], [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
       isRemember: [false]
     });
   }
 
-  authUser(): Observable<IAPIBase> {
+  authUser(loginForm:FormGroup): Observable<IAPIBase> {
+    var username = loginForm.get('email').value;
+    var password = loginForm.get('password').value;
     var formData: any = new FormData();
-    formData.append("username", "qudrat.ullah@itcomrade.net");
-    formData.append("password", "Test@123");
+    formData.append("username", username);
+    formData.append("password", password);
     return this.http.post<IAPIBase>(this.loginFormApi, formData);
   }
 

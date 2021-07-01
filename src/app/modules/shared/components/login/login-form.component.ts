@@ -12,6 +12,8 @@ export class LoginFormComponent implements OnInit {
   loggedInUserInfo: ILoggedInUserInfo;
   loginForm: FormGroup;
   showLoading:boolean = false;
+  authError:string = "";
+  authSuccess:string = "";
 
   constructor(private loginFormService: LoginFormService) { }
 
@@ -20,21 +22,19 @@ export class LoginFormComponent implements OnInit {
   }
 
   authUserLogin() {
-
-    // if (this.loginForm.controls.email.value === "" || this.loginForm.controls.pass.value == "") {
-    //   alert('Pleasee fill all feilds')
-    // }
-
     this.showLoading = true;
-    this.loginFormService.authUser().subscribe({
+    this.loginFormService.authUser(this.loginForm).subscribe({
       next: data => {
+        this.authError = "";
+        this.authSuccess = "";
         if (!data.error) {
-          this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo
+          this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo;
+          this.authSuccess = data.description;
           console.log(this.loggedInUserInfo);
-          this.showLoading = false;
         } else {
-          alert(data.description);
+          this.authError = data.description;
         }
+        this.showLoading = false;
       }
     });
 

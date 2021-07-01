@@ -7,6 +7,7 @@ import { LoginFormComponent } from './components/login/login-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormService } from './services/login-form.service';
 
+
 @NgModule({
   declarations: [
     NumberIteratorPipe,
@@ -16,7 +17,7 @@ import { LoginFormService } from './services/login-form.service';
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     NumberIteratorPipe,

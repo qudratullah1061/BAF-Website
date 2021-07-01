@@ -13,6 +13,9 @@ import { AboutModule } from '@about/about.module';
 import { ContactModule } from '@contact/contact.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -28,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     StoriesModule,
     AboutModule,
     ContactModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
