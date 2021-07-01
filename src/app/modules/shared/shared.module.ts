@@ -3,18 +3,29 @@ import { CommonModule } from '@angular/common';
 import { NumberIteratorPipe } from './pipes/number-iterator.pipe';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginFormComponent } from './components/login/login-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     NumberIteratorPipe,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule
+    
   ],
   exports: [
     NumberIteratorPipe,
     RouterModule,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginFormComponent,
+    ReactiveFormsModule
+    
   ]
 })
 export class SharedModule { }
