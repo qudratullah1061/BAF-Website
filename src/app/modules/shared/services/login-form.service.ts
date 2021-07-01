@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IAPIBase } from '@shared/models/IApi-base';
+import { Observable } from 'rxjs';
 
 
 
@@ -17,14 +19,14 @@ export class LoginFormService {
   constructor(private http: HttpClient) { }
 
 
-  getLoginFormApiData() {
+  getLoginFormApiData():Observable<IAPIBase> {
 
-    
+
     var formData: any = new FormData();
     formData.append("username", "qudrat.ullah@itcomrade.net");
     formData.append("password", "Test@123");
 
-    return this.http.post(this.loginFormApi, formData);
+    return this.http.post<IAPIBase>(this.loginFormApi, formData);
   }
 
 

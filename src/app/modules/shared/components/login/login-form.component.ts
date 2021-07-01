@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { ILoggedInUserInfo } from '@shared/models/ilogged-in-user-info';
 import { LoginFormService } from '@shared/services/login-form.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class LoginFormComponent implements OnInit {
 
     this.loginFormService.getLoginFormApiData().subscribe({
       next: data => {
-        this.loginFormData = data
+        this.loginFormData = data.loggedInUser as ILoggedInUserInfo
         console.log(this.loginFormData)
 
         if (this.loginFormData.loggedInUser && this.loginFormData.loggedInUser.loginToken == "") {
