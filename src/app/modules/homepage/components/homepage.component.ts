@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IHomepage } from '../models/IHomepage';
-import { HomepageService } from '../services/homepage.service';
+import { IHomepage } from '@homepage/models/IHomepage';
+import { HomepageService } from '@homepage/services/homepage.service';
 
 @Component({
   selector: 'baf-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.sass']
+  styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-
+  loading: boolean = true;
   homepageData: IHomepage;
 
 
@@ -17,7 +17,10 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.homepageService.getHomepageData().subscribe({
       next: data => {
+        // setTimeout(() => {
+        this.loading = false;
         this.homepageData = data.description as IHomepage; console.log(this.homepageData);
+        // }, 3000);
       }
     });
 

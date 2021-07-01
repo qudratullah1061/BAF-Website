@@ -1,0 +1,188 @@
+@import "src/assets/stylesheets/partials/variables";
+.banner {
+  background-color: #f7f7f7;
+  position: relative;
+  height: calc(100vh - 146px);
+  overflow: hidden;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 370px;
+  transition: background 0.5s linear;
+  /*.banner-img{max-height: 100%;opacity: 0;visibility: hidden;}*/
+  .banner-stripe {
+    position: absolute;
+    top: 0;
+    background: rgba(255, 255, 255, 0.7);
+    width: 100%;
+    padding: 12px 25px 12px 25px;
+    z-index: 9;
+    @media (max-width: 500px) {
+      padding-bottom: 5px;
+    }
+    > div {
+      @media (max-width: 767px) {
+        width: 100%;
+        &.explore {
+          margin-bottom: 8px;
+        }
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      @media (max-width: 500px) {
+        display: inline-block;
+        width: 100%;
+      }
+      li {
+        display: flex;
+        width: auto;
+        /* flex-wrap: wrap; */
+        margin-left: 15px;
+
+        @media (max-width: 767px) {
+          margin-left: 0;
+          margin-right: 15px;
+        }
+        @media (max-width: 500px) {
+          display: inline-block;
+          margin-bottom: 5px;
+        }
+        > a {
+          background: rgba(255, 255, 255, 0.7);
+          padding: 3px 7px;
+          border-radius: 3px;
+          /* font-size: 1.1em; */
+          color: $black-light;
+          display: inline-block;
+          margin-right: 5px;
+          transition: all 0.2s ease;
+          &:hover {
+            background: #006c9f;
+            color: #fff;
+            transition: all 0.2s ease;
+          }
+        }
+        > span {
+          color: $black-light;
+          display: inline-block;
+          margin-top: 6px;
+          text-transform: capitalize;
+          font-weight: 500;
+          font-size: 0.75em;
+        }
+      }
+    }
+    .explore {
+      p {
+        margin-bottom: 0;
+        margin-top: 4px;
+
+        color: $black-light;
+        position: relative;
+        float: left;
+        strong {
+          font-family: $avenir-s;
+          margin-right: 2px;
+        }
+        > i {
+          font-size: 1.7em;
+          position: absolute;
+          right: -16px;
+          top: -2px;
+          color: inherit;
+        }
+      }
+    }
+  }
+  .banner-news {
+    position: absolute;
+    top: 23px;
+    width: 100%;
+    padding: 0 25px;
+    z-index: 9;
+    @media (max-width: 767px) {
+      top: 115px;
+    }
+    @media (max-width: 500px) {
+      top: 140px;
+    }
+    .news-list {
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 538px;
+        max-width: 100%;
+        li {
+          margin-top: 12px;
+          a {
+            color: $black-light;
+            padding: 6px 10px 5px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            line-height: 26px;
+            strong {
+              font-family: $avenir-s;
+              margin-right: 7px;
+            }
+            &:hover {
+              background: #fff;
+              strong {
+                color: #006c9f;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .banner-slideshow {
+    .single-slide {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: calc(100vh - 89px);
+      min-height: 370px;
+      .bx-caption {
+        float: right;
+        width: auto;
+        right: 20px;
+        left: unset;
+        bottom: 100px;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 6px 11px;
+        border-radius: 3px;
+        color: #1a1a1a;
+        font-size: 0.75em;
+        transition: 0.2s ease;
+        &:hover {
+          background: #fff;
+          color: $darkBlue;
+          cursor: pointer;
+          transition: 0.2s ease;
+        }
+        span {
+          color: inherit;
+          padding: 0;
+          font-size: inherit;
+        }
+      }
+      img {
+        opacity: 0;
+        visibility: hidden;
+        height: calc(100vh - 92px);
+        min-height: 370px;
+      }
+    }
+  }
+}

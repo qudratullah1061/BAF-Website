@@ -1,1 +1,30 @@
-<p>featured works!</p>
+<div class="home-featured">
+  <div class="container">
+    <p class="black-light mt-20 title-text"><strong>FEATURED</strong></p>
+    <div class="row row-medium-gutter">
+      <div *ngFor="let featuredItem of homePageFeaturedItems" class="col-sm-4">
+        <figure class="featured-item">
+          <div class="fig-media" [ngStyle]="{'background-image': 'url(' + featuredItem.landscapeImage + ')'}">
+            <div class="title-over">
+              <span>{{featuredItem.recordType}}</span>
+            </div>
+            <a *ngIf="featuredItem.recordType == 'Story'" [routerLink]="'story/'+featuredItem.id">
+              <img src="assets/images/home-placeholder.png" alt="No Image!">
+            </a>
+            <a *ngIf="featuredItem.recordType == 'Collection'" [routerLink]="'collection/'+featuredItem.id">
+              <img src="assets/images/home-placeholder.png" alt="No Image!">
+            </a>
+          </div>
+          <figcaption>
+            <h4 *ngIf="featuredItem.recordType == 'Story'"><a
+                [routerLink]="'story/'+featuredItem.id">{{featuredItem.title}}</a></h4>
+            <h4 *ngIf="featuredItem.recordType == 'Collection'"><a
+              [routerLink]="'collection/'+featuredItem.id">{{featuredItem.title}}</a></h4>
+            <p [innerHtml]="featuredItem.description">
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>

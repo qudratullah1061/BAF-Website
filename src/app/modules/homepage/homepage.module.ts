@@ -4,8 +4,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { HomepageComponent } from './components/homepage.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { FeaturedComponent } from './components/featured/featured.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HomepageService } from './services/homepage.service';
+import { SharedModule } from '@shared/shared.module';
 
 
 
@@ -18,7 +18,7 @@ import { HomepageService } from './services/homepage.service';
   imports: [
     CommonModule,
     CarouselModule.forRoot(),
-    HttpClientModule
+    SharedModule
   ],
   providers: [HomepageService],
 })

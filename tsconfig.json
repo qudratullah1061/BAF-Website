@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@homepage/*":["./src/app/modules/homepage/*"],
+      "@collections/*":["./src/app/modules/collections/*"],
+      "@shared/*":["./src/app/modules/shared/*"],
+      "@stories/*":["./src/app/modules/stories/*"],
+      "@about/*":["./src/app/modules/about/*"],
+      "@contact/*":["./src/app/modules/contact/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

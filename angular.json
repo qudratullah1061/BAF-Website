@@ -37,7 +37,9 @@
               "src/assets/fonts/signifier/stylesheet.css",
               "src/assets/stylesheets/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "development": {
@@ -121,14 +123,16 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/fonts/avenir/stylesheet.css",
               "src/assets/fonts/signifier/stylesheet.css",
               "src/assets/stylesheets/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         },
         "lint": {

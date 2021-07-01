@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { NumberIteratorPipe } from './pipes/number-iterator.pipe';
+import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginFormComponent } from './components/login/login-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent
+    NumberIteratorPipe,
+    PageNotFoundComponent,
+    LoginFormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
   ],
-  exports:[
-    HeaderComponent,
-    FooterComponent
+  exports: [
+    NumberIteratorPipe,
+    RouterModule,
+    PageNotFoundComponent,
+    LoginFormComponent
   ]
 })
 export class SharedModule { }

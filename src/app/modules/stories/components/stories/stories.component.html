@@ -1,0 +1,96 @@
+<section class="collections stories-page pt-35 pb-45" *ngIf="filteredStoriesData">
+  <div class="container">
+    <!--***************************** Menu Page ******************************-->
+    <!--************************** Starting here *****************************-->
+    <div class="stories-menu-page">
+      <div class="collaseable-area  mb-30 d-inline-block w-100">
+        <h1 class="uppercase black-light collapsable-header-border-icon font-2em pull-left" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          STORIES
+        </h1>
+        <nav class="custom-pagination">
+          <pagination
+          [customPreviousTemplate]="prevTemplate"
+          [customNextTemplate]="nextTemplate"
+           [totalItems]="storiesData.length" (pageChanged)="pageChanged($event)"></pagination>
+           <ng-template #nextTemplate let-disabled="disabled" let-currentPage="currentPage">
+            <ng-container *ngIf="!disabled">
+              <i class="fal fa-angle-right"></i>
+            </ng-container>
+            <ng-container *ngIf="disabled">
+              <i class="fal fa-angle-right disabled"></i>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #prevTemplate let-disabled="disabled" let-currentPage="currentPage">
+            <ng-container *ngIf="!disabled">
+              <i class="fal fa-angle-left"></i>
+            </ng-container>
+            <ng-container *ngIf="disabled">
+              <i class="fal fa-angle-left disabled"></i>
+            </ng-container>
+          </ng-template>
+        </nav>
+      </div>
+      <div class="collapsable-section stories-section full-width d-flex justify-content-self">
+        <div class="grid-cells" *ngIf="filteredStoriesData.length > 0">
+          <!--collection item start-->
+          <div class="row">
+            <div class="single-cell" *ngFor="let story of filteredStoriesData">
+              <div class="collection-item">
+                <figure class="d-flex justify-content-center align-items-center"
+                  [ngStyle]="{'background-image': 'url(' + story.thumbnail + ')'}">
+
+                  <a *ngIf="!story.code" [routerLink]="'story'+ story.id"><img
+                      src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
+                  <a *ngIf="story.code" [routerLink]="'story'+ story.code"><img
+                      src="assets/images/collection-image-placeholder.png" alt="No Image"></a>
+                </figure>
+                <div class="collection-texture">
+                  <a *ngIf="!story.code" title="{{story.title}}" href="'story'+ story.id" [innerHTML]="story.title"></a>
+                  <a *ngIf="story.code" title="{{story.title}}" href="'story'+ story.code"
+                    [innerHTML]="story.title"></a>
+                  <p>
+                    <a *ngIf="!story.code" class="gray40" href="'story' + story.id" [innerHTML]="story.narrative"></a>
+                    <a *ngIf="story.code" class="gray40" href="'story' + story.code" [innerHTML]="story.narrative"></a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--collection item end-->
+        </div>
+      </div>
+      <pagination [totalItems]="storiesData.length" (pageChanged)="pageChanged($event)"></pagination>
+      <p *ngIf="filteredStoriesData.length == 0">No story found!</p>
+    </div>
+    <!--**************************** Menu page ****************************** -->
+    <!--*************************** Ending here ******************************-->
+  </div>
+</section>
+
+
+
+<section class="collections stories-page pt-35 pb-45" *ngIf="!filteredStoriesData">
+  <div class="container">
+    <div class="stories-menu-page">
+      <div class="collaseable-area  mb-30 d-inline-block w-100">
+        <h1 class="uppercase black-light collapsable-header-border-icon font-2em pull-left" role="button"
+          aria-expanded="false" aria-controls="collapseExample">
+          STORIES
+        </h1>
+      </div>
+      <!--lOADING START-->
+      <div class="card-loading-outer loading-box mt-0" ng-show="loading" style="width:100%; padding-left: 0;">
+        <div class="card-loading" *ngFor="let key of 12 | numberIterator">
+          <div class="card-img" style="height:275px;"></div>
+          <div class="card-title mb-15 mt-15"></div>
+          <div class="card-description"></div>
+          <div class="card-description  w-90"></div>
+          <div class="card-description w-95"></div>
+        </div>
+      </div>
+      <!--lOADING EANDS-->
+    </div>
+  </div>
+</section>

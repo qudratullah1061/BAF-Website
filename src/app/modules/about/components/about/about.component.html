@@ -1,0 +1,82 @@
+<section class="about-page" *ngIf="aboutData">
+  <div class="container pt-45">
+    <div class="title-name-code d-block pb-20 mb-20">
+      <h6 class="pull-left font-2-5em">ABOUT</h6>
+      <div class="clearfix"></div>
+    </div>
+    <div class="featuredItem">
+      <!--itemw list-->
+      <div class="featuredStory mb-50" *ngFor="let about of aboutData">
+        <div class="split-100 d-flex">
+          <div class="width-40">
+            <div class="stroyDescription pr-40">
+
+              <div [innerHTML]="about.narrative" class="black-light font-1-25em"></div>
+            </div>
+          </div>
+          <div class="width-60 make-50">
+            <div class="stroyMedia mt-5">
+              <figure class="mb-10" [ngStyle]="{'background-image': 'url(' + about.landscapeImage + ')'}">
+                <img [src]="about.landscapeImage" alt="No Image">
+              </figure>
+              <p class="b3">{{about.itemTitle}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-page" *ngIf="!aboutData">
+  <div class="container pt-45">
+    <div class="loading-box loading-title title-name-code d-block pb-20 mb-20">
+      <h6></h6>
+    </div>
+    <div class="featuredItem loading-box featuredItem-loading">
+      <!--first item-->
+      <div class="featuredStory mb-50">
+        <div class="split-100 d-flex">
+          <div class="width-40">
+            <div class="stroyDescription pr-40">
+              <p *ngFor="let key of 10 | numberIterator"></p>
+              <p class="w-46"></p>
+              <br>
+              <p *ngFor="let key of 10 | numberIterator"></p>
+              <p class="w-46"></p>
+              <br>
+              <p *ngFor="let key of 10 | numberIterator"></p>
+              <p class="w-46"></p>
+              <br>
+              <p class="w-42"></p>
+            </div>
+          </div>
+          <div class="width-60 make-50">
+            <div class="stroyMedia mt-5">
+              <figure class="mb-10"></figure>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="featuredStory mb-50">
+        <div class="split-100 d-flex">
+          <div class="width-40">
+            <div class="stroyDescription pr-40">
+              <div *ngFor="let key of 6 | numberIterator">
+                <h6 class="w-30"></h6>
+                <p class="w-25"></p>
+              </div>
+            </div>
+          </div>
+          <div class="width-60 make-50">
+            <div class="stroyMedia mt-5">
+              <figure class="mb-10"></figure>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
