@@ -14,7 +14,8 @@ export class CollectionpageService {
 
   getCollectionPageData(): Observable<IAPIBase> {
 
-    var getCollectionHomepageDataUrl = environment.apiUrl + "getcollectiondata";
+    // var getCollectionHomepageDataUrl = environment.apiUrl + "getcollectiondata";
+    var getCollectionHomepageDataUrl = "/api/getcollectiondata";
     var formData: any = new FormData();
     formData.append("DataType", "homepage");
 
@@ -26,7 +27,8 @@ export class CollectionpageService {
 
   getCollectionDetailPageData(code: any): Observable<IAPIBase> {
 
-    var getCollectionDetailApiData = environment.apiUrl + "getcollectiondata";
+    // var getCollectionDetailApiData = environment.apiUrl + "getcollectiondata";
+    var getCollectionDetailApiData = "/api/getcollectiondata";
     var formData: any = new FormData();
     formData.append("DataType", "Detail");
     if (isNaN(code)) {

@@ -9,8 +9,6 @@ import { environment } from 'src/environments/environment';
 
 export class LoginFormService {
 
-  loginFormApi = environment.apiUrl + "userlogin"
-
   constructor(private http: HttpClient, private fb: FormBuilder) { }
 
   getLoginFormGroup(): FormGroup {
@@ -21,13 +19,15 @@ export class LoginFormService {
     });
   }
 
-  authUser(loginForm:FormGroup): Observable<IAPIBase> {
+  authUser(loginForm: FormGroup): Observable<IAPIBase> {
+    // var loginFormApi = environment.apiUrl + "/userlogin"
+    var loginFormApi = "/api/userlogin"
     var username = loginForm.get('email').value;
     var password = loginForm.get('password').value;
     var formData: any = new FormData();
     formData.append("username", username);
     formData.append("password", password);
-    return this.http.post<IAPIBase>(this.loginFormApi, formData);
+    return this.http.post<IAPIBase>(loginFormApi, formData);
   }
 
 }

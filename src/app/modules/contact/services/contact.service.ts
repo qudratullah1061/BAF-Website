@@ -12,7 +12,8 @@ export class ContactService {
   constructor(private http:HttpClient) { }
 
   getContactPageData(): Observable<IAPIBase> {
-    var contactPageApi = environment.apiUrl + "contactdata";
+    // var contactPageApi = environment.apiUrl + "contactdata";
+    var contactPageApi = "/api/contactdata";
     return this.http.get<IAPIBase>(contactPageApi);
   }
 }

@@ -14,7 +14,8 @@ export class AboutService {
 
   getAboutPageData(): Observable<IAPIBase> {
 
-    var aboutPageApi = environment.apiUrl + "aboutdata";
+    // var aboutPageApi = environment.apiUrl + "aboutdata";
+    var aboutPageApi = "/api/aboutdata";
     return this.http.get<IAPIBase>(aboutPageApi)
 
   }

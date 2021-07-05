@@ -30,17 +30,12 @@ export class LoginFormComponent implements OnInit {
         if (!data.error) {
           this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo;
           this.authSuccess = data.description;
-          console.log(this.loggedInUserInfo);
         } else {
           this.authError = data.description;
         }
         this.showLoading = false;
       }
     });
-
-    console.log(this.loginForm.value);
-    this.loginForm.reset()
-
   }
 
 

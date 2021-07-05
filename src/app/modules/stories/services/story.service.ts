@@ -12,7 +12,8 @@ export class StoryService {
   }
 
   getStoriesPageData(): Observable<IAPIBase> {
-    var getStoryPageApi = environment.apiUrl + "gethomepagestories";
+    // var getStoryPageApi = environment.apiUrl + "gethomepagestories";
+    var getStoryPageApi = "/api/gethomepagestories";
     return this.http.get<IAPIBase>(getStoryPageApi);
   }
 }
