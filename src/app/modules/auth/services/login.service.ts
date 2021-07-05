@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 
-export class LoginFormService {
+export class LoginService {
 
   constructor(private http: HttpClient, private fb: FormBuilder) { }
 

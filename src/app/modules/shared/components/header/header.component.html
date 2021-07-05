@@ -15,30 +15,29 @@
         <li *ngIf="showLangBtn">
           <a class="russian enable">Russian</a>
         </li>
-        <li>
+        <li *ngIf="!loggedInUserInfo">
           <a [routerLink]="'register'">Create account</a>
         </li>
 
 
-        <li class="dropdown loginDropdown" dropdown [insideClick]="true">
-          <a class="dropdown-toggle" dropdownToggle role="button" id="dropdownMenuLink" aria-controls="dropdown-basic">
+        <li class="dropdown loginDropdown" dropdown [insideClick]="true" *ngIf="!loggedInUserInfo">
+          <a class="dropdown-toggle" dropdownToggle role="button" id="dropdownMenuLink" aria-controls="dropdown-login">
             <span> Log in</span>
           </a>
 
-          <div id="dropdown-basic" *dropdownMenu class="dropdown-menu login-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuLink">
+          <div id="dropdown-login" *dropdownMenu class="dropdown-menu login-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuLink">
             <baf-login-form></baf-login-form>
           </div>
         </li>
 
-        <li class="dropdown accountDropdown">
-          <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
+        <li class="dropdown accountDropdown" dropdown [insideClick]="true" *ngIf="loggedInUserInfo">
+          <a class="dropdown-toggle" dropdownToggle role="button" id="createAccount" aria-controls="dropdown-account">
             <span> Account</span> <i class="fas fa-user-circle"></i>
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="nav-link"><span>Saved</span><span>folders</span></a>
-            <a class="nav-link">My Profile</a>
-            <a class="nav-link">Log out</a>
+          <div id="dropdown-account" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="createAccount">
+            <a class="nav-link" [routerLink]=""><span>Saved</span><span>folders</span></a>
+            <a class="nav-link" [routerLink]="">My Profile</a>
+            <a class="nav-link" href="javascript:;" (click)="logout()">Log out</a>
           </div>
         </li>
 

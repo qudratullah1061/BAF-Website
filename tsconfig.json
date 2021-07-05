@@ -24,7 +24,8 @@
       "@shared/*":["./src/app/modules/shared/*"],
       "@stories/*":["./src/app/modules/stories/*"],
       "@about/*":["./src/app/modules/about/*"],
-      "@contact/*":["./src/app/modules/contact/*"]
+      "@contact/*":["./src/app/modules/contact/*"],
+      "@auth/*":["./src/app/modules/auth/*"]
     }
   },
   "angularCompilerOptions": {

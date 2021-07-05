@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AuthModule } from '@auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     AboutModule,
     ContactModule,
     SharedModule,
+    AuthModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot()
   ],
