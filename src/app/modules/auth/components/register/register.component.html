@@ -36,12 +36,13 @@
                 </span>
               </div>
               <div class="col-sm-6">
-                <input required="" maxlength="100" autocomplete="off" formControlName="email" name="email" type="email"
+                {{registrationForm.get('email').errors | json}}
+                <input required="" autocomplete="off" formControlName="email" name="email" type="email"
                   placeholder="Email *" />
                 <span style="color:red"
                   *ngIf="!(registrationForm.get('email').valid) && (registrationForm.get('email').touched)">
                   <span ng-show="userForm.email.$error.required">Email is required.</span>
-                  <!-- <span ng-show="userForm.email.$error.email">Invalid email address.</span> -->
+                  <span [hidden]="registrationForm.get('email').errors.email">Invalid email address.</span>
                 </span>
               </div>
 
@@ -118,8 +119,5 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
   </div>
-=======
->>>>>>> afeffe0a2b1a01418f798c38448aa53cee8bdee9
 </main>
