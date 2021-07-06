@@ -36,13 +36,13 @@
                 </span>
               </div>
               <div class="col-sm-6">
-                {{registrationForm.get('email').errors | json}}
+                <!-- {{registrationForm.get('email').errors | json}} -->
                 <input required="" autocomplete="off" formControlName="email" name="email" type="email"
                   placeholder="Email *" />
                 <span style="color:red"
-                  *ngIf="!(registrationForm.get('email').valid) && (registrationForm.get('email').touched)">
-                  <span ng-show="userForm.email.$error.required">Email is required.</span>
-                  <span [hidden]="registrationForm.get('email').errors.email">Invalid email address.</span>
+                  *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
+                  <span [hidden]="!registrationForm.get('email').errors.required">Email is required.</span>
+                  <span [hidden]="!registrationForm.get('email').errors.email">Invalid email address.</span>
                 </span>
               </div>
 
@@ -62,34 +62,34 @@
                 <p class="info">Password must contain 1 upper case character, 1 lower case character and
                   1 digit.</p>
               </div>
-              <div class="col-sm-6">
-                <input readonly maxlength="128" onfocus="this.removeAttribute('readonly');" required id="password"
-                  autocomplete="off" formControlName="password" name="password" type="password"
-                  placeholder="Password *" />
-                <span style="color:red"
-                  *ngIf="!(registrationForm.get('password').valid) && (registrationForm.get('password').touched)">
-                  <span ng-show="userForm.password.$error.required && userForm.password.$dirty">Password required</span>
-                  <span
-                    ng-show="!userForm.password.$error.required && (userForm.password.$error.minlength || userForm.password.$error.maxlength) && userForm.password.$dirty">Passwords
-                    must be between 6 and 20 characters.</span>
-                  <span
-                    ng-show="!userForm.password.$error.required && !userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$error.pattern && userForm.password.$dirty">Password
-                    must contain 1 upper case character, 1 lower case character and 1 digit.</span>
-                </span>
-              </div>
-              <div class="col-sm-6">
-                <input readonly maxlength="128" onfocus="this.removeAttribute('readonly');" required autocomplete="off"
-                  id="confirmpassword" pw-check='password' formControlName="confirmPassword" name="confirmpassword"
-                  type="password" placeholder="Confirm Password *" />
-                <span style="color:red"
-                  ng-show="userForm.confirmpassword.$dirty && userForm.confirmpassword.$invalid && userForm.password.$dirty  && userForm.confirmpassword.$touched">
-                  <span ng-show="userForm.confirmpassword.$error.required && userForm.confirmpassword.$dirty">Please
-                    confirm your password.</span>
-                  <span
-                    ng-show="!userForm.confirmpassword.$error.required && userForm.confirmpassword.$error.pwmatch">Passwords
-                    do not match.</span>
-                </span>
+              <div class="col-sm-12" formGroupName="matchPassword">
+                <div class="col-sm-6">
+                  <input autocomplete="off" formControlName="password" type="password" placeholder="Password *" />
+                  <span style="color:red"
+                    *ngIf="!(registrationForm.get('matchPassword').get('password').valid) && (registrationForm.get('matchPassword').get('password').touched)">
+                    <span ng-show="userForm.password.$error.required && userForm.password.$dirty">Password
+                      required</span>
+                    <span
+                      ng-show="!userForm.password.$error.required && (userForm.password.$error.minlength || userForm.password.$error.maxlength) && userForm.password.$dirty">Passwords
+                      must be between 6 and 20 characters.</span>
+                    <span
+                      ng-show="!userForm.password.$error.required && !userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$error.pattern && userForm.password.$dirty">Password
+                      must contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                  </span>
+                </div>
 
+                <div class="col-sm-6">
+                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password" placeholder="Confirm Password *" />
+                  <span style="color:red"
+                    *ngIf="">
+                    <span ng-show="userForm.confirmpassword.$error.required && userForm.confirmpassword.$dirty">Please
+                      confirm your password.</span>
+                    <span
+                      ng-show="!userForm.confirmpassword.$error.required && userForm.confirmpassword.$error.pwmatch">Passwords
+                      do not match.</span>
+                  </span>
+
+                </div>
               </div>
               <div class="col-sm-12">
                 <button [disabled]="!registrationForm.valid">Create Account</button>

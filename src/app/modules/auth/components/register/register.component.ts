@@ -19,10 +19,10 @@ export class RegisterComponent implements OnInit {
       affiliation: ['', [Validators.required]],
       location: ['', [Validators.required]],
       phone: ['', [Validators.required]],
-
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      confirmPassword: ['', [Validators.required]]
-
+      matchPassword: this.fb.group({
+          password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+          confirmPassword: ['', [Validators.required]]
+        })
     });
   }
 
