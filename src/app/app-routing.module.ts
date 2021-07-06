@@ -19,7 +19,7 @@ const routes: Routes = [
   { 'path': 'about', component: AboutComponent },
   { 'path': 'contact', component: ContactComponent },
   { 'path': 'register', component: RegisterComponent },
-  { 'path': 'userLogin', component: UserLoginComponent },
+  { 'path': 'login', component: UserLoginComponent },
   { 'path': '404', component: PageNotFoundComponent },
   { 'path': 'api/*', component: PageNotFoundComponent },
   { 'path': '**', component: PageNotFoundComponent }
