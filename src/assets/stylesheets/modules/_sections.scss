@@ -1,4 +1,4 @@
-/* 
+/*
     Created on : Mar 26, 2018, 5:10:09 AM
     Author     : Bill
 */
@@ -132,7 +132,7 @@ a:focus {
         position: absolute;
         right: 20px;
         top: 14px;
-    }   
+    }
     > div > div > div >h5[data-toggle="collapse"].collapsed:after {
         transform: rotate(180deg) ;
     }
@@ -199,7 +199,7 @@ a:focus {
                         }*/
         }
     }
-} 
+}
 .search-body {
     display: table-cell;
     width: 80%;
@@ -232,7 +232,7 @@ a:focus {
         width: 65px;
         font-family: $avenir-s;
         text-transform: uppercase;
-        font-size: 14px; 
+        font-size: 14px;
         &.dropdown-toggle-split {
             width: 36px;
             border-left: 1px solid #5981A0;
@@ -579,7 +579,7 @@ a:focus {
     > p{
         color: #949699;
         font-size: 14px;
-        margin-bottom: 0; 
+        margin-bottom: 0;
     }
     &.cont_label{
         > span{
@@ -612,7 +612,7 @@ a:focus {
                 }
                 > ul.checkbox-cube {
                     /*column-count: 3;*/
-                } 
+                }
             }
         }
 
@@ -660,7 +660,7 @@ a:focus {
             height: 19px;
             display: inline-flex;
             align-items: center;
-            justify-content: center;            
+            justify-content: center;
             line-height: 36px;
         }
         &.collapsed{
@@ -765,7 +765,7 @@ a:focus {
                                 font-family: "Font Awesome 5 Pro";
                                 content: "\f00c";
                                 color: $darkBlue;
-                                 background-color: #fff; 
+                                 background-color: #fff;
                                 font-weight: normal;
                                 height: 13px;
                                 line-height: 14px;
@@ -960,8 +960,8 @@ input[type="checkbox"]
     &.collapsed {
         span{
             transform: rotate(180deg);
-        }   
-    }   
+        }
+    }
 
 }
 .sub-level .sub-level-1 {
@@ -1213,7 +1213,7 @@ ps__rail-y:focus > .ps__thumb-y,
 
 }
 .ps__rail-y{
-    /*display: block;*/ 
+    /*display: block;*/
 }
 p.or-separator {
     color: $bf;
@@ -1255,7 +1255,7 @@ p.or-separator span {
 /*.styled-checkbox > li > label > p{
     color: #949798;
     font-size: 14px;
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }*/
 .sub-footer {
     border-top: 1px solid #E3E5E6;
@@ -1552,7 +1552,7 @@ span.searched-term {
         align-items: center;
         flex-wrap: wrap;
     }
-    .thumb-pager nav ul li a{ 
+    .thumb-pager nav ul li a{
         display: flex;
         align-items: center;
         i {
@@ -2090,7 +2090,7 @@ main {
     height: calc(100% - 40px);
     padding-top:30px;
     background: rgba(26, 26, 26, 0.79);
-    padding: 23px 30px 30px 34px; 
+    padding: 23px 30px 30px 34px;
     margin-bottom: 2px;
     position: relative;
 }
@@ -2679,7 +2679,7 @@ footer .container-fluid > div:first-child {
                         width: 20px;
                         margin-top: 3px;
                     }
-                    a{ 
+                    a{
                         float: left;
                         width: calc(100% - 30px);
                         > i {
@@ -3051,7 +3051,7 @@ p.news-texture {
             .portrait-icon {
                 img{border-color: $darkBlue !important;}
             }
-        } 
+        }
     }
     .catalog-flag {
         margin-left: 6px;
@@ -3674,8 +3674,8 @@ li > a > .fa-check-circle {
     padding-right: 30px;
     .save-export{
         border-top: 0;
-        margin-top: 0; 
-        padding-top: 0; 
+        margin-top: 0;
+        padding-top: 0;
         font-size: 16px;
     }
     p.veteran-biography.ng-binding {
@@ -3952,18 +3952,18 @@ li > a > .fa-check-circle {
     color: #fff;
 }
 
-.ui-menu .ui-menu-item > a:hover, 
-.ui-menu .ui-menu-item > a:focus, 
-.ui-menu .ui-menu-item > a:active, 
-.ui-menu .ui-menu-item > a:in-range, 
-.ui-menu .ui-menu-item > a:link, 
-.ui-menu .ui-menu-item:hover  > a, 
-.ui-menu .ui-menu-item:focus > a, 
-.ui-menu .ui-menu-item:active > a, 
-.ui-menu .ui-menu-item:in-range > a, 
-.ui-menu .ui-menu-item:link > a 
-.ui-menu .ui-menu-item > a.ui-menu-item-wrapper:hover, 
-.ui-menu .ui-menu-item > a.ui-state-active, 
+.ui-menu .ui-menu-item > a:hover,
+.ui-menu .ui-menu-item > a:focus,
+.ui-menu .ui-menu-item > a:active,
+.ui-menu .ui-menu-item > a:in-range,
+.ui-menu .ui-menu-item > a:link,
+.ui-menu .ui-menu-item:hover  > a,
+.ui-menu .ui-menu-item:focus > a,
+.ui-menu .ui-menu-item:active > a,
+.ui-menu .ui-menu-item:in-range > a,
+.ui-menu .ui-menu-item:link > a
+.ui-menu .ui-menu-item > a.ui-menu-item-wrapper:hover,
+.ui-menu .ui-menu-item > a.ui-state-active,
 {
     color: #fff !important;
     background-color: $darkBlue;
@@ -4878,7 +4878,7 @@ p:last-child {
     max-width: 296px;
 }
 mark {
-    background: #D1DEE8; 
+    background: #D1DEE8;
 }
 mark.current {
     background: orange;
@@ -4894,7 +4894,7 @@ mark.current {
         }
     }
 }
-/*Collections pages Start*/ 
+/*Collections pages Start*/
 %background-image-style{
     background-color:#f7f7f7;
     background-repeat: no-repeat;
@@ -5019,8 +5019,8 @@ mark.current {
                         background-color:#f7f7f7;
                         .overlay {
                             display: block;
-                            visibility: hidden; 
-                            opacity: 0; 
+                            visibility: hidden;
+                            opacity: 0;
                             background: rgba(26, 26, 26, 0.4);
                             transition: all 0.3s ease;
                             height: calc(100% + 5px) !important;
@@ -5096,7 +5096,7 @@ mark.current {
                             max-width: 100%;
                             /*max-height: $height;*/
                             @media(max-width:1347px){
-                                /*max-height:100%;*/ 
+                                /*max-height:100%;*/
                             }
                         }
                     }
@@ -5167,11 +5167,11 @@ mark.current {
         }
         .row.gutter-30{
             @media(min-width:768px){
-                margin: 0 -30px; 
+                margin: 0 -30px;
             }
             .single-cell{
                 @media(min-width:768px){
-                    padding: 0 30px; 
+                    padding: 0 30px;
                 }
             }
         }
@@ -5443,7 +5443,7 @@ mark.current {
         .single-cell figure {
             > a{
                 position:relative;
-            }               
+            }
             figcaption{
                 > a{
                     overflow: hidden;
@@ -5553,7 +5553,7 @@ mark.current {
                     }
                 }
             }
-        }   
+        }
     }
 }
 
@@ -5609,7 +5609,7 @@ mark.current {
     .times{
         font-size: 1.2em;
         margin: 9px 10px;
-        display: inline-block;  
+        display: inline-block;
     }
     .btn.btn-primary{
         &[disabled="disabled"]{
@@ -5831,7 +5831,7 @@ mark.current {
                     }
                 }
             }
-        } 
+        }
         &:hover{
             transition: all 0.3s ease;
             figure{
@@ -5839,8 +5839,8 @@ mark.current {
                     transition: all 0.3s ease;
                     visibility: visible;
                     opacity: 1;
-                }  
-            }  
+                }
+            }
         }
     }
 
@@ -5915,7 +5915,7 @@ mark.current {
 
                 max-height: 740px;
                 text-align:center;
-                background-color:#f7f7f7; 
+                background-color:#f7f7f7;
                 /*padding: 10px;*/
                 @extend %background-image-style;
                 @media(min-width:1540px){
@@ -5926,7 +5926,7 @@ mark.current {
                 }
                 >img{
                     display: inline-block;
-                    max-width: 100% !important; 
+                    max-width: 100% !important;
                     max-height:inherit;
                     opacity: 0;
                     visibility: hidden;
@@ -6110,7 +6110,7 @@ a.arrow-button {
                         a{color:$darkBlue;}
                     }
                     p:not(.date){color:$black-light}
-                }  
+                }
             }
         }
     }
@@ -6212,7 +6212,7 @@ a.arrow-button {
               left: -6px;
               top: 3px;
           }
-      } 
+      }
 
     }
     i{margin-right: 2px;}
@@ -6399,7 +6399,7 @@ a.arrow-button {
         }
         input, textarea {
             width: 100%;
-            border: 1px solid #e4e4e4; 
+            border: 1px solid #e4e4e4;
             background: none;
             position: relative;
             top: 0;
@@ -6409,7 +6409,7 @@ a.arrow-button {
             outline: 0;
             &:valid {
                 // Hides the label
-                background: white; 
+                background: white;
             }
             &:focus {
                 border-color: $b3;
@@ -6548,9 +6548,9 @@ a.arrow-button {
                     background: #f0d7d7;
                     color: #8a0000 !important;
                     padding: 4px 5px;
-                    border-radius: 3px;
+                    // border-radius: 3px;
                     margin-top: 10px;
-                    max-width: calc(100% - 10px) !important;
+                    // max-width: calc(100% - 10px) !important;
                 }
                 &+span+p.info {
                     position: static;
@@ -6571,7 +6571,7 @@ a.arrow-button {
                     color: #b3b3b3;
                     border: 1px solid #e4e4e4;
                 }
-                @media(max-width:568px){ 
+                @media(max-width:568px){
                     padding:12px;
                 }
                 &:hover, &:active, &:focus{
@@ -7842,8 +7842,8 @@ figure.thumb-wrap {
 @media(max-width:1024px){
     iframe.miradorViewer{max-height:500px;}
 }
-.save_compare_links .postcard_save .dropdown-menu .save_outer .search-folder 
-.input-group > .input-group-append > .btn-primary{ 
+.save_compare_links .postcard_save .dropdown-menu .save_outer .search-folder
+.input-group > .input-group-append > .btn-primary{
     right: 7px !important;
 }
 
