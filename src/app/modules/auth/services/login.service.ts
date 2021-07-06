@@ -13,8 +13,8 @@ export class LoginService {
 
   getLoginFormGroup(): FormGroup {
     return this.fb.group({
-      email: [[''], [Validators.required, Validators.maxLength(100)]],
-      password: [[''], [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
+      email: [[''], [Validators.required]],
+      password: [[''], [Validators.required]],
       isRemember: [false]
     });
   }

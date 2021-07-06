@@ -33,7 +33,7 @@ export class UserLoginComponent implements OnInit {
           this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo;
           this.authSuccess = data.description;
           localStorage.setItem('loggedInUserInfo', JSON.stringify(this.loggedInUserInfo));
-          window.location.reload();
+          this.router.navigate(['']);
         } else {
           this.authError = data.description;
         }

@@ -13,22 +13,14 @@
                     <div class="alert alert-success" *ngIf="authSuccess">
                       <strong>Success! </strong>{{authSuccess}}
                     </div>
-                    <!-- <?php if($this->session->flashdata('loginMsg')) { ?>
-                        <div class="alert alert-danger">
-                            <strong>Error! </strong> <?php echo $this->session->flashdata('loginMsg'); ?>
-                        </div>
-                    <?php } ?> -->
-                    <input autocomplete="off" required formControlName="email" name="username" type="text" placeholder="Username/Email"/>
-
-                    <!-- <span style="color:red" ng-show="userForm.username.$dirty && userForm.username.$invalid">
-                        <span ng-show="userForm.username.$error.required">Username is required.</span>
-                    </span> -->
-
-                    <input autocomplete="off" required formControlName="password" name="password" type="password" placeholder="Password"/>
-                    <!-- <span style="color:red" ng-show="userForm.password.$dirty && userForm.password.$invalid">
-                        <span ng-show="userForm.password.$error.required">Password is required.</span>
-                    </span> -->
-                    <!-- <button [disabled]="!userForm.valid">Login</button> -->
+                    <input autocomplete="off" required formControlName="email" type="text" placeholder="Username/Email"/>
+                    <span [hidden]="!(loginForm.get('email').dirty && !loginForm.get('email').valid)">
+                        <span>Username is required.</span>
+                    </span>
+                    <input autocomplete="off" required formControlName="password" type="password" placeholder="Password"/>
+                    <span [hidden]="!(loginForm.get('password').dirty && !loginForm.get('password').valid)">
+                        <span>Password is required.</span>
+                    </span>
                     <button type="submit" [disabled]="!loginForm.valid">Login</button>
                     <div>
                         <p class="message pull-left">Not registered? <a [routerLink]="">Create an account</a></p>
