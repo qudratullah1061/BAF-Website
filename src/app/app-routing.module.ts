@@ -7,6 +7,8 @@ import { AboutComponent } from './modules/about/components/about/about.component
 import { ContactComponent } from './modules/contact/components/contact/contact.component';
 import { CollectionDetailComponent } from '@collections/components/detail/collection-detail.component';
 import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component';
+import { RegisterComponent } from '@auth/components/register/register.component';
+import { UserLoginComponent } from '@auth/components/user-login/user-login.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
   { 'path': 'stories', component: StoriesComponent },
   { 'path': 'about', component: AboutComponent },
   { 'path': 'contact', component: ContactComponent },
+  { 'path': 'register', component: RegisterComponent },
+  { 'path': 'userLogin', component: UserLoginComponent },
   { 'path': '404', component: PageNotFoundComponent },
   { 'path': 'api/*', component: PageNotFoundComponent },
   { 'path': '**', component: PageNotFoundComponent }

@@ -1,0 +1,41 @@
+<main class="login-main">
+    <div class="container">
+        <div class="login-page">
+            <div class="form">
+                <form>
+                    <div class="login-logo">
+                        <a [routerLink]=""><img src="assets/images/logo.png" alt="img"></a>
+                    </div>
+                    <p>Login to your account</p>
+                    <!-- <div class="alert alert-danger" ng-if="showAuthError">
+                        <strong>Error! </strong>{{authError}}
+                    </div> -->
+                    <!-- <div class="alert alert-success" ng-if="showAuthSuccess">
+                        <strong>Success! </strong>{{authSuccess}}
+                    </div> -->
+                    <!-- <?php if($this->session->flashdata('loginMsg')) { ?>
+                        <div class="alert alert-danger">
+                            <strong>Error! </strong> <?php echo $this->session->flashdata('loginMsg'); ?>
+                        </div>
+                    <?php } ?> -->
+                    <input autocomplete="off" required formControlName="email" name="username" type="text" placeholder="Username/Email"/>
+
+                    <!-- <span style="color:red" ng-show="userForm.username.$dirty && userForm.username.$invalid">
+                        <span ng-show="userForm.username.$error.required">Username is required.</span>
+                    </span> -->
+
+                    <input autocomplete="off" required formControlName="password" name="password" type="password" placeholder="Password"/>
+                    <!-- <span style="color:red" ng-show="userForm.password.$dirty && userForm.password.$invalid">
+                        <span ng-show="userForm.password.$error.required">Password is required.</span>
+                    </span> -->
+                    <!-- <button [disabled]="!userForm.valid">Login</button> -->
+                    <button>Login</button>
+                    <div>
+                        <p class="message pull-left">Not registered? <a [routerLink]="">Create an account</a></p>
+                        <p class="message pull-right"><a [routerLink]="">Forgot Password?</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
