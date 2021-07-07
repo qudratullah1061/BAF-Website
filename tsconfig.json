@@ -19,18 +19,32 @@
       "dom"
     ],
     "paths": {
-      "@homepage/*":["./src/app/modules/homepage/*"],
-      "@collections/*":["./src/app/modules/collections/*"],
-      "@shared/*":["./src/app/modules/shared/*"],
-      "@stories/*":["./src/app/modules/stories/*"],
-      "@about/*":["./src/app/modules/about/*"],
-      "@contact/*":["./src/app/modules/contact/*"],
-      "@auth/*":["./src/app/modules/auth/*"]
+      "@auth/*": [
+        "./src/app/modules/auth/*"
+      ],
+      "@homepage/*": [
+        "./src/app/modules/homepage/*"
+      ],
+      "@collections/*": [
+        "./src/app/modules/collections/*"
+      ],
+      "@shared/*": [
+        "./src/app/modules/shared/*"
+      ],
+      "@stories/*": [
+        "./src/app/modules/stories/*"
+      ],
+      "@about/*": [
+        "./src/app/modules/about/*"
+      ],
+      "@contact/*": [
+        "./src/app/modules/contact/*"
+      ]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
-    "strictTemplates" : true
+    "strictTemplates": true
   }
 }

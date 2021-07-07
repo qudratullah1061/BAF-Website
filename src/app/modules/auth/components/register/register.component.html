@@ -27,6 +27,7 @@
                   First name is required
                 </span>
               </div>
+
               <div class="col-sm-6">
                 <input required="" maxlength="50" autocomplete="off" formControlName="lastName" name="lastname"
                   type="text" placeholder="Last Name *" />
@@ -35,6 +36,8 @@
                   Last name is required
                 </span>
               </div>
+
+
               <div class="col-sm-6">
                 <!-- {{registrationForm.get('email').errors | json}} -->
                 <input required="" autocomplete="off" formControlName="email" name="email" type="email"
@@ -50,36 +53,46 @@
                 <input autocomplete="off" maxlength="100" formControlName="affiliation" name="affiliation" type="text"
                   placeholder="Affiliation" />
               </div>
+
               <div class="col-sm-6">
                 <input autocomplete="off" maxlength="100" formControlName="location" name="location" type="text"
                   placeholder="Location" />
               </div>
+
               <div class="col-sm-6">
                 <input autocomplete="off" maxlength="100" formControlName="phone" name="phonenumber" type="text"
                   placeholder="Phonenumber" />
               </div>
+
               <div class="col-md-12">
                 <p class="info">Password must contain 1 upper case character, 1 lower case character and
                   1 digit.</p>
               </div>
-              <div class="col-sm-12" formGroupName="matchPassword">
+
+
+              <!-- formGroupName="matchPassword" -->
+              <div class="col-sm-12">
+
                 <div class="col-sm-6">
                   <input autocomplete="off" formControlName="password" type="password" placeholder="Password *" />
                   <span style="color:red"
-                    *ngIf="!(registrationForm.get('matchPassword').get('password').valid) && (registrationForm.get('matchPassword').get('password').touched)">
-                    <span ng-show="userForm.password.$error.required && userForm.password.$dirty">Password
+                    *ngIf="!(registrationForm.get('password').valid) && (registrationForm.get('password').touched)">
+                    <span [hidden]="!registrationForm.get('password').errors">Password
                       required</span>
-                    <span
-                      ng-show="!userForm.password.$error.required && (userForm.password.$error.minlength || userForm.password.$error.maxlength) && userForm.password.$dirty">Passwords
-                      must be between 6 and 20 characters.</span>
-                    <span
-                      ng-show="!userForm.password.$error.required && !userForm.password.$error.minlength && !userForm.password.$error.maxlength && userForm.password.$error.pattern && userForm.password.$dirty">Password
+
+                    <span [hidden]="true">Passwords
+                      must be between 6 and 20 characters.
+                    </span>
+
+                    <span [hidden]="true">Password
                       must contain 1 upper case character, 1 lower case character and 1 digit.</span>
                   </span>
+
                 </div>
 
                 <div class="col-sm-6">
-                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password" placeholder="Confirm Password *" />
+                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password"
+                    placeholder="Confirm Password *" />
                   <span style="color:red"
                     ngIf="userForm.confirmpassword.$dirty && userForm.confirmpassword.$invalid && userForm.password.$dirty  && userForm.confirmpassword.$touched">
                     <span ng-show="userForm.confirmpassword.$error.required && userForm.confirmpassword.$dirty">Please
@@ -90,11 +103,20 @@
                   </span>
 
                 </div>
+
+
               </div>
+
+
+
+
+
               <div class="col-sm-12">
                 <button [disabled]="!registrationForm.valid">Create Account</button>
               </div>
+
             </div>
+
           </div>
           <div>
             <p class="message pull-left"><a [routerLink]="['login']">Login</a></p>
