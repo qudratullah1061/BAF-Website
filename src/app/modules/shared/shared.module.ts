@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NumberIteratorPipe } from './pipes/number-iterator.pipe';
-import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { LoginFormComponent } from '../auth/components/login/login-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
 
 @NgModule({
   declarations: [
@@ -13,12 +9,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageNotFoundComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule
+    CommonModule
   ],
   exports: [
     NumberIteratorPipe,
-    RouterModule,
     PageNotFoundComponent
   ],
   providers:[]

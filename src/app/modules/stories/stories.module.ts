@@ -4,6 +4,8 @@ import { SharedModule } from '@shared/shared.module';
 import { StoriesComponent } from '@stories/components/stories/stories.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { StoryService } from './services/story.service';
+import { RouterModule } from '@angular/router';
+import { storiesRoutes } from './stories-routes';
 
 
 
@@ -15,6 +17,7 @@ import { StoryService } from './services/story.service';
     CommonModule,
     SharedModule,
     PaginationModule.forRoot(),
+    RouterModule.forChild(storiesRoutes)
   ],
   providers:[
     StoryService
