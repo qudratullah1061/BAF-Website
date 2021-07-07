@@ -16,7 +16,7 @@
           <a class="russian enable">Russian</a>
         </li>
         <li *ngIf="!loggedInUserInfo">
-          <a [routerLink]="'register'">Create account</a>
+          <a [routerLink]="['auth/register']">Create account</a>
         </li>
 
 

@@ -1,4 +1,4 @@
-<main class="login-main">
+<div class="login-main">
   <div class="container">
     <div class="login-page register-main">
       <div class="form">
@@ -44,8 +44,8 @@
                   placeholder="Email *" />
                 <span style="color:red"
                   *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
-                  <span [hidden]="!registrationForm.get('email').errors.required">Email is required.</span>
-                  <span [hidden]="!registrationForm.get('email').errors.email">Invalid email address.</span>
+                  <span [hidden]="!registrationForm.get('email').errors?.required">Email is required.</span>
+                  <span [hidden]="!registrationForm.get('email').errors?.email">Invalid email address.</span>
                 </span>
               </div>
 
@@ -70,46 +70,26 @@
               </div>
 
 
-              <!-- formGroupName="matchPassword" -->
-              <div class="col-sm-12">
-
+              <div class="col-sm-12" formGroupName="matchPassword">
                 <div class="col-sm-6">
                   <input autocomplete="off" formControlName="password" type="password" placeholder="Password *" />
-                  <span style="color:red"
-                    *ngIf="!(registrationForm.get('password').valid) && (registrationForm.get('password').touched)">
-                    <span [hidden]="!registrationForm.get('password').errors">Password
-                      required</span>
-
-                    <span [hidden]="true">Passwords
-                      must be between 6 and 20 characters.
-                    </span>
-
-                    <span [hidden]="true">Password
-                      must contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                  <!-- {{!registrationForm.get('matchPassword').get('password').valid && registrationForm.get('matchPassword').get('password').touched}} -->
+                  <span style="color:red" *ngIf="!registrationForm.get('matchPassword').get('password').valid && registrationForm.get('matchPassword').get('password').touched">
+                    <span *ngIf="registrationForm.get('matchPassword').get('password').errors?.required">Password required</span>
+                    <span *ngIf="registrationForm.get('matchPassword').get('password').errors?.minlength || registrationForm.get('matchPassword').get('password').errors?.maxlength">Passwords must be between 6 and 20 characters.</span>
+                    <span *ngIf="registrationForm.get('matchPassword').get('password').errors?.pattern">Password must contain 1 upper case character, 1 lower case character and 1 digit.</span>
                   </span>
-
                 </div>
 
                 <div class="col-sm-6">
-                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password"
-                    placeholder="Confirm Password *" />
-                  <span style="color:red"
-                    ngIf="userForm.confirmpassword.$dirty && userForm.confirmpassword.$invalid && userForm.password.$dirty  && userForm.confirmpassword.$touched">
-                    <span ng-show="userForm.confirmpassword.$error.required && userForm.confirmpassword.$dirty">Please
-                      confirm your password.</span>
-                    <span
-                      ng-show="!userForm.confirmpassword.$error.required && userForm.confirmpassword.$error.pwmatch">Passwords
-                      do not match.</span>
+                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password" placeholder="Confirm Password *" />
+                  <span style="color:red" *ngIf="(!registrationForm.get('matchPassword').get('confirmPassword').valid && registrationForm.get('matchPassword').get('confirmPassword').touched) || registrationForm.get('matchPassword').errors?.pMatch">
+                    <span *ngIf="registrationForm.get('matchPassword').get('confirmPassword').errors?.required">Please confirm your password.</span>
+                    <span *ngIf="registrationForm.get('matchPassword').errors?.pMatch">Passwords do not match.</span>
                   </span>
 
                 </div>
-
-
               </div>
-
-
-
-
 
               <div class="col-sm-12">
                 <button [disabled]="!registrationForm.valid">Create Account</button>
@@ -142,4 +122,4 @@
       </div>
     </div>
   </div>
-</main>
+</div>
