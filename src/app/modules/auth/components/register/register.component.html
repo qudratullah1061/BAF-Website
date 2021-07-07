@@ -81,7 +81,7 @@
                 <div class="col-sm-6">
                   <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password" placeholder="Confirm Password *" />
                   <span style="color:red"
-                    *ngIf="">
+                    ngIf="userForm.confirmpassword.$dirty && userForm.confirmpassword.$invalid && userForm.password.$dirty  && userForm.confirmpassword.$touched">
                     <span ng-show="userForm.confirmpassword.$error.required && userForm.confirmpassword.$dirty">Please
                       confirm your password.</span>
                     <span
