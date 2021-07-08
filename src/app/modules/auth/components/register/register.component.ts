@@ -59,9 +59,10 @@ export class RegisterComponent implements OnInit {
 function passwordMatch(control: AbstractControl): { [key: string]: boolean } | null {
   const password = control.get('password').value;
   const confirmPassword = control.get('confirmPassword').value;
-  console.log(password + "::");
-  console.log(confirmPassword);
-  console.log(password === confirmPassword);
+
+  // console.log(password + "::");
+  // console.log(confirmPassword);
+  // console.log(password === confirmPassword);
   return (password === confirmPassword) ? null : { 'pMatch': true };
   // }
 
