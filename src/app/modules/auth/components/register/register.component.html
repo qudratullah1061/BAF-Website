@@ -19,7 +19,7 @@
                                                         </span>
                                                     </div>   -->
               <div class="col-sm-6">
-                <input maxlength="50" required="" formControlName="firstName" autocomplete="off" name="firstname"
+                <input maxlength="50" required="" formControlName="firstName" autocomplete="off"
                   type="text" placeholder="First Name *" />
 
                 <span style="color:red;"
@@ -29,7 +29,7 @@
               </div>
 
               <div class="col-sm-6">
-                <input required="" maxlength="50" autocomplete="off" formControlName="lastName" name="lastname"
+                <input required="" maxlength="50" autocomplete="off" formControlName="lastName"
                   type="text" placeholder="Last Name *" />
                 <span style="color:red"
                   *ngIf="!(registrationForm.get('lastName').valid) && (registrationForm.get('lastName').touched)">
@@ -40,7 +40,7 @@
 
               <div class="col-sm-6">
                 <!-- {{registrationForm.get('email').errors | json}} -->
-                <input required="" autocomplete="off" formControlName="email" name="email" type="email"
+                <input required="" autocomplete="off" formControlName="email" type="email"
                   placeholder="Email *" />
                 <span style="color:red"
                   *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
@@ -50,17 +50,17 @@
               </div>
 
               <div class="col-sm-6">
-                <input autocomplete="off" maxlength="100" formControlName="affiliation" name="affiliation" type="text"
+                <input autocomplete="off" maxlength="100" formControlName="affiliation" type="text"
                   placeholder="Affiliation" />
               </div>
 
               <div class="col-sm-6">
-                <input autocomplete="off" maxlength="100" formControlName="location" name="location" type="text"
+                <input autocomplete="off" maxlength="100" formControlName="location" type="text"
                   placeholder="Location" />
               </div>
 
               <div class="col-sm-6">
-                <input autocomplete="off" maxlength="100" formControlName="phone" name="phonenumber" type="text"
+                <input autocomplete="off" maxlength="100" formControlName="phonenumber" type="text"
                   placeholder="Phonenumber" />
               </div>
 
@@ -70,7 +70,7 @@
               </div>
 
 
-              <div class="col-sm-12" formGroupName="matchPassword">
+              <div class="col-md-12" formGroupName="matchPassword">
                 <div class="col-sm-6">
                   <input autocomplete="off" formControlName="password" type="password" placeholder="Password *" />
                   <!-- {{!registrationForm.get('matchPassword').get('password').valid && registrationForm.get('matchPassword').get('password').touched}} -->
@@ -87,15 +87,17 @@
                 </div>
 
                 <div class="col-sm-6">
-                  <input id="confirmpassword" formControlName="confirmPassword" name="confirmpassword" type="password"
+                  <input id="confirmpassword" formControlName="confirmPassword" type="password"
                     placeholder="Confirm Password *" />
-                  <span style="color:red"
-                    *ngIf="(!registrationForm.get('matchPassword').get('confirmPassword').valid && registrationForm.get('matchPassword').get('confirmPassword').touched) || registrationForm.get('matchPassword').errors?.pMatch">
+                  <span
+                    *ngIf="(!registrationForm.get('matchPassword').get('confirmPassword').valid  || registrationForm.get('matchPassword').errors?.notMatched) && registrationForm.get('matchPassword').get('confirmPassword').touched">
 
-                    <span *ngIf="registrationForm.get('matchPassword').get('confirmPassword').errors?.required && registrationForm.get('matchPassword').get('confirmPassword').touched">Please
+                    <span *ngIf="registrationForm.get('matchPassword').get('confirmPassword').errors?.required">Please
                       confirm your password.</span>
 
-                    <span *ngIf="registrationForm.get('matchPassword').get('confirmPassword').value !== '' && registrationForm.get('matchPassword').errors?.pMatch">Passwords do not match.</span>
+                    <span
+                      *ngIf="registrationForm.get('matchPassword').errors?.notMatched && !registrationForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords
+                      do not match.</span>
 
                   </span>
 
@@ -110,8 +112,8 @@
 
           </div>
           <div>
-            <p class="message pull-left"><a [routerLink]="['login']">Login</a></p>
-            <p class="message pull-right"><a href="">Dashboard</a></p>
+            <p class="message pull-left"><a [routerLink]="['/auth/login']">Login</a></p>
+            <p class="message pull-right"><a [routerLink]="['']">Dashboard</a></p>
           </div>
         </form>
       </div>

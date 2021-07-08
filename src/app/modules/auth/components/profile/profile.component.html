@@ -1,0 +1,215 @@
+<div class="profile-page">
+  <div class="container pl-0 pr-0">
+    <div class="t-table">
+
+      <!-- tabs start  -->
+      <div class="profile-list">
+        <div class="account-title">
+          <h4 class="pull-left font-avenir-demi font-1em mb-0 pt-4 pb-4">Account</h4>
+        </div>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab"
+            aria-controls="v-pills-profile" aria-selected="false">
+            <i class="fas fa-user-tie"></i> Profile
+          </a>
+          <a class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab"
+            aria-controls="v-pills-password" aria-selected="false">
+            <i class="far fa-unlock"></i> Change password
+          </a>
+          <a class="nav-link text-red" href="javascript:;" ng-click="deleteAccount()">
+            <i class="fal fa-trash-alt"></i> Delete account
+          </a>
+        </div>
+      </div>
+      <!-- tabs end -->
+
+      <div class="profile-content">
+        <div class="account-title ">
+          <h4 class="pull-left black-light font-avenir-demi font-1em mb-0 pt-4 pb-4">Account Management</h4>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+          <!--Profile tab start-->
+          <div class="tab-pane fade  show active" id="v-pills-profile" role="tabpanel"
+            aria-labelledby="v-pills-profile-tab">
+            <div class="row profile-tab">
+              <div class="col-md-2">
+                <div class="profile-image">
+                  <img [src]="['/assets/images/silhouette.jpg']" alt="">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h4 class="font-1em black-light avenir-r mb-20">Personal details</h4>
+                <form [formGroup]="profileForm" class="login-form go-bottom" (ngSubmit)="updateProfile()">
+                  <div>
+                    <!-- <div class="alert alert-success" ng-if="showAuthSuccess">
+                      <strong>Success! </strong>{{authSuccess}}
+                    </div> -->
+                    <!-- <div class="alert alert-danger" ng-if="showAuthError">
+                      <strong>Error! </strong>{{authError}}
+                    </div> -->
+                    <!--<div class="row">-->
+
+                    <div class="form-group">
+                      <label for="name">First Name <span class="staric">*</span></label>
+                      <input autocomplete="off" formControlName="firstName" type="text" placeholder=""/>
+
+                      <!-- <span style="color:red;" ng-show="userForm.firstname.$dirty && userForm.firstname.$invalid">
+                        <span ng-show="userForm.firstname.$error.required">First name is required.</span>
+                      </span> -->
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Last Name <span class="staric">*</span></label>
+                      <input autocomplete="off" formControlName="lastName" type="text" placeholder=""/>
+
+                      <!-- <span style="color:red" ng-show="userForm.lastname.$dirty && userForm.lastname.$invalid">
+                        <span ng-show="userForm.lastname.$error.required">Last name is required.</span>
+                      </span> -->
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email <span class="staric">*</span></label>
+                      <input autocomplete="off" formControlName="email" type="email" placeholder=""/>
+
+                      <!-- <span style="color:red"
+                        ng-show="userForm.email.$dirty && userForm.email.$invalid && userForm.email.$touched">
+                        <span ng-show="userForm.email.$error.required">Email is required.</span>
+                        <span ng-show="userForm.email.$error.email">Invalid email address.</span>
+                      </span> -->
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="username">Login Name <span class="optional">(optional)</span></label>
+                      <input autocomplete="off" formControlName="userName" type="text"/>
+
+                      <!-- <span style="color:red" ng-show="userForm.username.$dirty && userForm.username.$invalid">
+                        <span ng-show="userForm.username.$error.required">Username is required.</span>
+                      </span> -->
+                    </div>
+
+                    <div class="form-group">
+                      <label for="affiliation">Affiliation <span class="optional">(optional)</span></label>
+                      <input autocomplete="off" formControlName="affiliation" type="text" placeholder=""/>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="location">Location <span class="optional">(optional)</span></label>
+                      <input autocomplete="off" formControlName="location" type="text"/>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="location">Phone Number <span class="optional">(optional)</span></label>
+                      <input autocomplete="off" formControlName="phoneNumber" type="text" placeholder="Phonenumber"/>
+
+                    </div>
+
+                    <div class="form-group">
+                      <button class="submit-btn" [disabled]="!profileForm.valid">Update Account</button>
+                    </div>
+                  </div>
+                </form>
+                <div class="account-info mt-40">
+                  <h4 class="font-1em black-light avenir-r mb-20">Account Info</h4>
+
+                  <ul>
+                    <li>
+                      <div class="label">Account created:</div>
+                      <div id="createdOn" class="label-value">
+                        {{userInfo.createdOn}}</div>
+                    </li>
+                    <li>
+                      <div class="label">Status:</div>
+                      <div class="label-value" id="lastLogin">
+                        {{userInfo.lastLoginTime}}</div>
+                    </li>
+                    <li>
+                      <div class="label">Last login:</div>
+                      <div class="label-value" id="lastLogin">
+                        {{userInfo.lastLoginTime}}</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!--Profile tab end-->
+
+          <!--Change password tab start-->
+          <!-- <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+            <div class="row profile-tab">
+              <div class="col-md-8 offset-md-2" ng-controller="changePasswordCtrl" ng-cloak>
+                <h4 class="font-1em black-light avenir-r mb-20">Change Password</h4>
+                <form name="passwordUserForm" class="login-form" ng-submit="submitForm()">
+                  <div class="alert alert-success" ng-if="showAuthSuccess">
+                    <strong>Success! </strong>{{authSuccess}}
+                  </div>
+                  <div class="alert alert-danger" ng-if="showAuthError">
+                    <strong>Error! </strong>{{authError}}
+                  </div>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Password must contain</strong> 1 upper case character, 1 lower case character and 1 digit.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="oldpassword">Old Password <span class="staric">*</span></label>
+                    <input required="" maxlength="128" id="oldpassword" name="oldpassword" type="password"
+                      placeholder="" ng-model="user.oldpassword" ng-minlength="6" ng-maxlength="20"
+                      ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
+                    <span style="color:red"
+                      ng-show="passwordUserForm.oldpassword.$dirty && passwordUserForm.oldpassword.$invalid && passwordUserForm.oldpassword.$touched">
+                      <span
+                        ng-show="passwordUserForm.oldpassword.$error.required && passwordUserForm.oldpassword.$dirty">required</span>
+                      <span
+                        ng-show="!passwordUserForm.oldpassword.$error.required && (passwordUserForm.oldpassword.$error.minlength || passwordUserForm.oldpassword.$error.maxlength) && passwordUserForm.oldpassword.$dirty">Old
+                        Password must be between 6 and 20 characters.</span>
+                      <span
+                        ng-show="!passwordUserForm.oldpassword.$error.required && !passwordUserForm.oldpassword.$error.minlength && !passwordUserForm.oldpassword.$error.maxlength && passwordUserForm.oldpassword.$error.pattern && passwordUserForm.oldpassword.$dirty">Old
+                        Password should contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">New Password <span class="staric">*</span></label>
+                    <input required="" maxlength="128" id="password" name="password" type="password" placeholder=""
+                      ng-model="user.password" ng-minlength="6" ng-maxlength="20"
+                      ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
+                    <span style="color:red"
+                      ng-show="passwordUserForm.password.$dirty && passwordUserForm.password.$invalid && passwordUserForm.password.$touched">
+                      <span
+                        ng-show="passwordUserForm.password.$error.required && passwordUserForm.password.$dirty">required</span>
+                      <span
+                        ng-show="!passwordUserForm.password.$error.required && (passwordUserForm.password.$error.minlength || passwordUserForm.password.$error.maxlength) && passwordUserForm.password.$dirty">Passwords
+                        must be between 6 and 20 characters.</span>
+                      <span
+                        ng-show="!passwordUserForm.password.$error.required && !passwordUserForm.password.$error.minlength && !passwordUserForm.password.$error.maxlength && passwordUserForm.password.$error.pattern && passwordUserForm.password.$dirty">Password
+                        must contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmpassword">Confirm Password <span class="staric">*</span></label>
+                    <input required maxlength="128" autocomplete="off" id="confirmpassword" pw-check='password'
+                      name="confirmpassword" type="password" placeholder="" ng-model="user.confirmpassword" />
+                    <span style="color:red"
+                      ng-show="passwordUserForm.confirmpassword.$dirty && passwordUserForm.confirmpassword.$invalid && passwordUserForm.password.$dirty && passwordUserForm.confirmpassword.$touched">
+                      <span
+                        ng-show="passwordUserForm.confirmpassword.$error.required && passwordUserForm.confirmpassword.$dirty">Please
+                        confirm your password.</span>
+                      <span
+                        ng-show="!passwordUserForm.confirmpassword.$error.required && passwordUserForm.confirmpassword.$error.pwmatch">Passwords
+                        do not match.</span>
+                    </span>
+                  </div>
+                  <button class="submit-btn" ng-disabled="!passwordUserForm.$valid">Change Password</button>
+                </form>
+              </div>
+
+            </div>
+          </div> -->
+          <!--Change passwrod tab ends-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

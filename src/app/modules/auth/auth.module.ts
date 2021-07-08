@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from '@auth/components/register/register.component';
-import { LoginService } from '@auth/services/login.service';
-import { RegisterService } from '@auth/services/register.service';
+import { AuthService } from '@auth/services/auth.service';
 import { UserLoginComponent } from '@auth/components/user-login/user-login.component';
 import { authRoutes } from './auth-routes';
 import { LoginFormComponent } from './components/login/login-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
     UserLoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,6 @@ import { LoginFormComponent } from './components/login/login-form.component';
   exports: [
     LoginFormComponent
   ],
-  providers: [LoginService, RegisterService]
+  providers: [AuthService]
 })
 export class AuthModule { }

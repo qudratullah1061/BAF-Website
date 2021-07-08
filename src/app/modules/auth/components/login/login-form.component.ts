@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
-import { LoginService } from '@auth/services/login.service';
+import { AuthService } from '@auth/services/auth.service';
 
 @Component({
   selector: 'baf-login-form',
@@ -16,15 +16,15 @@ export class LoginFormComponent implements OnInit {
   authError: string = "";
   authSuccess: string = "";
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.loginService.getLoginFormGroup();
+    this.loginForm = this.authService.getLoginFormGroup();
   }
 
   authUserLogin() {
     this.showLoading = true;
-    this.loginService.authUser(this.loginForm).subscribe({
+    this.authService.authUser(this.loginForm).subscribe({
       next: data => {
         this.authError = "";
         this.authSuccess = "";

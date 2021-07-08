@@ -23,7 +23,7 @@
           </span>
           <button type="submit" [disabled]="!loginForm.valid">Login</button>
           <div>
-            <p class="message pull-left">Not registered? <a [routerLink]="">Create an account</a></p>
+            <p class="message pull-left">Not registered? <a [routerLink]="['/auth/register']">Create an account</a></p>
             <p class="message pull-right"><a [routerLink]="">Forgot Password?</a></p>
           </div>
         </form>
