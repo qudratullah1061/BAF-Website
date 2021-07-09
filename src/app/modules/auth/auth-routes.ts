@@ -1,8 +1,9 @@
 
 import { Routes } from '@angular/router';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
-import { UserLoginComponent } from './components/user-login/user-login.component';
+import { ProfileComponent } from '@auth/components/profile/profile.component';
+import { RegisterComponent } from '@auth/components/register/register.component';
+import { UserLoginComponent } from '@auth/components/user-login/user-login.component';
+import { ProfileRouteActivatorService } from '@auth/guards/profile-route-activator.service';
 
 export const authRoutes: Routes = [
   {
@@ -15,6 +16,7 @@ export const authRoutes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate:[ProfileRouteActivatorService]
   }
 ];

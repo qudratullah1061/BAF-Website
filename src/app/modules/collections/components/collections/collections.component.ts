@@ -15,7 +15,6 @@ export class CollectionsComponent implements OnInit {
   constructor(private collectionPagesService: CollectionpageService) {
   }
 
-
   ngOnInit(): void {
     this.collectionPagesService.getCollectionPageData().subscribe({
       next: data => {

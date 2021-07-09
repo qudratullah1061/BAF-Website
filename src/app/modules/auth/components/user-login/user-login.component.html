@@ -3,8 +3,9 @@
     <div class="login-page">
       <div class="form">
         <form [formGroup]="loginForm" (ngSubmit)="authUserLogin()">
+          {{loginForm.valid | json}}
           <div class="login-logo">
-            <a [routerLink]=""><img src="assets/images/logo.png" alt="img"></a>
+            <a [routerLink]="['/']"><img src="assets/images/logo.png" alt="img"></a>
           </div>
           <p>Login to your account</p>
           <div class="alert alert-danger" *ngIf="authError">
@@ -13,7 +14,7 @@
           <div class="alert alert-success" *ngIf="authSuccess">
             <strong>Success! </strong>{{authSuccess}}
           </div>
-          <input autocomplete="off" required formControlName="email" type="text" placeholder="Username/Email" />
+          <input autocomplete="off" formControlName="email" name="email" type="text" placeholder="Username/Email" />
           <span [hidden]="!(loginForm.get('email').dirty && !loginForm.get('email').valid)">
             <span>Username is required.</span>
           </span>
@@ -21,7 +22,7 @@
           <span [hidden]="!(loginForm.get('password').dirty && !loginForm.get('password').valid)">
             <span>Password is required.</span>
           </span>
-          <button type="submit" [disabled]="!loginForm.valid">Login</button>
+          <button type="submit" [disabled]="loginForm.invalid || loginForm.pristine">Login</button>
           <div>
             <p class="message pull-left">Not registered? <a [routerLink]="['/auth/register']">Create an account</a></p>
             <p class="message pull-right"><a [routerLink]="">Forgot Password?</a></p>

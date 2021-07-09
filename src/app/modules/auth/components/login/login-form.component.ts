@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 import { AuthService } from '@auth/services/auth.service';
+import { LoginStateService } from '@auth/services/login-state.service';
 
 @Component({
   selector: 'baf-login-form',
@@ -10,13 +11,14 @@ import { AuthService } from '@auth/services/auth.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  loggedInUserInfo: ILoggedInUserInfo;
   loginForm: FormGroup;
   showLoading: boolean = false;
   authError: string = "";
   authSuccess: string = "";
+  @Input() dropdown: any;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loginForm = this.authService.getLoginFormGroup();
@@ -29,10 +31,12 @@ export class LoginFormComponent implements OnInit {
         this.authError = "";
         this.authSuccess = "";
         if (!data.error) {
-          this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo;
           this.authSuccess = data.description;
-          localStorage.setItem('loggedInUserInfo', JSON.stringify(this.loggedInUserInfo));
-          window.location.reload();
+          setTimeout(() => {
+            this.dropdown.hide();
+            this.loginStateService.loggedInUserInfo = <ILoggedInUserInfo>data.loggedInUser;
+            this.router.navigate(['/']);
+          }, 1000);
         } else {
           this.authError = data.description;
         }

@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 import { AuthService } from '@auth/services/auth.service';
+import { LoginStateService } from '@auth/services/login-state.service';
 
 @Component({
   selector: 'baf-user-login',
@@ -17,7 +18,7 @@ export class UserLoginComponent implements OnInit {
   authError: string = "";
   authSuccess: string = "";
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.authService.getLoginFormGroup();
@@ -30,10 +31,11 @@ export class UserLoginComponent implements OnInit {
         this.authError = "";
         this.authSuccess = "";
         if (!data.error) {
-          this.loggedInUserInfo = data.loggedInUser as ILoggedInUserInfo;
           this.authSuccess = data.description;
-          localStorage.setItem('loggedInUserInfo', JSON.stringify(this.loggedInUserInfo));
-          this.router.navigate(['']);
+          setTimeout(() => {
+            this.loginStateService.loggedInUserInfo = <ILoggedInUserInfo>data.loggedInUser;
+            this.router.navigate(['/']);
+          }, 1000);
         } else {
           this.authError = data.description;
         }

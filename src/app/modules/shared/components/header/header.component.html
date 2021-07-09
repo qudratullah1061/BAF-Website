@@ -15,22 +15,22 @@
         <li *ngIf="showLangBtn">
           <a class="russian enable">Russian</a>
         </li>
-        <li *ngIf="!loggedInUserInfo">
+        <li *ngIf="!loginStateService.loggedInUserInfo">
           <a [routerLink]="['auth/register']">Create account</a>
         </li>
 
 
-        <li class="dropdown loginDropdown" dropdown [insideClick]="true" *ngIf="!loggedInUserInfo">
+        <li class="dropdown loginDropdown" dropdown #dropdown="bs-dropdown" [insideClick]="true" *ngIf="!loginStateService.loggedInUserInfo">
           <a class="dropdown-toggle" dropdownToggle role="button" id="dropdownMenuLink" aria-controls="dropdown-login">
             <span> Log in</span>
           </a>
 
           <div id="dropdown-login" *dropdownMenu class="dropdown-menu login-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenuLink">
-            <baf-login-form></baf-login-form>
+            <baf-login-form [dropdown]="dropdown"></baf-login-form>
           </div>
         </li>
 
-        <li class="dropdown accountDropdown" dropdown [insideClick]="true" *ngIf="loggedInUserInfo">
+        <li class="dropdown accountDropdown" dropdown [insideClick]="true" *ngIf="loginStateService.loggedInUserInfo">
           <a class="dropdown-toggle" dropdownToggle role="button" id="createAccount" aria-controls="dropdown-account">
             <span> Account</span> <i class="fas fa-user-circle"></i>
           </a>

@@ -8,6 +8,7 @@ import { UserLoginComponent } from '@auth/components/user-login/user-login.compo
 import { authRoutes } from './auth-routes';
 import { LoginFormComponent } from './components/login/login-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileRouteActivatorService } from './guards/profile-route-activator.service';
 
 
 @NgModule({
@@ -25,6 +26,6 @@ import { ProfileComponent } from './components/profile/profile.component';
   exports: [
     LoginFormComponent
   ],
-  providers: [AuthService]
+  providers: [AuthService,ProfileRouteActivatorService]
 })
 export class AuthModule { }

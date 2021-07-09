@@ -5,6 +5,7 @@ import { CollectionsComponent } from '@collections/components/collections/collec
 import { CollectionDetailComponent } from '@collections/components/detail/collection-detail.component';
 import { collectionRoutes } from '@collections/collection-routes';
 import { RouterModule } from '@angular/router';
+import { ProfileRouteActivatorService } from '@auth/guards/profile-route-activator.service';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,9 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     RouterModule.forChild(collectionRoutes)
+  ],
+  providers:[
+    ProfileRouteActivatorService
   ]
 })
 export class CollectionModule { }
