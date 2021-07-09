@@ -210,7 +210,7 @@
 
                     <span style="color:red"
                       *ngIf="!PasswordResetForm.get('confirmPassword').valid && PasswordResetForm.get('confirmPassword').touched">
-                      <span *ngIf="PasswordResetForm.get('confirmPassword').errors.required">Please
+                      <span *ngIf="PasswordResetForm.get('confirmPassword').errors?.required && PasswordResetForm.get('confirmPassword').touched">Please
                         confirm your password.</span>
                       <!-- <span
                         ng-show="!passwordUserForm.confirmpassword.$error.required && passwordUserForm.confirmpassword.$error.pwmatch">Passwords
