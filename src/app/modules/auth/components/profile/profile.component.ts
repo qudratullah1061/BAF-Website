@@ -25,10 +25,11 @@ export class ProfileComponent implements OnInit {
     this.userInfo = JSON.parse(localStorage.getItem('loggedInUserInfo'));
 
     this.profileForm = this.authService.getProfileFormGroup(this.userInfo);
+
     this.PasswordResetForm = this.authService.getForgetPasswordFormGroup();
   }
   updateProfile(){}
-  passwordRest(){
+  passwordReset(){
     console.log(this.PasswordResetForm.value)
   }
 }

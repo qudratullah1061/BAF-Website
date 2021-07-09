@@ -14,6 +14,16 @@ export function passwordMatch(): ValidatorFn {
   }
 }
 
+
+export function paswordResetMatch(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: boolean } | null => {
+    const newPassword = control.get('newPassword').value;
+    const confirmPassword = control.get('confirmPassword').value;
+    return (newPassword === confirmPassword) ? null : { 'notMatched': true };
+  }
+}
+
+
 @Injectable()
 
 export class AuthService {
@@ -28,7 +38,7 @@ export class AuthService {
       affiliation: ['', []],
       location: ['', []],
       phoneNumber: ['', []],
-      
+
       matchPassword: this.fb.group({
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
         confirmPassword: ['', [Validators.required]]
@@ -64,10 +74,20 @@ export class AuthService {
 
   getForgetPasswordFormGroup(): FormGroup {
     return this.fb.group({
-      oldPassword: [[''], [Validators.required,Validators.maxLength(128),Validators.minLength(6),Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
-      newPassword: [[''], [Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
-      confirmPassword: [[''], [Validators.required]],
-     
+      oldPassword: [[''], [Validators.required, Validators.maxLength(128), Validators.minLength(6), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
+
+
+      matchPassword: this.fb.group({
+        newPassword: [[''], [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+        confirmPassword: [[''], [Validators.required]],
+      }, { validators: paswordResetMatch})
+
+
+
+
+      // newPassword: [[''], [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      // confirmPassword: [[''], [Validators.required]],
+
     });
   }
 
