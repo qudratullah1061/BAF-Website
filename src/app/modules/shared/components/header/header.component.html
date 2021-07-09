@@ -36,7 +36,7 @@
           </a>
           <div id="dropdown-account" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="createAccount">
             <a class="nav-link" [routerLink]=""><span>Saved</span><span>folders</span></a>
-            <a class="nav-link" [routerLink]="">My Profile</a>
+            <a class="nav-link" [routerLink]="['/auth/profile']">My Profile</a>
             <a class="nav-link" href="javascript:;" (click)="logout()">Log out</a>
           </div>
         </li>

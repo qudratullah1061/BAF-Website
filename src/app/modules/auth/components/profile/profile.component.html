@@ -7,6 +7,7 @@
         <div class="account-title">
           <h4 class="pull-left font-avenir-demi font-1em mb-0 pt-4 pb-4">Account</h4>
         </div>
+
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab"
             aria-controls="v-pills-profile" aria-selected="false">
@@ -20,6 +21,7 @@
             <i class="fal fa-trash-alt"></i> Delete account
           </a>
         </div>
+
       </div>
       <!-- tabs end -->
 
@@ -41,9 +43,11 @@
                 <h4 class="font-1em black-light avenir-r mb-20">Personal details</h4>
                 <form [formGroup]="profileForm" class="login-form go-bottom" (ngSubmit)="updateProfile()">
                   <div>
+
                     <!-- <div class="alert alert-success" ng-if="showAuthSuccess">
                       <strong>Success! </strong>{{authSuccess}}
                     </div> -->
+
                     <!-- <div class="alert alert-danger" ng-if="showAuthError">
                       <strong>Error! </strong>{{authError}}
                     </div> -->
@@ -51,54 +55,62 @@
 
                     <div class="form-group">
                       <label for="name">First Name <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="firstName" type="text" placeholder=""/>
+                      <input autocomplete="off" formControlName="firstName" type="text" placeholder="" />
 
-                      <!-- <span style="color:red;" ng-show="userForm.firstname.$dirty && userForm.firstname.$invalid">
-                        <span ng-show="userForm.firstname.$error.required">First name is required.</span>
-                      </span> -->
+                      <span style="color:red"
+                        *ngIf="!(profileForm.get('firstName').valid) && (profileForm.get('firstName').touched)">
+                        First name is required
+                      </span>
+
                     </div>
                     <div class="form-group">
                       <label for="name">Last Name <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="lastName" type="text" placeholder=""/>
+                      <input autocomplete="off" formControlName="lastName" type="text" placeholder="" />
 
-                      <!-- <span style="color:red" ng-show="userForm.lastname.$dirty && userForm.lastname.$invalid">
-                        <span ng-show="userForm.lastname.$error.required">Last name is required.</span>
-                      </span> -->
+                      <span style="color:red"
+                        *ngIf="!(profileForm.get('lastName').valid) && (profileForm.get('lastName').touched)">
+                        Last name is required
+                      </span>
+
                     </div>
                     <div class="form-group">
                       <label for="email">Email <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="email" type="email" placeholder=""/>
+                      <input autocomplete="off" formControlName="email" type="email" placeholder="" />
 
-                      <!-- <span style="color:red"
-                        ng-show="userForm.email.$dirty && userForm.email.$invalid && userForm.email.$touched">
-                        <span ng-show="userForm.email.$error.required">Email is required.</span>
-                        <span ng-show="userForm.email.$error.email">Invalid email address.</span>
-                      </span> -->
+                      <span style="color:red"
+                        *ngIf="!(profileForm.get('email').valid) && profileForm.get('email').touched">
+
+                        <span *ngIf="profileForm.get('email').errors.required">Email is required.</span>
+                        <span *ngIf="profileForm.get('email').errors?.email">Invalid email address.</span>
+                      </span>
+
+
 
                     </div>
 
                     <div class="form-group">
                       <label for="username">Login Name <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="userName" type="text"/>
+                      <input autocomplete="off" formControlName="userName" type="text" />
 
-                      <!-- <span style="color:red" ng-show="userForm.username.$dirty && userForm.username.$invalid">
-                        <span ng-show="userForm.username.$error.required">Username is required.</span>
-                      </span> -->
+                      <span style="color:red"
+                        *ngIf="!(profileForm.get('userName').valid) && (profileForm.get('userName').touched)">
+                        Username is required
+                      </span>
                     </div>
 
                     <div class="form-group">
                       <label for="affiliation">Affiliation <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="affiliation" type="text" placeholder=""/>
+                      <input autocomplete="off" formControlName="affiliation" type="text" placeholder="" />
 
                     </div>
                     <div class="form-group">
                       <label for="location">Location <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="location" type="text"/>
+                      <input autocomplete="off" formControlName="location" type="text" />
 
                     </div>
                     <div class="form-group">
                       <label for="location">Phone Number <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="phoneNumber" type="text" placeholder="Phonenumber"/>
+                      <input autocomplete="off" formControlName="phoneNumber" type="text" placeholder="Phonenumber" />
 
                     </div>
 
@@ -135,78 +147,84 @@
           <!--Profile tab end-->
 
           <!--Change password tab start-->
-          <!-- <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+          <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
             <div class="row profile-tab">
-              <div class="col-md-8 offset-md-2" ng-controller="changePasswordCtrl" ng-cloak>
+              <div class="col-md-8 offset-md-2">
                 <h4 class="font-1em black-light avenir-r mb-20">Change Password</h4>
-                <form name="passwordUserForm" class="login-form" ng-submit="submitForm()">
-                  <div class="alert alert-success" ng-if="showAuthSuccess">
+                <form [formGroup]="PasswordResetForm" class="login-form" (ngSubmit)="passwordRest()">
+
+                  <!-- <div class="alert alert-success" *ngIf="showAuthSuccess">
                     <strong>Success! </strong>{{authSuccess}}
-                  </div>
-                  <div class="alert alert-danger" ng-if="showAuthError">
+                  </div> -->
+
+                  <!-- <div class="alert alert-danger" *ngIf="showAuthError">
                     <strong>Error! </strong>{{authError}}
-                  </div>
+                  </div> -->
+
                   <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <strong>Password must contain</strong> 1 upper case character, 1 lower case character and 1 digit.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> -->
                   </div>
 
                   <div class="form-group">
                     <label for="oldpassword">Old Password <span class="staric">*</span></label>
-                    <input required="" maxlength="128" id="oldpassword" name="oldpassword" type="password"
-                      placeholder="" ng-model="user.oldpassword" ng-minlength="6" ng-maxlength="20"
-                      ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
-                    <span style="color:red"
-                      ng-show="passwordUserForm.oldpassword.$dirty && passwordUserForm.oldpassword.$invalid && passwordUserForm.oldpassword.$touched">
+                    <input required="" formControlName="oldPassword" id="oldpassword" type="password" placeholder="" />
+
+                    <span
+                      *ngIf="!(PasswordResetForm.get('oldPassword').valid) && PasswordResetForm.get('oldPassword').touched">
+
+                      <span *ngIf="PasswordResetForm.get('oldPassword').errors?.required">required</span>
                       <span
-                        ng-show="passwordUserForm.oldpassword.$error.required && passwordUserForm.oldpassword.$dirty">required</span>
-                      <span
-                        ng-show="!passwordUserForm.oldpassword.$error.required && (passwordUserForm.oldpassword.$error.minlength || passwordUserForm.oldpassword.$error.maxlength) && passwordUserForm.oldpassword.$dirty">Old
-                        Password must be between 6 and 20 characters.</span>
-                      <span
-                        ng-show="!passwordUserForm.oldpassword.$error.required && !passwordUserForm.oldpassword.$error.minlength && !passwordUserForm.oldpassword.$error.maxlength && passwordUserForm.oldpassword.$error.pattern && passwordUserForm.oldpassword.$dirty">Old
-                        Password should contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                        *ngIf="PasswordResetForm.get('oldPassword').errors.minlength || PasswordResetForm.get('oldPassword').errors.maxlength">Old
+                        Password must be between 6 and 20 characters.
+                      </span>
+
+                      <span *ngIf="PasswordResetForm.get('oldPassword').errors.pattern">Old
+                        Password should contain 1 upper case character, 1 lower case character and 1 digit.
+                      </span>
                     </span>
+
+
                   </div>
                   <div class="form-group">
                     <label for="password">New Password <span class="staric">*</span></label>
-                    <input required="" maxlength="128" id="password" name="password" type="password" placeholder=""
-                      ng-model="user.password" ng-minlength="6" ng-maxlength="20"
-                      ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" />
+                    <input required="" formControlName="newPassword" id="password" type="password" placeholder="" />
+
                     <span style="color:red"
-                      ng-show="passwordUserForm.password.$dirty && passwordUserForm.password.$invalid && passwordUserForm.password.$touched">
+                      *ngIf="!PasswordResetForm.get('newPassword').valid && PasswordResetForm.get('newPassword').touched">
                       <span
-                        ng-show="passwordUserForm.password.$error.required && passwordUserForm.password.$dirty">required</span>
+                        *ngIf="PasswordResetForm.get('newPassword').errors.required && PasswordResetForm.get('newPassword').touched">required</span>
                       <span
-                        ng-show="!passwordUserForm.password.$error.required && (passwordUserForm.password.$error.minlength || passwordUserForm.password.$error.maxlength) && passwordUserForm.password.$dirty">Passwords
+                        *ngIf="PasswordResetForm.get('newPassword').errors.minlength || PasswordResetForm.get('newPassword').errors.maxlength">Passwords
                         must be between 6 and 20 characters.</span>
-                      <span
-                        ng-show="!passwordUserForm.password.$error.required && !passwordUserForm.password.$error.minlength && !passwordUserForm.password.$error.maxlength && passwordUserForm.password.$error.pattern && passwordUserForm.password.$dirty">Password
+                      <span *ngIf="PasswordResetForm.get('newPassword').errors.pattern">Password
                         must contain 1 upper case character, 1 lower case character and 1 digit.</span>
                     </span>
+
                   </div>
                   <div class="form-group">
                     <label for="confirmpassword">Confirm Password <span class="staric">*</span></label>
-                    <input required maxlength="128" autocomplete="off" id="confirmpassword" pw-check='password'
-                      name="confirmpassword" type="password" placeholder="" ng-model="user.confirmpassword" />
+                    <input id="confirmpassword" formControlName="confirmPassword" type="password" placeholder="" />
+
                     <span style="color:red"
-                      ng-show="passwordUserForm.confirmpassword.$dirty && passwordUserForm.confirmpassword.$invalid && passwordUserForm.password.$dirty && passwordUserForm.confirmpassword.$touched">
-                      <span
-                        ng-show="passwordUserForm.confirmpassword.$error.required && passwordUserForm.confirmpassword.$dirty">Please
+                      *ngIf="!PasswordResetForm.get('confirmPassword').valid && PasswordResetForm.get('confirmPassword').touched">
+                      <span *ngIf="PasswordResetForm.get('confirmPassword').errors.required">Please
                         confirm your password.</span>
-                      <span
+                      <!-- <span
                         ng-show="!passwordUserForm.confirmpassword.$error.required && passwordUserForm.confirmpassword.$error.pwmatch">Passwords
-                        do not match.</span>
+                        do not match.</span> -->
                     </span>
+
                   </div>
-                  <button class="submit-btn" ng-disabled="!passwordUserForm.$valid">Change Password</button>
+                  <button type="submit" class="submit-btn" [disabled]="!PasswordResetForm.valid">Change
+                    Password</button>
                 </form>
               </div>
 
             </div>
-          </div> -->
+          </div>
           <!--Change passwrod tab ends-->
         </div>
       </div>
