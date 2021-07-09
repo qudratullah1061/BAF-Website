@@ -55,10 +55,10 @@
 
                     <div class="form-group">
                       <label for="name">First Name <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="firstName" type="text" placeholder="" />
+                      <input autocomplete="off" formControlName="firstName" type="text" />
 
                       <span style="color:red"
-                        *ngIf="!(profileForm.get('firstName').valid) && (profileForm.get('firstName').touched)">
+                        *ngIf="!(profileForm.get('firstName').valid) && (profileForm.get('firstName').touched && profileForm.get('firstName').dirty)">
                         First name is required
                       </span>
 
@@ -68,7 +68,7 @@
                       <input autocomplete="off" formControlName="lastName" type="text" placeholder="" />
 
                       <span style="color:red"
-                        *ngIf="!(profileForm.get('lastName').valid) && (profileForm.get('lastName').touched)">
+                        *ngIf="!(profileForm.get('lastName').valid) && (profileForm.get('lastName').touched && profileForm.get('lastName').dirty)">
                         Last name is required
                       </span>
 
@@ -78,16 +78,11 @@
                       <label for="email">Email <span class="staric">*</span></label>
                       <input autocomplete="off" formControlName="email" type="email" placeholder="" />
 
-                      <!-- -------------- -->
                       <span style="color:red"
-                        *ngIf="!profileForm.get('email').valid && profileForm.get('email').touched">
+                        *ngIf="!profileForm.get('email').valid && (profileForm.get('email').touched && profileForm.get('email').dirty)">
                         <span [hidden]="!profileForm.get('email').errors?.required">Email is required.</span>
                         <span [hidden]="!profileForm.get('email').errors?.email">Invalid email address.</span>
                       </span>
-                      <!-- -------------- -->
-
-
-
                     </div>
 
                     <div class="form-group">
@@ -95,7 +90,7 @@
                       <input autocomplete="off" formControlName="userName" type="text" />
 
                       <span style="color:red"
-                        *ngIf="!(profileForm.get('userName').valid) && (profileForm.get('userName').touched)">
+                        *ngIf="!(profileForm.get('userName').valid) && (profileForm.get('userName').touched && profileForm.get('userName').dirty)">
                         Username is required
                       </span>
                     </div>
@@ -123,7 +118,6 @@
                 </form>
                 <div class="account-info mt-40">
                   <h4 class="font-1em black-light avenir-r mb-20">Account Info</h4>
-
                   <ul>
                     <li>
                       <div class="label">Account created:</div>
@@ -153,7 +147,7 @@
             <div class="row profile-tab">
               <div class="col-md-8 offset-md-2">
                 <h4 class="font-1em black-light avenir-r mb-20">Change Password</h4>
-                <form [formGroup]="PasswordResetForm" class="login-form" (ngSubmit)="passwordReset()">
+                <form [formGroup]="passwordResetForm" class="login-form" (ngSubmit)="passwordReset()">
 
                   <!-- <div class="alert alert-success" *ngIf="showAuthSuccess">
                     <strong>Success! </strong>{{authSuccess}}
@@ -172,63 +166,57 @@
 
                   <div class="form-group">
                     <label for="oldpassword">Old Password <span class="staric">*</span></label>
-                    <input required="" formControlName="oldPassword" id="oldpassword" type="password" placeholder="" />
+                    <input required="" formControlName="oldPassword" id="oldpassword" type="password" />
 
                     <span
-                      *ngIf="!(PasswordResetForm.get('oldPassword').valid) && PasswordResetForm.get('oldPassword').touched">
+                      *ngIf="!(passwordResetForm.get('oldPassword').valid) && (passwordResetForm.get('oldPassword').touched && passwordResetForm.get('oldPassword').dirty)">
 
-                      <span *ngIf="PasswordResetForm.get('oldPassword').errors?.required">required</span>
+                      <span *ngIf="passwordResetForm.get('oldPassword').errors?.required">required</span>
                       <span
-                        *ngIf="PasswordResetForm.get('oldPassword').errors.minlength || PasswordResetForm.get('oldPassword').errors.maxlength">Old
+                        *ngIf="passwordResetForm.get('oldPassword').errors?.minlength || passwordResetForm.get('oldPassword').errors?.maxlength">Old
                         Password must be between 6 and 20 characters.
                       </span>
 
-                      <span *ngIf="PasswordResetForm.get('oldPassword').errors.pattern">Old
+                      <span *ngIf="passwordResetForm.get('oldPassword').errors?.pattern">Old
                         Password should contain 1 upper case character, 1 lower case character and 1 digit.
                       </span>
                     </span>
 
 
                   </div>
-                  <div class="" formGroupName="matchPassword">
 
+                  <div class="" formGroupName="matchPassword">
                     <div class="form-group">
                       <label for="password">New Password <span class="staric">*</span></label>
-                      <input required="" formControlName="newPassword" id="password" type="password" placeholder="" />
-
+                      <input required="" formControlName="password" id="password" type="password" />
                       <span style="color:red"
-                        *ngIf="!PasswordResetForm.get('matchPassword').get('newPassword').valid && PasswordResetForm.get('matchPassword').get('newPassword').touched">
+                        *ngIf="!passwordResetForm.get('matchPassword').get('password').valid && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">
                         <span
-                          *ngIf="PasswordResetForm.get('matchPassword').get('newPassword').errors.required && PasswordResetForm.get('matchPassword').get('newPassword').touched">required</span>
+                          *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.required && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">Password
+                          is required</span>
                         <span
-                          *ngIf="PasswordResetForm.get('newPassword').errors.minlength || PasswordResetForm.get('newPassword').errors.maxlength">Passwords
-                          must be between 6 and 20 characters.</span>
-                        <span *ngIf="PasswordResetForm.get('newPassword').errors.pattern">Password
+                          *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.minlength || passwordResetForm.get('matchPassword').get('password').errors?.maxlength">Passwords
+                          must be between 6 and 20 characters.
+                        </span>
+                        <span *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.pattern">Password
                           must contain 1 upper case character, 1 lower case character and 1 digit.</span>
                       </span>
 
                     </div>
-
                     <div class="form-group">
                       <label for="confirmpassword">Confirm Password <span class="staric">*</span></label>
                       <input id="confirmpassword" formControlName="confirmPassword" type="password" placeholder="" />
-                      {{PasswordResetForm.get('matchPassword').get('confirmPassword').errors | json}}
                       <span style="color:red"
-                        *ngIf="(!PasswordResetForm.get('matchPassword').get('confirmPassword').valid  || PasswordResetForm.get('matchPassword').errors?.notMatched) && PasswordResetForm.get('matchPassword').get('confirmPassword').touched">
+                        *ngIf="(!passwordResetForm.get('matchPassword').get('confirmPassword').valid  || passwordResetForm.get('matchPassword').errors?.notMatched) && (passwordResetForm.get('matchPassword').get('confirmPassword').touched && passwordResetForm.get('matchPassword').get('confirmPassword').dirty)">
                         <span
-                          *ngIf="PasswordResetForm.get('matchPassword').get('confirmPassword').errors?.required && PasswordResetForm.get('matchPassword').get('confirmPassword').touched">Please
+                          *ngIf="passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Please
                           confirm your password.</span>
-                        <span
-                          *ngIf="PasswordResetForm.get('matchPassword').get('confirmPassword').errors?.notMatched && !PasswordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords
-                          do not match.</span>
+                        <span *ngIf="passwordResetForm.get('matchPassword').errors?.notMatched && !passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords do not
+                          match.</span>
                       </span>
-
                     </div>
                   </div>
-
-
-
-                  <button type="submit" class="submit-btn" [disabled]="!PasswordResetForm.valid">Change
+                  <button type="submit" class="submit-btn" [disabled]="!passwordResetForm.valid">Change
                     Password</button>
                 </form>
               </div>

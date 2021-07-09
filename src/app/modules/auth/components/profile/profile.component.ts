@@ -13,7 +13,7 @@ import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
-  PasswordResetForm :FormGroup;
+  passwordResetForm :FormGroup;
 
   userInfo: ILoggedInUserInfo;
 
@@ -26,10 +26,10 @@ export class ProfileComponent implements OnInit {
 
     this.profileForm = this.authService.getProfileFormGroup(this.userInfo);
 
-    this.PasswordResetForm = this.authService.getForgetPasswordFormGroup();
+    this.passwordResetForm = this.authService.getForgetPasswordFormGroup();
   }
   updateProfile(){}
   passwordReset(){
-    console.log(this.PasswordResetForm.value)
+    console.log(this.passwordResetForm.value)
   }
 }

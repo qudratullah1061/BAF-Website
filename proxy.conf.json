@@ -1,6 +1,6 @@
 {
   "/api":{
-    "target":"https://localhost/BAF_Website_v53",
+    "target":"https://baf-website4-test.itcomrade.us",
     "secure":false,
     "changeOrigin": true,
     "pathRewrite": {
