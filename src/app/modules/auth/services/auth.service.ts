@@ -13,16 +13,6 @@ function passwordMatch(): ValidatorFn {
   }
 }
 
-
-// export function paswordResetMatch(): ValidatorFn {
-//   return (control: AbstractControl): { [key: string]: boolean } | null => {
-//     const newPassword = control.get('newPassword').value;
-//     const confirmPassword = control.get('confirmPassword').value;
-//     return (newPassword === confirmPassword) ? null : { 'notMatched': true };
-//   }
-// }
-
-
 @Injectable()
 
 export class AuthService {
@@ -55,7 +45,7 @@ export class AuthService {
       email: [userInfo.email, [Validators.required, Validators.email, Validators.minLength(10)]],
       affiliation: [userInfo.affiliation, [Validators.maxLength(100)]],
       location: [userInfo.location, [Validators.maxLength(100)]],
-      phoneNumber: [userInfo.phoneNumber, [Validators.required, Validators.maxLength(100)]],
+      phoneNumber: [userInfo.phoneNumber, [Validators.maxLength(100)]],
       userName: [userInfo.userName, [Validators.required, Validators.maxLength(30)]]
     });
   }
@@ -76,10 +66,6 @@ export class AuthService {
         password: [[], [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
         confirmPassword: [[], [Validators.required]],
       }, { validator: passwordMatch()})
-
-      // newPassword: [[''], [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
-      // confirmPassword: [[''], [Validators.required]],
-
     });
   }
 
@@ -94,6 +80,34 @@ export class AuthService {
     formData.append("username", username);
     formData.append("password", password);
     return this.http.post<IAPIBase>(loginFormApi, formData);
+  }
+
+  registerUser(registerForm: FormGroup): Observable<IAPIBase> {
+
+    var registerFormApi = "/api/userregister";
+    var formData: any = new FormData();
+    formData.append("firstname", registerForm.get('firstName').value);
+    formData.append("lastname", registerForm.get('lastName').value);
+    formData.append("email", registerForm.get('email').value);
+    formData.append("affiliation", registerForm.get('affiliation').value);
+    formData.append("location", registerForm.get('location').value);
+    formData.append("phonenumber", registerForm.get('phoneNumber').value);
+    formData.append("password", registerForm.get('matchPassword').get('password').value);
+    formData.append("confirmpassword", registerForm.get('matchPassword').get('confirmPassword').value);
+    return this.http.post<IAPIBase>(registerFormApi, formData);
+  }
+
+  updateUserProfile(profileForm: FormGroup): Observable<IAPIBase> {
+    var profileFormApi = "/api/update-profile-api";
+    var formData: any = new FormData();
+    formData.append("firstname", profileForm.get('firstName').value);
+    formData.append("lastname", profileForm.get('lastName').value);
+    formData.append("email", profileForm.get('email').value);
+    formData.append("affiliation", profileForm.get('affiliation').value);
+    formData.append("location", profileForm.get('location').value);
+    formData.append("phonenumber", profileForm.get('phoneNumber').value);
+    formData.append("username", profileForm.get('userName').value);
+    return this.http.post<IAPIBase>(profileFormApi, formData);
   }
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup ,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
+import { LoginStateService } from '@auth/services/login-state.service';
 
 
 
@@ -12,24 +13,45 @@ import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 })
 export class ProfileComponent implements OnInit {
 
+  authError: string = "";
+  authSuccess: string = "";
+  showLoading: boolean = false;
   profileForm: FormGroup;
-  passwordResetForm :FormGroup;
+  passwordResetForm: FormGroup;
 
   userInfo: ILoggedInUserInfo;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  constructor(public loginStateService: LoginStateService, private authService: AuthService) { }
 
   ngOnInit(): void {
 
 
-    this.userInfo = JSON.parse(localStorage.getItem('loggedInUserInfo'));
+    this.userInfo = this.loginStateService.loggedInUserInfo;
 
     this.profileForm = this.authService.getProfileFormGroup(this.userInfo);
 
     this.passwordResetForm = this.authService.getForgetPasswordFormGroup();
   }
-  updateProfile(){}
-  passwordReset(){
+  updateUserProfile() {
+
+    if (this.profileForm.valid) {
+      this.showLoading = true;
+      this.authService.updateUserProfile(this.profileForm).subscribe({
+        next: data => {
+          this.authError = "";
+          this.authSuccess = "";
+          if (!data.error) {
+            this.authSuccess = data.description;
+            this.loginStateService.checkUserLoggedIn();
+          } else {
+            this.authError = data.description;
+          }
+          this.showLoading = false;
+        }
+      });
+    }
+  }
+  passwordReset() {
     console.log(this.passwordResetForm.value)
   }
 }

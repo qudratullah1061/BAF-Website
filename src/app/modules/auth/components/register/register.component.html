@@ -1,27 +1,20 @@
 <div class="login-main">
   <div class="container">
-    <div class="login-page register-main">
+    <div class="login-page register-main" *ngIf="!isRegistrationComplete">
       <div class="form">
-        <form class="login-form" [formGroup]="registrationForm" (ngSubmit)="registration()">
+        <form class="login-form" [formGroup]="registrationForm" (ngSubmit)="registerUser()">
           <div>
             <div class="login-logo">
               <a [routerLink]=""><img src="assets/images/logo.png" alt="img"></a>
             </div>
             <p>Create account</p>
-            <!-- <div class="alert alert-danger">
-                            <strong>Error! </strong>{{authError}}
-                        </div> -->
+            <div class="alert alert-danger" *ngIf="authError">
+              <strong>Error! </strong>{{authError}}
+            </div>
             <div class="row">
-              <!--                        <div class="col-sm-6">
-                                                        <input required="" autocomplete="off" name="username" type="text" placeholder="Username *" ng-model="user.username"/>
-                                                        <span style="color:red" ng-show="userForm.username.$dirty && userForm.username.$invalid">
-                                                            <span ng-show="userForm.username.$error.required">Username is required.</span>
-                                                        </span>
-                                                    </div>   -->
               <div class="col-sm-6">
                 <input maxlength="50" required="" formControlName="firstName" autocomplete="off" type="text"
                   placeholder="First Name *" />
-
                 <span style="color:red;"
                   *ngIf="!(registrationForm.get('firstName').valid) && (registrationForm.get('firstName').touched) ">
                   First name is required
@@ -37,9 +30,7 @@
                 </span>
               </div>
 
-
               <div class="col-sm-6">
-                <!-- {{registrationForm.get('email').errors | json}} -->
                 <input required="" autocomplete="off" formControlName="email" type="email" placeholder="Email *" />
                 <span style="color:red"
                   *ngIf="!registrationForm.get('email').valid && registrationForm.get('email').touched">
@@ -64,18 +55,13 @@
               </div>
 
               <div class="col-md-12">
-                <p class="info">Password must contain 1 upper case character, 1 lower case character and
-                  1 digit.</p>
+                <p class="info">Password must contain 1 upper case character, 1 lower case character and 1 digit.</p>
               </div>
-
 
               <div class="col-md-12">
                 <div class="row" formGroupName="matchPassword">
-
-
                   <div class="col-sm-6">
                     <input autocomplete="off" formControlName="password" type="password" placeholder="Password *" />
-                    <!-- {{!registrationForm.get('matchPassword').get('password').valid && registrationForm.get('matchPassword').get('password').touched}} -->
                     <span style="color:red"
                       *ngIf="!registrationForm.get('matchPassword').get('password').valid && registrationForm.get('matchPassword').get('password').touched">
                       <span *ngIf="registrationForm.get('matchPassword').get('password').errors?.required">Password
@@ -93,46 +79,43 @@
                       placeholder="Confirm Password *" />
                     <span
                       *ngIf="(!registrationForm.get('matchPassword').get('confirmPassword').valid  || registrationForm.get('matchPassword').errors?.notMatched) && registrationForm.get('matchPassword').get('confirmPassword').touched">
-
                       <span *ngIf="registrationForm.get('matchPassword').get('confirmPassword').errors?.required">Please
                         confirm your password.</span>
-
                       <span
                         *ngIf="registrationForm.get('matchPassword').errors?.notMatched && !registrationForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords
                         do not match.</span>
-
                     </span>
-
                   </div>
                 </div>
               </div>
 
               <div class="col-sm-12">
-                <button [disabled]="!registrationForm.valid">Create Account</button>
+                <button [disabled]="!registrationForm.valid">
+                  <span *ngIf="showLoading">Create Account&nbsp;<i class="fa fa-spinner fa-spin"></i></span>
+                  <span *ngIf="!showLoading">Create Account</span>
+                </button>
               </div>
-
             </div>
-
           </div>
           <div>
             <p class="message pull-left"><a [routerLink]="['/auth/login']">Login</a></p>
-            <p class="message pull-right"><a [routerLink]="['']">Dashboard</a></p>
+            <p class="message pull-right"><a [routerLink]="['/']">Dashboard</a></p>
           </div>
         </form>
       </div>
     </div>
 
-    <div class="login-page" *ngIf="isRegister">
+    <div class="login-page" *ngIf="isRegistrationComplete">
       <div class="thankyou-box">
         <div class="thankyou-dead">
           <img src="assets/images/tick.png" alt="">
         </div>
         <div class="thankyou-text">
           <h1>You're almost done! </h1>
-          <!-- <p class="mb-0">{{authSuccess}}</p> -->
+          <p class="mb-0">{{authSuccess}}</p>
           <div class="navigation-links">
-            <p class="message"><a [routerLink]="''">Login</a></p>
-            <p class="message"><a [routerLink]="">Dashboard</a></p>
+            <p class="message"><a [routerLink]="['auth/login']">Login</a></p>
+            <p class="message"><a [routerLink]="['/']">Dashboard</a></p>
           </div>
         </div>
       </div>

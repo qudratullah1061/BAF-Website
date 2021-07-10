@@ -17,6 +17,6 @@ export const authRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate:[ProfileRouteActivatorService]
+    canActivate:[ProfileRouteActivatorService]
   }
 ];
