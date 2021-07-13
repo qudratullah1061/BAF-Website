@@ -1,3 +1,4 @@
+
 export interface ILoggedInUserInfo {
   affiliation: string,
   authMessage: string,
