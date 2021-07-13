@@ -9,6 +9,7 @@ import { authRoutes } from './auth-routes';
 import { LoginFormComponent } from './components/login/login-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileRouteActivatorService } from './guards/profile-route-activator.service';
+import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProfileRouteActivatorService } from './guards/profile-route-activator.s
     RegisterComponent,
     UserLoginComponent,
     LoginFormComponent,
-    ProfileComponent
+    ProfileComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,

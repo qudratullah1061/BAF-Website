@@ -11,25 +11,23 @@ import { FormBuilder } from '@angular/forms';
 })
 
 export class ForgotPasswordComponent implements OnInit {
-  passwordResetForm:FormGroup;
+  passwordResetForm: FormGroup;
 
   constructor(private authService: AuthService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
 
 
-    // this.passwordResetForm = this.fb.group({
-    //   email: ['', [Validators.required]],
-    // })
-
-// [formGroup]="passwordResetForm" (ngSubmit)="passwordReset()"
+    this.passwordResetForm = this.fb.group({
+      email: ['', [Validators.required,Validators.email]],
+    })
 
   }
 
-  // passwordReset() {
-  //   console.log(this.passwordResetForm.value);
-  // }
-  
+  passwordReset() {
+    console.log(this.passwordResetForm.value);
+  }
+
 
 
 }
