@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 import { LoginStateService } from '@auth/services/login-state.service';
+import Swal from 'sweetalert2';
 
 
 
@@ -54,4 +55,26 @@ export class ProfileComponent implements OnInit {
   passwordReset() {
     console.log(this.passwordResetForm.value)
   }
+
+  deleteAccount() {
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Warning! Your account and saved data will be permanently deleted. Do you really want to delete your account and saved data?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Delete my account'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your account has been deleted.',
+          'success'
+        )
+      }
+    })
+  }
+
 }
