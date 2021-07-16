@@ -12,6 +12,8 @@ import { ProfileRouteActivatorService } from './guards/profile-route-activator.s
 import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot-password.component';
 import { ThankYouComponent } from './components/register/thank-you.component';
 import { AuthResolver } from './services/auth.resolver';
+import { AlertModule } from 'ngx-bootstrap/alert';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { AuthResolver } from './services/auth.resolver';
   imports: [
     CommonModule,
     RouterModule.forChild(authRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule.forRoot()
   ],
   exports: [
     LoginFormComponent

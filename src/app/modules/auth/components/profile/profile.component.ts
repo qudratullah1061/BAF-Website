@@ -16,9 +16,11 @@ export class ProfileComponent implements OnInit {
 
   authError: string = "";
   authSuccess: string = "";
+  changePasswordSuccess: string = "";
+  changePasswordError: string = "";
   showLoading: boolean = false;
   profileForm: FormGroup;
-  passwordResetForm: FormGroup;
+  changePasswordForm: FormGroup;
 
   userInfo: ILoggedInUserInfo;
 
@@ -31,7 +33,7 @@ export class ProfileComponent implements OnInit {
 
     this.profileForm = this.authService.getProfileFormGroup(this.userInfo);
 
-    this.passwordResetForm = this.authService.getForgetPasswordFormGroup();
+    this.changePasswordForm = this.authService.getChangePasswordFormGroup();
   }
   updateUserProfile() {
 
@@ -52,8 +54,18 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
-  passwordReset() {
-    console.log(this.passwordResetForm.value)
+  changePassword() {
+    this.authService.changePassword(this.changePasswordForm).subscribe({
+      next: data => {
+        this.changePasswordError = "";
+        this.changePasswordSuccess = "";
+        if (!data.error) {
+          this.changePasswordSuccess = data.description;
+        } else {
+          this.changePasswordError = data.description;
+        }
+      }
+    });
   }
 
   deleteAccount() {

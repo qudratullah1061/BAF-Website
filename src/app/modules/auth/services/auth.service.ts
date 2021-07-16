@@ -74,7 +74,7 @@ export class AuthService {
     });
   }
 
-  getForgetPasswordFormGroup(): FormGroup {
+  getChangePasswordFormGroup(): FormGroup {
     return this.fb.group({
       oldPassword: [[], [Validators.required, Validators.maxLength(128), Validators.minLength(6), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
       matchPassword: this.fb.group({
@@ -130,10 +130,23 @@ export class AuthService {
     return this.http.post<IAPIBase>(profileFormApi, formData);
   }
 
+  changePassword(changePassword: FormGroup): Observable<IAPIBase> {
+    var changePasswordApi = "/api/change-password";
+    var oldPassword = changePassword.get("oldPassword").value;
+    var password = changePassword.get('matchPassword').get("password").value;
+    var confirmPassword = changePassword.get('matchPassword').get("confirmPassword").value;
+    var formData: any = new FormData();
+    formData.append("oldpassword", oldPassword);
+    formData.append("password", password);
+    formData.append("confirmpassword", confirmPassword);
+    return this.http.post<IAPIBase>(changePasswordApi, formData);
+  }
+
   verifyAccountEmail(token: string, email: string): Observable<IAPIBase> {
     var verifyAccountEmailApi = "/api/verify/" + token + "/" + email;
     return this.http.get<IAPIBase>(verifyAccountEmailApi);
   }
+
 
   logout(): Observable<IAPIBase> {
     var logout = "/api/logout";
