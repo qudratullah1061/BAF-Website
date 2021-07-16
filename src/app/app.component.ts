@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'baf-root',
@@ -13,13 +12,13 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-  
+
 
   }
 
 
 
-  getLoggedInUserInfo(loggedInUserInfo: ILoggedInUserInfo): void {
-    // this.loggedInUserInfo = loggedInUserInfo;
-  }
+  // getLoggedInUserInfo(loggedInUserInfo: ILoggedInUserInfo): void {
+  //    this.loggedInUserInfo = loggedInUserInfo;
+  // }
 }

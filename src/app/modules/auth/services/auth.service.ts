@@ -153,4 +153,9 @@ export class AuthService {
     return this.http.get<IAPIBase>(logout);
   }
 
+  deleteAccount(): Observable<IAPIBase> {
+    var deleteAccount = "/api/delete-account";
+    return this.http.get<IAPIBase>(deleteAccount);
+  }
+
 }

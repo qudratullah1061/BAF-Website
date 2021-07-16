@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { AuthService } from '@auth/services/auth.service';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 import { LoginStateService } from '@auth/services/login-state.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
   userInfo: ILoggedInUserInfo;
 
-  constructor(public loginStateService: LoginStateService, private authService: AuthService) { }
+  constructor(public loginStateService: LoginStateService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -69,7 +70,6 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteAccount() {
-
     Swal.fire({
       title: 'Are you sure?',
       text: "Warning! Your account and saved data will be permanently deleted. Do you really want to delete your account and saved data?",
@@ -80,13 +80,25 @@ export class ProfileComponent implements OnInit {
       confirmButtonText: 'Delete my account'
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your account has been deleted.',
-          'success'
-        )
+        this.authService.deleteAccount().subscribe({
+          next: data => {
+            if (!data.error) {
+              Swal.fire(
+                'Deleted!',
+                data.description,
+                'success'
+              );
+              this.router.navigate(['/']);
+            } else {
+              Swal.fire(
+                'Error!',
+                data.description,
+                'error'
+              );
+            }
+          }
+        });
       }
     })
   }
-
 }
