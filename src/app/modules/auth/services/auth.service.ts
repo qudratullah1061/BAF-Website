@@ -16,7 +16,7 @@ function passwordMatch(): ValidatorFn {
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient, private fb: FormBuilder) { }
- 
+
 
   getRegisterFormGroup(): FormGroup {
     return this.fb.group({
@@ -76,11 +76,11 @@ export class AuthService {
 
   getForgetPasswordFormGroup(): FormGroup {
     return this.fb.group({
-      oldPassword: [[],[ Validators.required,Validators.maxLength(128),Validators.minLength(6),Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
+      oldPassword: [[], [Validators.required, Validators.maxLength(128), Validators.minLength(6), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
       matchPassword: this.fb.group({
-          password: [[],[Validators.required,Validators.minLength(6),Validators.maxLength(20),Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
-          confirmPassword: [[], [Validators.required]],
-        },
+        password: [[], [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
+        confirmPassword: [[], [Validators.required]],
+      },
         { validator: passwordMatch() }
       ),
     });
@@ -130,5 +130,14 @@ export class AuthService {
     return this.http.post<IAPIBase>(profileFormApi, formData);
   }
 
+  verifyAccountEmail(token: string, email: string): Observable<IAPIBase> {
+    var verifyAccountEmailApi = "/api/verify/" + token + "/" + email;
+    return this.http.get<IAPIBase>(verifyAccountEmailApi);
+  }
+
+  logout(): Observable<IAPIBase> {
+    var logout = "/api/logout";
+    return this.http.get<IAPIBase>(logout);
+  }
 
 }

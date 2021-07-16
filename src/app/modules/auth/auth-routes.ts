@@ -5,6 +5,8 @@ import { RegisterComponent } from '@auth/components/register/register.component'
 import { UserLoginComponent } from '@auth/components/user-login/user-login.component';
 import { ProfileRouteActivatorService } from '@auth/guards/profile-route-activator.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ThankYouComponent } from './components/register/thank-you.component';
+import { AuthResolver } from './services/auth.resolver';
 
 export const authRoutes: Routes = [
   {
@@ -15,17 +17,21 @@ export const authRoutes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-
   {
-    path:'forgotPassword',
+    path: 'forgotPassword',
     component: ForgotPasswordComponent,
-    
   },
-
+  {
+    path: 'verify/:token/:email',
+    component: ThankYouComponent,
+    resolve: {
+      verificationStatus: AuthResolver
+    }
+  },
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate:[ProfileRouteActivatorService]
+    canActivate:[ProfileRouteActivatorService]
   }
 
 

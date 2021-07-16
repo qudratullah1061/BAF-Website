@@ -1,234 +1,236 @@
-<div class="profile-page">
-  <div class="container pl-0 pr-0">
-    <div class="t-table">
+<div class="login-main">
+  <div class="profile-page">
+    <div class="container pl-0 pr-0">
+      <div class="t-table">
 
-      <!-- tabs start  -->
-      <div class="profile-list">
-        <div class="account-title">
-          <h4 class="pull-left font-avenir-demi font-1em mb-0 pt-4 pb-4">Account</h4>
-        </div>
-
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab"
-            aria-controls="v-pills-profile" aria-selected="false">
-            <i class="fas fa-user-tie"></i> Profile
-          </a>
-          <a class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab"
-            aria-controls="v-pills-password" aria-selected="false">
-            <i class="far fa-unlock"></i> Change password
-          </a>
-          <a class="nav-link text-red text-danger" href="javascript:;" (click)="deleteAccount()">
-            <i class="fal fa-trash-alt"></i> Delete account
-          </a>
-        </div>
-
-      </div>
-      <!-- tabs end -->
-
-      <div class="profile-content">
-        <div class="account-title ">
-          <h4 class="pull-left black-light font-avenir-demi font-1em mb-0 pt-4 pb-4">Account Management</h4>
-        </div>
-        <div class="tab-content" id="v-pills-tabContent">
-          <!--Profile tab start-->
-          <div class="tab-pane fade  show active" id="v-pills-profile" role="tabpanel"
-            aria-labelledby="v-pills-profile-tab">
-            <div class="row profile-tab">
-              <div class="col-md-2">
-                <div class="profile-image">
-                  <img [src]="['/assets/images/silhouette.jpg']" alt="">
-                </div>
-              </div>
-              <div class="col-md-8">
-                <h4 class="font-1em black-light avenir-r mb-20">Personal details</h4>
-                <form [formGroup]="profileForm" class="login-form go-bottom" (ngSubmit)="updateUserProfile()">
-                  <div>
-
-                    <div class="alert alert-success" *ngIf="authSuccess">
-                      <strong>Success! </strong>{{authSuccess}}
-                    </div>
-
-                    <div class="alert alert-danger" *ngIf="authError">
-                      <strong>Error! </strong>{{authError}}
-                    </div>
-                    <!--<div class="row">-->
-
-                    <div class="form-group">
-                      <label for="name">First Name <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="firstName" type="text" />
-
-                      <span style="color:red"
-                        *ngIf="!(profileForm.get('firstName').valid) && (profileForm.get('firstName').touched && profileForm.get('firstName').dirty)">
-                        First name is required
-                      </span>
-
-                    </div>
-                    <div class="form-group">
-                      <label for="name">Last Name <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="lastName" type="text" placeholder="" />
-
-                      <span style="color:red"
-                        *ngIf="!(profileForm.get('lastName').valid) && (profileForm.get('lastName').touched && profileForm.get('lastName').dirty)">
-                        Last name is required
-                      </span>
-
-                    </div>
-                    <div class="form-group">
-
-                      <label for="email">Email <span class="staric">*</span></label>
-                      <input autocomplete="off" formControlName="email" type="email" placeholder="" />
-
-                      <span style="color:red"
-                        *ngIf="!profileForm.get('email').valid && (profileForm.get('email').touched && profileForm.get('email').dirty)">
-                        <span [hidden]="!profileForm.get('email').errors?.required">Email is required.</span>
-                        <span [hidden]="!profileForm.get('email').errors?.email">Invalid email address.</span>
-                      </span>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="username">Login Name <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="userName" type="text" />
-
-                      <span style="color:red"
-                        *ngIf="!(profileForm.get('userName').valid) && (profileForm.get('userName').touched && profileForm.get('userName').dirty)">
-                        Username is required
-                      </span>
-                    </div>
-
-                    <div class="form-group">
-                      <label for="affiliation">Affiliation <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="affiliation" type="text" placeholder="" />
-
-                    </div>
-                    <div class="form-group">
-                      <label for="location">Location <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="location" type="text" />
-
-                    </div>
-                    <div class="form-group">
-                      <label for="location">Phone Number <span class="optional">(optional)</span></label>
-                      <input autocomplete="off" formControlName="phoneNumber" type="text" />
-
-                    </div>
-
-                    <div class="form-group">
-                      <button class="submit-btn" [disabled]="!profileForm.valid || profileForm.pristine">
-                        <span *ngIf="showLoading">Update Account&nbsp;<i class="fa fa-spinner fa-spin"></i></span>
-                        <span *ngIf="!showLoading">Update Account</span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-                <div class="account-info mt-40">
-                  <h4 class="font-1em black-light avenir-r mb-20">Account Info</h4>
-                  <ul>
-                    <li>
-                      <div class="label">Account created:</div>
-                      <div id="createdOn" class="label-value">
-                        {{userInfo.createdOn}}</div>
-                    </li>
-                    <li>
-                      <div class="label">Status:</div>
-                      <div class="label-value" id="lastLogin">
-                        {{userInfo.lastLoginTime}}</div>
-                    </li>
-                    <li>
-                      <div class="label">Last login:</div>
-                      <div class="label-value" id="lastLogin">
-                        {{userInfo.lastLoginTime}}</div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-            </div>
+        <!-- tabs start  -->
+        <div class="profile-list">
+          <div class="account-title">
+            <h4 class="pull-left font-avenir-demi font-1em mb-0 pt-4 pb-4">Account</h4>
           </div>
-          <!--Profile tab end-->
 
-          <!--Change password tab start-->
-          <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
-            <div class="row profile-tab">
-              <div class="col-md-8 offset-md-2">
-                <h4 class="font-1em black-light avenir-r mb-20">Change Password</h4>
-                <form [formGroup]="passwordResetForm" class="login-form" (ngSubmit)="passwordReset()">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab"
+              aria-controls="v-pills-profile" aria-selected="false">
+              <i class="fas fa-user-tie"></i> Profile
+            </a>
+            <a class="nav-link" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab"
+              aria-controls="v-pills-password" aria-selected="false">
+              <i class="far fa-unlock"></i> Change password
+            </a>
+            <a class="nav-link text-red text-danger" href="javascript:;" (click)="deleteAccount()">
+              <i class="fal fa-trash-alt"></i> Delete account
+            </a>
+          </div>
 
-                  <!-- <div class="alert alert-success" *ngIf="showAuthSuccess">
+        </div>
+        <!-- tabs end -->
+
+        <div class="profile-content">
+          <div class="account-title ">
+            <h4 class="pull-left black-light font-avenir-demi font-1em mb-0 pt-4 pb-4">Account Management</h4>
+          </div>
+          <div class="tab-content" id="v-pills-tabContent">
+            <!--Profile tab start-->
+            <div class="tab-pane fade  show active" id="v-pills-profile" role="tabpanel"
+              aria-labelledby="v-pills-profile-tab">
+              <div class="row profile-tab">
+                <div class="col-md-2">
+                  <div class="profile-image">
+                    <img [src]="['/assets/images/silhouette.jpg']" alt="">
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <h4 class="font-1em black-light avenir-r mb-20">Personal details</h4>
+                  <form [formGroup]="profileForm" class="login-form go-bottom" (ngSubmit)="updateUserProfile()">
+                    <div>
+
+                      <div class="alert alert-success" *ngIf="authSuccess">
+                        <strong>Success! </strong>{{authSuccess}}
+                      </div>
+
+                      <div class="alert alert-danger" *ngIf="authError">
+                        <strong>Error! </strong>{{authError}}
+                      </div>
+                      <!--<div class="row">-->
+
+                      <div class="form-group">
+                        <label for="name">First Name <span class="staric">*</span></label>
+                        <input autocomplete="off" formControlName="firstName" type="text" />
+
+                        <span style="color:red"
+                          *ngIf="!(profileForm.get('firstName').valid) && (profileForm.get('firstName').touched && profileForm.get('firstName').dirty)">
+                          First name is required
+                        </span>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="name">Last Name <span class="staric">*</span></label>
+                        <input autocomplete="off" formControlName="lastName" type="text" placeholder="" />
+
+                        <span style="color:red"
+                          *ngIf="!(profileForm.get('lastName').valid) && (profileForm.get('lastName').touched && profileForm.get('lastName').dirty)">
+                          Last name is required
+                        </span>
+
+                      </div>
+                      <div class="form-group">
+
+                        <label for="email">Email <span class="staric">*</span></label>
+                        <input autocomplete="off" formControlName="email" type="email" placeholder="" />
+
+                        <span style="color:red"
+                          *ngIf="!profileForm.get('email').valid && (profileForm.get('email').touched && profileForm.get('email').dirty)">
+                          <span [hidden]="!profileForm.get('email').errors?.required">Email is required.</span>
+                          <span [hidden]="!profileForm.get('email').errors?.email">Invalid email address.</span>
+                        </span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="username">Login Name <span class="optional">(optional)</span></label>
+                        <input autocomplete="off" formControlName="userName" type="text" />
+
+                        <span style="color:red"
+                          *ngIf="!(profileForm.get('userName').valid) && (profileForm.get('userName').touched && profileForm.get('userName').dirty)">
+                          Username is required
+                        </span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="affiliation">Affiliation <span class="optional">(optional)</span></label>
+                        <input autocomplete="off" formControlName="affiliation" type="text" placeholder="" />
+
+                      </div>
+                      <div class="form-group">
+                        <label for="location">Location <span class="optional">(optional)</span></label>
+                        <input autocomplete="off" formControlName="location" type="text" />
+
+                      </div>
+                      <div class="form-group">
+                        <label for="location">Phone Number <span class="optional">(optional)</span></label>
+                        <input autocomplete="off" formControlName="phoneNumber" type="text" />
+
+                      </div>
+
+                      <div class="form-group">
+                        <button class="submit-btn" [disabled]="!profileForm.valid || profileForm.pristine">
+                          <span *ngIf="showLoading">Update Account&nbsp;<i class="fa fa-spinner fa-spin"></i></span>
+                          <span *ngIf="!showLoading">Update Account</span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="account-info mt-40">
+                    <h4 class="font-1em black-light avenir-r mb-20">Account Info</h4>
+                    <ul>
+                      <li>
+                        <div class="label">Account created:</div>
+                        <div id="createdOn" class="label-value">
+                          {{userInfo.createdOn}}</div>
+                      </li>
+                      <li>
+                        <div class="label">Status:</div>
+                        <div class="label-value" id="lastLogin">
+                          {{userInfo.lastLoginTime}}</div>
+                      </li>
+                      <li>
+                        <div class="label">Last login:</div>
+                        <div class="label-value" id="lastLogin">
+                          {{userInfo.lastLoginTime}}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!--Profile tab end-->
+
+            <!--Change password tab start-->
+            <div class="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+              <div class="row profile-tab">
+                <div class="col-md-8 offset-md-2">
+                  <h4 class="font-1em black-light avenir-r mb-20">Change Password</h4>
+                  <form [formGroup]="passwordResetForm" class="login-form" (ngSubmit)="passwordReset()">
+
+                    <!-- <div class="alert alert-success" *ngIf="showAuthSuccess">
                     <strong>Success! </strong>{{authSuccess}}
                   </div> -->
 
-                  <!-- <div class="alert alert-danger" *ngIf="showAuthError">
+                    <!-- <div class="alert alert-danger" *ngIf="showAuthError">
                     <strong>Error! </strong>{{authError}}
                   </div> -->
 
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Password must contain</strong> 1 upper case character, 1 lower case character and 1 digit.
-                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                      <strong>Password must contain</strong> 1 upper case character, 1 lower case character and 1 digit.
+                      <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button> -->
-                  </div>
+                    </div>
 
-                  <div class="form-group">
-                    <label for="oldpassword">Old Password <span class="staric">*</span></label>
-                    <input required="" formControlName="oldPassword" id="oldpassword" type="password" />
+                    <div class="form-group">
+                      <label for="oldpassword">Old Password <span class="staric">*</span></label>
+                      <input required="" formControlName="oldPassword" id="oldpassword" type="password" />
 
-                    <span
-                      *ngIf="!(passwordResetForm.get('oldPassword').valid) && (passwordResetForm.get('oldPassword').touched && passwordResetForm.get('oldPassword').dirty)">
-
-                      <span *ngIf="passwordResetForm.get('oldPassword').errors?.required">required</span>
                       <span
-                        *ngIf="passwordResetForm.get('oldPassword').errors?.minlength || passwordResetForm.get('oldPassword').errors?.maxlength">Old
-                        Password must be between 6 and 20 characters.
-                      </span>
+                        *ngIf="!(passwordResetForm.get('oldPassword').valid) && (passwordResetForm.get('oldPassword').touched && passwordResetForm.get('oldPassword').dirty)">
 
-                      <span *ngIf="passwordResetForm.get('oldPassword').errors?.pattern">Old
-                        Password should contain 1 upper case character, 1 lower case character and 1 digit.
-                      </span>
-                    </span>
-
-
-                  </div>
-
-                  <div class="" formGroupName="matchPassword">
-                    <div class="form-group">
-                      <label for="password">New Password <span class="staric">*</span></label>
-                      <input required="" formControlName="password" id="password" type="password" />
-                      <span style="color:red"
-                        *ngIf="!passwordResetForm.get('matchPassword').get('password').valid && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">
+                        <span *ngIf="passwordResetForm.get('oldPassword').errors?.required">required</span>
                         <span
-                          *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.required && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">Password
-                          is required</span>
-                        <span
-                          *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.minlength || passwordResetForm.get('matchPassword').get('password').errors?.maxlength">Passwords
-                          must be between 6 and 20 characters.
+                          *ngIf="passwordResetForm.get('oldPassword').errors?.minlength || passwordResetForm.get('oldPassword').errors?.maxlength">Old
+                          Password must be between 6 and 20 characters.
                         </span>
-                        <span *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.pattern">Password
-                          must contain 1 upper case character, 1 lower case character and 1 digit.</span>
+
+                        <span *ngIf="passwordResetForm.get('oldPassword').errors?.pattern">Old
+                          Password should contain 1 upper case character, 1 lower case character and 1 digit.
+                        </span>
                       </span>
 
+
                     </div>
-                    <div class="form-group">
-                      <label for="confirmpassword">Confirm Password <span class="staric">*</span></label>
-                      <input id="confirmpassword" formControlName="confirmPassword" type="password" placeholder="" />
-                      <span style="color:red"
-                        *ngIf="(!passwordResetForm.get('matchPassword').get('confirmPassword').valid  || passwordResetForm.get('matchPassword').errors?.notMatched) && (passwordResetForm.get('matchPassword').get('confirmPassword').touched && passwordResetForm.get('matchPassword').get('confirmPassword').dirty)">
-                        <span
-                          *ngIf="passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Please
-                          confirm your password.</span>
-                        <span
-                          *ngIf="passwordResetForm.get('matchPassword').errors?.notMatched && !passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords
-                          do not
-                          match.</span>
-                      </span>
+
+                    <div class="" formGroupName="matchPassword">
+                      <div class="form-group">
+                        <label for="password">New Password <span class="staric">*</span></label>
+                        <input required="" formControlName="password" id="password" type="password" />
+                        <span style="color:red"
+                          *ngIf="!passwordResetForm.get('matchPassword').get('password').valid && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">
+                          <span
+                            *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.required && (passwordResetForm.get('matchPassword').get('password').touched && passwordResetForm.get('matchPassword').get('password').dirty)">Password
+                            is required</span>
+                          <span
+                            *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.minlength || passwordResetForm.get('matchPassword').get('password').errors?.maxlength">Passwords
+                            must be between 6 and 20 characters.
+                          </span>
+                          <span *ngIf="passwordResetForm.get('matchPassword').get('password').errors?.pattern">Password
+                            must contain 1 upper case character, 1 lower case character and 1 digit.</span>
+                        </span>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="confirmpassword">Confirm Password <span class="staric">*</span></label>
+                        <input id="confirmpassword" formControlName="confirmPassword" type="password" placeholder="" />
+                        <span style="color:red"
+                          *ngIf="(!passwordResetForm.get('matchPassword').get('confirmPassword').valid  || passwordResetForm.get('matchPassword').errors?.notMatched) && (passwordResetForm.get('matchPassword').get('confirmPassword').touched && passwordResetForm.get('matchPassword').get('confirmPassword').dirty)">
+                          <span
+                            *ngIf="passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Please
+                            confirm your password.</span>
+                          <span
+                            *ngIf="passwordResetForm.get('matchPassword').errors?.notMatched && !passwordResetForm.get('matchPassword').get('confirmPassword').errors?.required">Passwords
+                            do not
+                            match.</span>
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                  <button type="submit" class="submit-btn" [disabled]="!passwordResetForm.valid">Change
-                    Password</button>
-                </form>
+                    <button type="submit" class="submit-btn" [disabled]="!passwordResetForm.valid">Change
+                      Password</button>
+                  </form>
+                </div>
+
               </div>
-
             </div>
+            <!--Change passwrod tab ends-->
           </div>
-          <!--Change passwrod tab ends-->
         </div>
       </div>
     </div>

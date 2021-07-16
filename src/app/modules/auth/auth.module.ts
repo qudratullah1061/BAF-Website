@@ -10,6 +10,8 @@ import { LoginFormComponent } from './components/login/login-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileRouteActivatorService } from './guards/profile-route-activator.service';
 import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot-password.component';
+import { ThankYouComponent } from './components/register/thank-you.component';
+import { AuthResolver } from './services/auth.resolver';
 
 
 @NgModule({
@@ -18,7 +20,8 @@ import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot
     UserLoginComponent,
     LoginFormComponent,
     ProfileComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ThankYouComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +31,6 @@ import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot
   exports: [
     LoginFormComponent
   ],
-  providers: [AuthService,ProfileRouteActivatorService]
+  providers: [AuthService,ProfileRouteActivatorService,AuthResolver]
 })
 export class AuthModule { }
