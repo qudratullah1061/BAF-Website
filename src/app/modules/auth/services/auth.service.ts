@@ -147,6 +147,14 @@ export class AuthService {
     return this.http.get<IAPIBase>(verifyAccountEmailApi);
   }
 
+  forgotPassword(forgotPasswordForm: FormGroup): Observable<IAPIBase> {
+    var loginFormApi = "/api/userforgot";
+    var email = forgotPasswordForm.get("email").value;
+    var formData: any = new FormData();
+    formData.append("email", email);
+    return this.http.post<IAPIBase>(loginFormApi, formData);
+  }
+
 
   logout(): Observable<IAPIBase> {
     var logout = "/api/logout";

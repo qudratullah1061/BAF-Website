@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "@auth/services/auth.service";
 import { FormBuilder } from '@angular/forms';
+import { LoginStateService } from "@auth/services/login-state.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -12,20 +14,37 @@ import { FormBuilder } from '@angular/forms';
 
 export class ForgotPasswordComponent implements OnInit {
   passwordResetForm: FormGroup;
-
-  constructor(private authService: AuthService, private fb: FormBuilder) { }
+  showLoading: boolean = false;
+  authError: string = "";
+  authSuccess: string = "";
+  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-
-
+    if (this.loginStateService.loggedInUserInfo != null) {
+      this.router.navigate(['/']);
+    }
     this.passwordResetForm = this.fb.group({
-      email: ['', [Validators.required,Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
     })
 
   }
 
   passwordReset() {
-    console.log(this.passwordResetForm.value);
+    if (this.passwordResetForm.valid) {
+      this.showLoading = true;
+      this.authService.forgotPassword(this.passwordResetForm).subscribe({
+        next: data => {
+          this.authError = "";
+          this.authSuccess = "";
+          if (!data.error) {
+            this.authSuccess = data.description;
+          } else {
+            this.authError = data.description;
+          }
+          this.showLoading = false;
+        }
+      });
+    }
   }
 
 

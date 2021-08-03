@@ -10,8 +10,8 @@ import { LoginFormComponent } from './components/login/login-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProfileRouteActivatorService } from './guards/profile-route-activator.service';
 import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot-password.component';
-import { ThankYouComponent } from './components/register/thank-you.component';
-import { AuthResolver } from './services/auth.resolver';
+import { VerifyAccountComponent} from '@auth/components/register/verify-account.component';
+import { AuthResolver } from '@auth/services/auth.resolver';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 
@@ -23,7 +23,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     LoginFormComponent,
     ProfileComponent,
     ForgotPasswordComponent,
-    ThankYouComponent
+    VerifyAccountComponent
   ],
   imports: [
     CommonModule,
