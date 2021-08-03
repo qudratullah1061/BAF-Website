@@ -76,9 +76,9 @@ export class AuthService {
 
   getChangePasswordFormGroup(): FormGroup {
     return this.fb.group({
-      oldPassword: [[], [Validators.required, Validators.maxLength(128), Validators.minLength(6), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
+      oldPassword: [[], [Validators.required, Validators.maxLength(128), Validators.minLength(6), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
       matchPassword: this.fb.group({
-        password: [[], [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/),],],
+        password: [[], [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
         confirmPassword: [[], [Validators.required]],
       },
         { validator: passwordMatch() }
@@ -164,6 +164,29 @@ export class AuthService {
   deleteAccount(): Observable<IAPIBase> {
     var deleteAccount = "/api/delete-account";
     return this.http.get<IAPIBase>(deleteAccount);
+  }
+
+  getResetPasswordFormGroup(token: string, email: string): FormGroup {
+    return this.fb.group({
+      token: [[token], [Validators.required]],
+      email: [[email], [Validators.required]],
+      password: [[], [Validators.required, Validators.minLength(6), Validators.maxLength(20), Validators.pattern(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)]],
+      confirmPassword: [[], [Validators.required]],
+    }, { validator: passwordMatch() });
+  }
+
+  resetPassword(resetPassword: FormGroup): Observable<IAPIBase> {
+    var resetPasswordApi = "/api/updatepassword";
+    var password = resetPassword.get("password").value;
+    var confirmPassword = resetPassword.get("confirmPassword").value;
+    var token = resetPassword.get("token").value;
+    var email = resetPassword.get("email").value;
+    var formData: any = new FormData();
+    formData.append("token", token);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("confirmpassword", confirmPassword);
+    return this.http.post<IAPIBase>(resetPasswordApi, formData);
   }
 
 }

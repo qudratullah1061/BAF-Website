@@ -13,6 +13,7 @@ import { ForgotPasswordComponent } from '@auth/components/forgot-password/forgot
 import { VerifyAccountComponent} from '@auth/components/register/verify-account.component';
 import { AuthResolver } from '@auth/services/auth.resolver';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -23,7 +24,8 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     LoginFormComponent,
     ProfileComponent,
     ForgotPasswordComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

@@ -190,7 +190,7 @@
                   <div class="" formGroupName="matchPassword">
                     <div class="form-group">
                       <label for="password">New Password <span class="staric">*</span></label>
-                      <input required="" formControlName="password" type="password" />
+                      <input formControlName="password" type="password" />
                       <span style="color:red"
                         *ngIf="!changePasswordForm.get('matchPassword').get('password').valid && (changePasswordForm.get('matchPassword').get('password').touched && changePasswordForm.get('matchPassword').get('password').dirty)">
                         <span

@@ -6,6 +6,7 @@ import { UserLoginComponent } from '@auth/components/user-login/user-login.compo
 import { ProfileRouteActivatorService } from '@auth/guards/profile-route-activator.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyAccountComponent } from './components/register/verify-account.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { AuthResolver } from './services/auth.resolver';
 
 export const authRoutes: Routes = [
@@ -18,10 +19,6 @@ export const authRoutes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'forgotPassword',
-    component: ForgotPasswordComponent,
-  },
-  {
     path: 'verify/:token/:email',
     component: VerifyAccountComponent,
     resolve: {
@@ -32,7 +29,14 @@ export const authRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     canActivate:[ProfileRouteActivatorService]
-  }
-
-
+  },
+  {
+    path: 'forgotPassword',
+    component: ForgotPasswordComponent,
+  },
+  // intgration remaining
+  {
+    path: 'resetPassword/:token/:email',
+    component: ResetPasswordComponent,
+  },
 ];
