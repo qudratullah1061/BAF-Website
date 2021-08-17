@@ -1,24 +1,30 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 import { AuthService } from '@auth/services/auth.service';
 import { LoginStateService } from '@auth/services/login-state.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
-  selector: 'baf-login-form',
-  templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss'],
+  selector: 'baf-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginModalComponent implements OnInit {
+  // Login form variables
   loginForm: FormGroup;
   showLoading: boolean = false;
   authError: string = "";
   authSuccess: string = "";
-  @Input() dropdown: any;
 
-  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router) {
-  }
+  // Popup variables
+  title: string;
+  closeBtnName: string;
+  list: any[] = [];
+
+  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router, public bsModalRef: BsModalRef) { }
 
   ngOnInit(): void {
     this.loginForm = this.authService.getLoginFormGroup();
@@ -33,9 +39,8 @@ export class LoginFormComponent implements OnInit {
         if (!data.error) {
           this.authSuccess = data.description;
           setTimeout(() => {
-            this.dropdown.hide();
+            this.bsModalRef.hide();
             this.loginStateService.loggedInUserInfo = <ILoggedInUserInfo>data.loggedInUser;
-            this.router.navigate(['/']);
           }, 1000);
         } else {
           this.authError = data.description;
@@ -44,4 +49,5 @@ export class LoginFormComponent implements OnInit {
       }
     });
   }
+
 }

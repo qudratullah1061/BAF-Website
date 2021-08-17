@@ -18,7 +18,7 @@ export class UserLoginComponent implements OnInit {
   authError: string = "";
   authSuccess: string = "";
 
-  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router) { }
+  constructor(private authService: AuthService, private loginStateService: LoginStateService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.authService.getLoginFormGroup();

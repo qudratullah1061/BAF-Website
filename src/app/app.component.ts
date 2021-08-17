@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ILoggedInUserInfo } from '@auth/models/ILogged-in-user-info';
 
 @Component({
@@ -12,8 +12,6 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-
   }
 
 

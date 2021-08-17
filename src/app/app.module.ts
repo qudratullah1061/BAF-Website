@@ -7,7 +7,6 @@ import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AuthModule } from '@auth/auth.module';
 import { SharedModule } from '@shared/shared.module';
 
@@ -24,7 +23,6 @@ import { SharedModule } from '@shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    BsDropdownModule.forRoot(),
     AuthModule,
     SharedModule
   ],

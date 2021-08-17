@@ -2,7 +2,7 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from '@auth/components/profile/profile.component';
 import { RegisterComponent } from '@auth/components/register/register.component';
-import { UserLoginComponent } from '@auth/components/user-login/user-login.component';
+import { UserLoginComponent } from '@auth/components/login/user-login.component';
 import { ProfileRouteActivatorService } from '@auth/guards/profile-route-activator.service';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyAccountComponent } from './components/register/verify-account.component';
