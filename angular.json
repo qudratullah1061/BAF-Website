@@ -36,6 +36,7 @@
               "src/assets/fonts/avenir/stylesheet.css",
               "src/assets/fonts/signifier/stylesheet.css",
               "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/assets/stylesheets/styles.scss"
             ],
             "scripts": [
@@ -128,11 +129,11 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/fonts/avenir/stylesheet.css",
               "src/assets/fonts/signifier/stylesheet.css",
-              "src/assets/stylesheets/styles.scss",
-              "node_modules/sweetalert2/dist/sweetalert2.min.css"
+              "node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/assets/stylesheets/styles.scss"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",

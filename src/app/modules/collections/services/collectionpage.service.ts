@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { HttpClient, HttpContext } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CACHEABLE, CACHEABLEURLMODULE } from '@shared/http-interceptors/http-cache-interceptor';
 import { IAPIBase } from '@shared/models/IApi-base';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,9 @@ export class CollectionpageService {
     var formData: any = new FormData();
     formData.append("DataType", "homepage");
 
-    return this.http.post<IAPIBase>(getCollectionHomepageDataUrl, formData);
+    return this.http.post<IAPIBase>(getCollectionHomepageDataUrl, formData,{
+      context: new HttpContext().set(CACHEABLE, true).set(CACHEABLEURLMODULE, "Collections")
+    });
   }
 
 
@@ -37,7 +39,9 @@ export class CollectionpageService {
       formData.append("Id", code);
     }
 
-    return this.http.post<IAPIBase>(getCollectionDetailApiData, formData);
+    return this.http.post<IAPIBase>(getCollectionDetailApiData, formData,{
+      context: new HttpContext().set(CACHEABLE, true).set(CACHEABLEURLMODULE, `Collection${code}`)
+    });
   }
 
 

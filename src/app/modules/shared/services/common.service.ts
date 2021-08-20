@@ -8,12 +8,4 @@ export class CommonService {
 
   constructor(private router: Router) { }
 
-  // reloadPage(): void {
-  //   window.location.reload();
-  //   // let currentUrl = this.router.url;
-  //   // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  //   // this.router.onSameUrlNavigation = 'reload';
-  //   // this.router.navigate([currentUrl]);
-  // }
-
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IHomepage } from '@homepage/models/IHomepage';
 import { HomepageService } from '@homepage/services/homepage.service';
 
+
 @Component({
   selector: 'baf-homepage',
   templateUrl: './homepage.component.html',
@@ -17,10 +18,8 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.homepageService.getHomepageData().subscribe({
       next: data => {
-        // setTimeout(() => {
         this.loading = false;
-        this.homepageData = data.description as IHomepage; console.log(this.homepageData);
-        // }, 3000);
+        this.homepageData = data.description as IHomepage;
       }
     });
 

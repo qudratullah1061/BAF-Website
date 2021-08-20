@@ -6,6 +6,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ModalsComponent } from './components/modals/modals.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,14 @@ import { ModalsComponent } from './components/modals/modals.component';
   ],
   imports: [
     CommonModule,
+    ToastrModule.forRoot({
+      enableHtml:true,
+      progressBar:true,
+      progressAnimation:'decreasing',
+      onActivateTick:true,
+      easeTime:300,
+      preventDuplicates:true
+    }), // ToastrModule added
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     AlertModule.forRoot()

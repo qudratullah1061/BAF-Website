@@ -24,6 +24,7 @@
     "bootstrap": "^5.0.1",
     "carousel": "0.0.3",
     "ngx-bootstrap": "^6.2.0",
+    "ngx-toastr": "^14.1.0",
     "rxjs": "~6.5.4",
     "sweetalert2": "^11.0.18",
     "tslib": "^1.10.0",

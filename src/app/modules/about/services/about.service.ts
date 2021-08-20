@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CACHEABLE, CACHEABLEURLMODULE } from '@shared/http-interceptors/http-cache-interceptor';
 import { IAPIBase } from '@shared/models/IApi-base';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,9 @@ export class AboutService {
 
     // var aboutPageApi = environment.apiUrl + "aboutdata";
     var aboutPageApi = "/api/aboutdata";
-    return this.http.get<IAPIBase>(aboutPageApi)
+    return this.http.get<IAPIBase>(aboutPageApi,{
+      context: new HttpContext().set(CACHEABLE, true).set(CACHEABLEURLMODULE, "Stories")
+    })
 
   }
 
