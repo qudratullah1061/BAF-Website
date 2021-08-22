@@ -18,6 +18,7 @@ export class HttpValidationInterceptor implements HttpInterceptor {
       .pipe(
         retry(1),
         catchError((error: HttpErrorResponse) => {
+          console.log(error);
           let errorMessage = '';
           if (error.error instanceof ErrorEvent) {
             // client-side error
